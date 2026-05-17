@@ -7,8 +7,7 @@ const Header = () => {
 
   return (
     <div>
-      <div>
-        <div className='flex justify-between p-3 border-b-2 border-gray-200 '>
+        <div className='flex justify-between p-5 border-b border-gray-200 fixed z-50 w-full bg-white'>
           <h1>
             Book Verse
           </h1>
@@ -24,13 +23,6 @@ const Header = () => {
             }
           </div>
         </div>
-        <div>
-          <img src="/images/landing-page.png" alt="landing-page" className='bg-cover bg-no-repeat flex bg-center h-screen w-full' />
-          <div>
-
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
