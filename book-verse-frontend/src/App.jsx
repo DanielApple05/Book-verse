@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Index from './assets/pages/index';
 import { Routes, Route } from 'react-router-dom'
+import SignIn from './assets/pages/login'
 
 function App() {
   
@@ -9,7 +10,7 @@ function App() {
 <div>
     <Routes>
       <Route path="/" element={<Index />} />
-      
+       <Route path="/signIn" element={<SignIn />} />
     </Routes>
 </div>
 

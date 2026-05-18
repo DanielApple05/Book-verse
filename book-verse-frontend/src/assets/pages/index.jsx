@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/header-component/header'
+import { Link } from 'react-router-dom';
 
 const Index = () => {
 
@@ -14,9 +15,9 @@ const Index = () => {
           <div className='flex space-x-6 mt-5'>
             {
               youAre.map((areYou) => (
-                <button key={areYou.id} className='bg-white p-3 rounded-lg cursor-pointer hover:bg-[#1B1F3B] hover:text-white font-semibold '>
+                <Link to='/signIn' key={areYou.id} className='bg-white p-3 rounded-lg cursor-pointer hover:bg-[#1B1F3B] hover:text-white font-semibold'>
                   {areYou.name}
-                </button>
+                </Link>
               ))
             }
           </div>
