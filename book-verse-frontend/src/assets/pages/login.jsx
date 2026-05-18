@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faEye } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+const navigate = useNavigate();
+const [viewPassword, setViewPassword] = useState(false)
 
-  const handleLogin = (e) => (
-
-  e.preventDefault
-
-  )
+  const handleLogin = (e) => {
+  e.preventDefault();
+  navigate('/')
+  }
   return (
     <>
       <div className='flex gap-5 xl:text-sm text-xs min-h-screen w-full'>
@@ -33,11 +35,13 @@ const Login = () => {
                 <label className='font-semibold'> Password</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
                   <FontAwesomeIcon icon={faLock} />
-                  <input type="password" className=' p-1 w-full outline-none' placeholder='Enter your password' />
-                  <FontAwesomeIcon icon={faEye} className='cursor-pointer' />
+                  <input type={viewPassword ? "text" : "password"} className=' p-1 w-full outline-none' placeholder='Enter your password' />
+                  <FontAwesomeIcon icon={faEye} className='cursor-pointer' onClick={() => setViewPassword(!viewPassword)}/>
                 </div>
               </div>
-              <button className='w-full bg-[#1B1F3B] p-1 rounded-lg text-white cursor-pointer hover:text-gray-200'>Login</button>
+              <button 
+              type='submit'
+              className='w-full bg-[#1B1F3B] p-1 rounded-lg text-white cursor-pointer hover:text-gray-200' >Login</button>
             </form>
           </div>
         </div>
