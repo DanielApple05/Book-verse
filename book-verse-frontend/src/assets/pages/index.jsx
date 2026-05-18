@@ -14,7 +14,7 @@ const Index = () => {
           <div className='flex space-x-6 mt-5'>
             {
               youAre.map((areYou) => (
-                <button key={areYou.id} className='bg-white p-3 rounded-lg cursor-pointer hover:bg-black hover:text-white font-semibold '>
+                <button key={areYou.id} className='bg-white p-3 rounded-lg cursor-pointer hover:bg-[#1B1F3B] hover:text-white font-semibold '>
                   {areYou.name}
                 </button>
               ))
@@ -26,8 +26,6 @@ const Index = () => {
       <div className='bg-[#FAF7F2] pt-5'>
 
         <h1 className='text-center text-2xl font-semibold '>Everything you need in a reading App</h1>
-
-
 
       </div>
 
