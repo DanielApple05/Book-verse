@@ -1,29 +1,24 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookOpen, faCircleUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-
-  const Tabs = [{ id: 1, name: "Home" }, { id: 2, name: "Features" }, { id: 3, name: "Categories" }, { id: 4, name: "About" }]
-  console.log(Tabs)
-
   return (
-    <div>
-        <div className='flex justify-between p-5 border-b border-gray-200 fixed z-50 w-full bg-white'>
-          <h1>
-            Book Verse
-          </h1>
-          <div className='flex space-x-15 w-7/12 '>
-            {
-              Tabs.map((tab) => (
-                <div key={tab.id} className='font-bold'>
-                  <p className='cursor-pointer'>
-                    {tab.name}
-                  </p>
-                </div>
-              ))
-            }
-          </div>
+    <>
+      <div className='flex items-center justify-between p-6 border-b border-gray-500'>
+        <div className='flex items-center p-3 text-2xl font-bold space-x-2'>
+          <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
+          <p> BookVerse </p>
         </div>
-    </div>
+        <form className=' border border-gray-300 rounded-xl p-1 relative w-5/12 flex items-center'>
+         <input type="text" className='outline-none w-full ml-2'/>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#1A1A2E] absolute right-3' />
+        </form>
+        <div>
+           <FontAwesomeIcon icon={faCircleUser} className='text-[#1A1A2E] text-2xl' />
+        </div>
+      </div>
+    </>
   );
 }
 
