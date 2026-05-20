@@ -3,7 +3,8 @@ import Index from './assets/pages/index';
 import { Routes, Route } from 'react-router-dom';
 import SignIn from './assets/pages/login';
 import Home from './assets/pages/home';
-import Library from './assets/pages/library'
+import Library from './assets/pages/library';
+import Category from './assets/pages/category'
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
        <Route path="/signIn" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
         <Route path="/library" element={<Library/ >} />
+        <Route path="/category" element={<Category/ >} />
     </Routes>
 </div>
 

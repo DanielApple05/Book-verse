@@ -6,7 +6,7 @@ const Header = () => {
   console.log(Tabs)
 
   return (
-    <div>
+    <>
         <div className='flex justify-between p-5 border-b border-gray-200 fixed z-50 w-full bg-white'>
           <h1>
             Book Verse
@@ -23,7 +23,7 @@ const Header = () => {
             }
           </div>
         </div>
-    </div>
+    </>
   );
 }
 
