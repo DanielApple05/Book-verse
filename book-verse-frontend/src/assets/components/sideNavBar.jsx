@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const SideNavBar = () => {
 
   return (
-    <div className='w-2/12 h-screen bg-[#F9F6F1] flex justify-center'>
+    <div className='w-4/12 h-screen bg-[#F9F6F1] flex justify-center bg-fixed'>
       <div className="space-y-4 p-4">
         {Tabs.map(tab => (
           <NavLink

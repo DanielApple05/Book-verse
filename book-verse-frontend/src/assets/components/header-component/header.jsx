@@ -5,7 +5,7 @@ import { faBookOpen, faCircleUser, faMagnifyingGlass } from '@fortawesome/free-s
 const Header = () => {
   return (
     <>
-      <div className='flex items-center justify-between p-6 border-b border-gray-500'>
+      <div className='flex items-center justify-between p-4 border-b border-gray-500 w-full'>
         <div className='flex items-center p-3 text-2xl font-bold space-x-2'>
           <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
           <p> BookVerse </p>
