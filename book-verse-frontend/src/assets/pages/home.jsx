@@ -1,7 +1,7 @@
 import React from 'react';
 import SideNavBar from '../components/sideNavBar';
 import Header from '../components/header-component/header';
-import HomeCard from '../components/index-component/homeCard'
+import HomeCard from '../components/home-component/homeCard'
 
 const Home = () => {
   return (

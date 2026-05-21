@@ -1,4 +1,5 @@
 import RecommendedBooks from '../recommendedBooks';
+import TrendingBooks from '../trendingBooks'; 
 
 const HomeCard = () => {
 
@@ -8,6 +9,7 @@ const HomeCard = () => {
         <h1 className='text-2xl font-semibold'>Good day User</h1>
         <p>Let's continue your reading.</p>
          <RecommendedBooks />
+         <TrendingBooks />
       </div>
     </>
   );

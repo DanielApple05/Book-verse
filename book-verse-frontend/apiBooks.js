@@ -56,7 +56,7 @@ export const fetchRecommendedBooks = async (author = 'fiction', category = 'fict
 };
 
 // fetch trending/popular books
-export const fetchTrendingBooks = async (maxResults = 10) => {
+export const fetchTrendingBooks = async (maxResults = 5) => {
   const response = await axios.get(BASE_URL, {
     params: { q: 'bestseller', key: API_KEY, maxResults, orderBy: 'relevance' }
   });
