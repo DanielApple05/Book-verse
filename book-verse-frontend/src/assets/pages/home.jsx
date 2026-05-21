@@ -2,6 +2,7 @@ import React from 'react';
 import SideNavBar from '../components/sideNavBar';
 import Header from '../components/header-component/header';
 import HomeCard from '../components/home-component/homeCard'
+import Footer from '../components/footer'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         <SideNavBar />
         <HomeCard/>
     </div>
+    <Footer/>
     </>
   );
 }

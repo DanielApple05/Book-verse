@@ -1,13 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Tabs from './navTabs';
-import { NavLink } from "react-router-dom";
+import React from 'react';
 
-const SideNavBar = () => {
-
+const  MobileNavBar = () => {
   return (
-    <>
-      <div className='min-w-2/12 h-screen bg-[#F9F6F1] flex justify-center sticky z-0 top-0 '>
-        <div className="space-y-4 mt-20">
+     <div className='min-w-2/12 h-screen bg-[#F9F6F1] flex justify-center sticky z-0 top-5 '>
+        <div className="space-y-4 flex mt-20">
           {Tabs.map(tab => (
             <NavLink
               key={tab.id}
@@ -23,8 +19,7 @@ const SideNavBar = () => {
           ))}
         </div>
       </div>
-    </>
   );
 }
 
-export default SideNavBar;
+export default MobileNavBar;
