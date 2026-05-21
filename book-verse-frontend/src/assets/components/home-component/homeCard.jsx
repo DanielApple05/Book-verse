@@ -1,5 +1,6 @@
 import RecommendedBooks from '../recommendedBooks';
 import TrendingBooks from '../trendingBooks'; 
+import NewArrivals from '../newArrivals';
 
 const HomeCard = () => {
 
@@ -10,6 +11,7 @@ const HomeCard = () => {
         <p>Let's continue your reading.</p>
          <RecommendedBooks />
          <TrendingBooks />
+         <NewArrivals />
       </div>
     </>
   );

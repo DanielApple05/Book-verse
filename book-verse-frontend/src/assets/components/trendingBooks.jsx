@@ -13,7 +13,6 @@ const TrendingBooks = () => {
       setLoading(true);
       try {
         const trending = await fetchTrendingBooks();
-        console.log(trending);
         setTrendingBooks(trending);
       } catch (error) {
         console.error('failed to fetch trending books', error);
@@ -26,7 +25,7 @@ const TrendingBooks = () => {
 
   return (
     <div className='w-full '>
-      <h1 className='text-xl font-semibold my-4'>Trending Books</h1>
+      <h1 className='text-lg font-semibold my-6'>Trending Books</h1>
       {loading ? (
         <div className='gap-4 flex w-full'>
           {Array(5).fill(0).map((_, i) => (

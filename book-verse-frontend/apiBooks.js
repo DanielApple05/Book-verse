@@ -64,7 +64,7 @@ export const fetchTrendingBooks = async (maxResults = 5) => {
 };
 
 // fetch new arrivals
-export const fetchNewArrivals = async (maxResults = 10) => {
+export const fetchNewArrivals = async (maxResults = 5) => {
   const response = await axios.get(BASE_URL, {
     params: { q: 'a', key: API_KEY, maxResults, orderBy: 'newest' }
   });
