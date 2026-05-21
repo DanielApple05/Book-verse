@@ -4,7 +4,7 @@ const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_KEY;
 const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 
 // fetch books by category
-export const fetchBooksByCategory = async (category, maxResults = 20) => {
+export const fetchBooksByCategory = async (category, maxResults = 5) => {
   const response = await axios.get(BASE_URL, {
     params: { q: `subject:${category}`, key: API_KEY, maxResults }
   });
@@ -44,7 +44,7 @@ export const fetchBookById = async (bookId) => {
 };
 
 // fetch recommended books
-export const fetchRecommendedBooks = async (author, category, maxResults = 10) => {
+export const fetchRecommendedBooks = async (author = 'fiction', category = 'fiction', maxResults = 5) => {
   const response = await axios.get(BASE_URL, {
     params: {
       q: `subject:${category} OR inauthor:${author}`,

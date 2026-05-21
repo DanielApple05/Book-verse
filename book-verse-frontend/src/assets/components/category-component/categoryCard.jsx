@@ -24,7 +24,7 @@ const CategoryCard = () => {
   return (
     <div className='min-w-10/12'>
       {loading ? (
-        <div className='grid grid-cols-5 gap-4'>
+        <div className='grid grid-cols-5 gap-4 mt-10'>
           {Array(10).fill(0).map((_, i) => (
             <div key={i} className='animate-pulse'>
               <div className='bg-gray-600 h-48 w-full rounded-lg mb-2'></div>
