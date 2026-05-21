@@ -10,9 +10,9 @@ const Category = () => {
       <Header />
       <div className='flex w-full'>
         <SideNavBar />
-        <div className='bg-red-200 mt-20 p-5 w-full '>
-          <p className='text-2xl font-bold'>My Library</p>
-          <p>All your books in one place</p>
+        <div className=' mt-20 p-5 w-full '>
+          <p className='text-2xl font-bold'>Categories</p>
+          <p>Explore books by categories and find your next favorite read</p>
            <CategoryCard />
         </div>
       </div>

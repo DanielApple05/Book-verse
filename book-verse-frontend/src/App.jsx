@@ -8,7 +8,6 @@ import Category from './assets/pages/category'
 
 function App() {
   
-
   return (
 <div>
     <Routes>

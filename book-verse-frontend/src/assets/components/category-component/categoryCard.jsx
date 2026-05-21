@@ -7,7 +7,7 @@ const CategoryCard = () => {
   const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_KEY;
   const [loading, setLoading] = useState(true);
 
-  const categories = ['fiction', 'nonfiction', 'science', 'history', 'biography', 'fantasy', 'romance', 'thriller'];
+  const categories = ['fiction', 'non-fiction', 'science', 'history', 'biography', 'fantasy', 'romance', 'thriller'];
 
   useEffect(() => {
     const fetchBooks = async () => {
