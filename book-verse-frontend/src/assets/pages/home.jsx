@@ -10,7 +10,7 @@ const Home = () => {
      <Header/>
     <div className='flex w-full'>
         <SideNavBar />
-        <HomeCard/>
+        <HomeCard />
     </div>
     <Footer/>
     </>

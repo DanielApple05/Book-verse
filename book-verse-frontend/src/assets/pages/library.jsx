@@ -1,8 +1,8 @@
 import React from 'react';
 import SideNavBar from '../components/sideNavBar';
 import Header from '../components/header-component/header';
+import Footer from '../components/footer';
 // import LibraryCard from '../components/library-component/libraryCard'
-
 
 const Library = () => {
   return (
@@ -16,6 +16,7 @@ const Library = () => {
            {/* <LibraryCard /> */}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

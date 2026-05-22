@@ -1,7 +1,8 @@
 import React from 'react';
 import SideNavBar from '../components/sideNavBar';
 import Header from '../components/header-component/header';
-import CategoryPageCard from '../components/category-component/categoryPageCard'
+import CategoryPageCard from '../components/category-component/categoryPageCard';
+import Footer from '../components/footer';
 
 
 const Category = () => {
@@ -16,6 +17,7 @@ const Category = () => {
            <CategoryPageCard />
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

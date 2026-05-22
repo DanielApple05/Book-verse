@@ -1,7 +1,8 @@
 import RecommendedBooks from '../recommendedBooks';
 import TrendingBooks from '../trendingBooks'; 
 import NewArrivals from '../newArrivals';
-import Categories from '../category-component/categories'
+import Categories from '../category-component/categories';
+import Branding from '../branding';
 
 const HomeCard = () => {
 
@@ -14,6 +15,7 @@ const HomeCard = () => {
            <Categories />
          <TrendingBooks />
          <NewArrivals />
+         <Branding/>
       </div>
     </>
   );
