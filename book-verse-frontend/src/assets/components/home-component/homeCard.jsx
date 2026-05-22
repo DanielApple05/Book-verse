@@ -1,8 +1,8 @@
-import RecommendedBooks from '../recommendedBooks';
-import TrendingBooks from '../trendingBooks'; 
-import NewArrivals from '../newArrivals';
+import RecommendedBooks from '../book-components/recommendedBooks';
+import TrendingBooks from '../book-components/trendingBooks'; 
+import NewArrivals from '../book-components/newArrivals';
 import Categories from '../category-component/categories';
-import Branding from '../branding';
+import Banner1 from '../explore-banner/banner1';
 
 const HomeCard = () => {
 
@@ -15,7 +15,7 @@ const HomeCard = () => {
            <Categories />
          <TrendingBooks />
          <NewArrivals />
-         <Branding/>
+         <Banner1/>
       </div>
     </>
   );

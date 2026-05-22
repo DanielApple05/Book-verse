@@ -1,5 +1,5 @@
 import React from 'react';
-import SideNavBar from '../components/sideNavBar';
+import SideNavBar from '../components/navigations/sideNavBar';
 import Header from '../components/header-component/header';
 import HomeCard from '../components/home-component/homeCard'
 import Footer from '../components/footer'

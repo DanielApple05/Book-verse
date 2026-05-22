@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchAllCategories } from "../../../../apiBooks";
+import { fetchAllCategories } from "../../../apiBooks";
+import Banner2 from "../explore-banner/banner2";
 
 const CategoryCard = () => {
   const [books, setBooks] = useState({});
@@ -50,6 +51,7 @@ const CategoryCard = () => {
           </div>
         ))
       )}
+      <Banner2/>
     </div>
   );
 };

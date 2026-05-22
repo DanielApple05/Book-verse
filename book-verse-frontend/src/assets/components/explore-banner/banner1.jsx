@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Branding = () => {
+
+const Banner1 = () => {
   return (
-    <div className='bg-cover bg-center h-72 relative my-6 bg-no-repeat w-full rounded-xl' style={{ backgroundImage: 'url(/images/brand.png)' }}>
+    <div className='bg-cover bg-center h-72 relative my-6 bg-no-repeat w-full rounded-xl' style={{ backgroundImage: 'url(/images/banner-img1.png)' }}>
       <div className='absolute inset-0 bg-black/30 rounded-xl' />
 
       <div className='absolute inset-0 flex items-center justify-between px-10'>
@@ -18,4 +19,4 @@ const Branding = () => {
   );
 }
 
-export default Branding;
+export default Banner1;

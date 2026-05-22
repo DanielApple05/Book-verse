@@ -4,7 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import SignIn from './assets/pages/login';
 import Home from './assets/pages/home';
 import Library from './assets/pages/library';
-import Category from './assets/pages/category'
+import Category from './assets/pages/category';
+import Discovery from './assets/pages/discovery'
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/library" element={<Library/ >} />
         <Route path="/category" element={<Category/ >} />
+        <Route path="/discovery" element={<Discovery/ >} />
     </Routes>
 </div>
 
