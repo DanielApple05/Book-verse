@@ -6,7 +6,7 @@ const SideNavBar = () => {
 
   return (
     <>
-      <div className='min-w-2/12 h-screen bg-[#F9F6F1] flex justify-center sticky z-0 top-0 '>
+      <div className='w-48 h-screen bg-[#F9F6F1] flex justify-center sticky top-0'>
         <div className="space-y-4 mt-20">
           {Tabs.map(tab => (
             <NavLink

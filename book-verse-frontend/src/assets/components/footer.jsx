@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='bg-[#FAF7F2] border-t border-gray-200 px-16 py-10'>
       <div className='flex justify-between'>
 
-        {/* Brand */}
+       
         <div className='space-y-3 max-w-xs'>
           <h1 className='text-xl font-bold'>📖 BookVerse</h1>
           <p className='text-sm text-gray-500'>Read more. Discover more. Grow more.</p>
@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Links */}
+     
         <div className='space-y-3'>
           <h2 className='font-semibold text-sm'>Links</h2>
           {['Home', 'Features', 'Categories', 'Pricing'].map((link) => (
@@ -25,7 +25,7 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Company */}
+     
         <div className='space-y-3'>
           <h2 className='font-semibold text-sm'>Company</h2>
           {['About Us', 'Blog', 'Careers', 'Contact'].map((link) => (
@@ -33,7 +33,6 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Connect */}
         <div className='space-y-3'>
           <h2 className='font-semibold text-sm'>Connect</h2>
           <p className='text-sm text-gray-500'>support@bookverse.com</p>
