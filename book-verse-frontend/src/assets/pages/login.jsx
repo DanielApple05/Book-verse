@@ -19,11 +19,11 @@ const Login = () => {
         <div className='w-full justify-self-center flex flex-col p-5'>
           <p className='place-self-end '> Don't have an account <span className='text-red-400'> Sign up</span>  </p>
           <div className='space-y-3 flex flex-col xl:p-15 p-5 xl:w-10/12 w-full '>
-            <div>
+            <div className='space-y-2'>
               <h1 className='font-bold text-xl'>Welcome Back! </h1>
               <p>sign in your account to keep reading!</p>
             </div>
-            <form className='space-y-3 ' onSubmit={handleLogin}>
+            <form className=' space-y-5' onSubmit={handleLogin}>
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'> Email Address</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
