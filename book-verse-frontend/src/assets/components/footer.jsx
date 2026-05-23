@@ -1,47 +1,43 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
-    <footer className='bg-[#FAF7F2] border-t border-gray-200 px-16 py-10'>
+    <footer className='bg-[#FAF7F2] border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5 '>
       <div className='flex justify-between'>
-
-       
         <div className='space-y-3 max-w-xs'>
-          <h1 className='text-xl font-bold'>📖 BookVerse</h1>
-          <p className='text-sm text-gray-500'>Read more. Discover more. Grow more.</p>
+          <div className='flex items-center font-bold space-x-2'>
+            <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
+            <p className='xl:text-base text-xs'> BookVerse </p>
+          </div>
           <div className='flex gap-4 text-gray-500'>
             <FontAwesomeIcon icon={faTwitter} className='cursor-pointer hover:text-[#1B1F3B]' />
             <FontAwesomeIcon icon={faInstagram} className='cursor-pointer hover:text-[#1B1F3B]' />
             <FontAwesomeIcon icon={faFacebook} className='cursor-pointer hover:text-[#1B1F3B]' />
           </div>
         </div>
-
-     
-        <div className='space-y-3'>
-          <h2 className='font-semibold text-sm'>Links</h2>
+        <div className='space-y-3 xl:text-sm text-xs'>
+          <h2 className='font-semibold '>Links</h2>
           {['Home', 'Features', 'Categories', 'Pricing'].map((link) => (
-            <p key={link} className='text-sm text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link}</p>
+            <p key={link} className=' text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link}</p>
           ))}
         </div>
 
-     
-        <div className='space-y-3'>
-          <h2 className='font-semibold text-sm'>Company</h2>
+        <div className='space-y-3 xl:text-sm text-xs'>
+          <h2 className='font-semibold  '>Company</h2>
           {['About Us', 'Blog', 'Careers', 'Contact'].map((link) => (
-            <p key={link} className='text-sm text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link}</p>
+            <p key={link} className=' text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link}</p>
           ))}
         </div>
 
-        <div className='space-y-3'>
+        <div className='space-y-3 xl:text-sm text-xs'>
           <h2 className='font-semibold text-sm'>Connect</h2>
-          <p className='text-sm text-gray-500'>support@bookverse.com</p>
-          <p className='text-sm text-gray-500'>@bookverse</p>
+          <p className=' text-gray-500'>support@bookverse.com</p>
+          <p className=' text-gray-500'>@bookverse</p>
         </div>
 
       </div>
-
-      {/* Bottom */}
       <div className='border-t border-gray-200 mt-8 pt-4 text-center'>
         <p className='text-xs text-gray-400'>© 2024 BookVerse. All rights reserved.</p>
       </div>
