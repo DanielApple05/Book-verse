@@ -2,6 +2,7 @@ import React from 'react';
 import SideNavBar from '../components/navigations/sideNavBar';
 import Header from '../components/header-component/header';
 import Footer from '../components/footer';
+import MobileNavBar from '../components/navigations/mobileNavBar';
 // import LibraryCard from '../components/library-component/libraryCard'
 
 const Library = () => {
@@ -16,6 +17,7 @@ const Library = () => {
            {/* <LibraryCard /> */}
         </div>
       </div>
+      <MobileNavBar />
       <Footer/>
     </>
   );

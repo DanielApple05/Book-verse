@@ -3,6 +3,7 @@ import Header from '../components/header-component/header';
 import Footer from '../components/footer';
 import SideNavBar from '../components/navigations/sideNavBar';
 import DiscoveryPageCard from '../components/discovery-component/discoveryPageCard';
+import MobileNavBar from '../components/navigations/mobileNavBar';
 
 const Discover = () => {
   return (
@@ -14,6 +15,7 @@ const Discover = () => {
            <DiscoveryPageCard />
         </div>
       </div>
+      <MobileNavBar />
       <Footer/>
     </>
   );
