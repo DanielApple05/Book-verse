@@ -13,12 +13,12 @@ const [viewPassword, setViewPassword] = useState(false)
   }
   return (
     <>
-      <div className='flex gap-5 xl:text-sm text-xs min-h-screen w-full'>
-        <div className='h-screen w-full bg-cover bg-center bg-no-repeat rounded-lg ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
+      <div className='xl:flex grid gap-5 xl:text-sm text-xs min-h-screen w-full'>
+        <div className='xl:h-screen h-full w-full bg-cover bg-center bg-no-repeat rounded-b-xl ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
         </div>
         <div className='w-full justify-self-center flex flex-col p-5'>
           <p className='place-self-end '> Don't have an account <span className='text-red-400'> Sign up</span>  </p>
-          <div className='space-y-3 flex flex-col p-15 w-10/12 '>
+          <div className='space-y-3 flex flex-col xl:p-15 p-5 xl:w-10/12 w-full '>
             <div>
               <h1 className='font-bold text-xl'>Welcome Back! </h1>
               <p>sign in your account to keep reading!</p>
@@ -41,7 +41,7 @@ const [viewPassword, setViewPassword] = useState(false)
               </div>
               <button 
               type='submit'
-              className='w-full bg-[#1B1F3B] p-1 rounded-lg text-white cursor-pointer hover:text-gray-200' >Login</button>
+              className='w-full  bg-[#1B1F3B] p-1 rounded-lg text-white cursor-pointer hover:text-gray-200' >Login</button>
             </form>
           </div>
         </div>
