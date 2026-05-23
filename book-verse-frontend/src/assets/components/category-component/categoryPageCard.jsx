@@ -25,7 +25,7 @@ const CategoryCard = () => {
   return (
     <div className=''>
       {loading ? (
-        <div className='grid grid-cols-5 gap-4 mt-10'>
+        <div className='grid xl:grid-cols-5 grid-cols-2 gap-4 mt-10'>
           {Array(10).fill(0).map((_, i) => (
             <div key={i} className='animate-pulse'>
               <div className='bg-gray-600 h-48 w-full rounded-lg mb-2'></div>
@@ -38,7 +38,7 @@ const CategoryCard = () => {
         Object.entries(books).map(([category, items]) => (
           <div key={category} className='w-full grid space-y-3 mt-5'>
             <h2 className='font-semibold'>{category.toUpperCase()}</h2>
-            <div className='flex gap-4'>
+            <div className='xl:flex grid grid-cols-2 gap-4'>
               {items?.map(book => (
                 <div key={book.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer grid'>
                   <img src={book.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
