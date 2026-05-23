@@ -24,12 +24,12 @@ const TrendingBooks = () => {
   }, []);
 
   return (
-    <div className='w-full '>
+    <div className=' w-full '>
       <h1 className='text-lg font-semibold my-6'>Trending Books</h1>
       {loading ? (
-        <div className='gap-4 flex w-full'>
+        <div className='gap-4  xl:flex grid grid-cols-2 w-full'>
           {Array(5).fill(0).map((_, i) => (
-            <div key={i} className='w-full ring ring-amber-100 rounded-lg shadow-xl animate-pulse'>
+            <div key={i} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl animate-pulse'>
               <div className='w-full h-40 bg-gray-300 rounded-t-lg'></div>
                 <div className='p-2 py-4'>
                   <div className='h-3 bg-gray-300 rounded w-3/4 mb-2'></div>
@@ -39,9 +39,9 @@ const TrendingBooks = () => {
           ))}
         </div>
       ) : (
-        <div className='flex gap-4 w-full'>
+         <div className='xl:flex grid grid-cols-2  gap-4 w-full'>
           {trendingBooks.map((book) => (
-            <div key={book.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer'>
+            <div key={book.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer'>
               <img src={book.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
               <div className='p-2 text-xs space-y-3'>
                 <h2 className='text-sm font-semibold'>{book.volumeInfo.authors?.[0]}</h2>

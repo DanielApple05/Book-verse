@@ -14,7 +14,7 @@ const iconColors = [
 
 const Categories = () => {
   return (
-    <div className='my-6 w-full'>
+    <div className='my-6 '>
       <h1 className='flex items-center text-lg font-semibold '>Popular Categories</h1>
       <div className='flex py-2 gap-3 w-full overflow-x-auto'>
         {categoryTabs.map((tab, index) => (

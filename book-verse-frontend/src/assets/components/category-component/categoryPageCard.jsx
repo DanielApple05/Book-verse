@@ -23,7 +23,7 @@ const CategoryCard = () => {
   }, []);
 
   return (
-    <div className='min-w-10/12'>
+    <div className=''>
       {loading ? (
         <div className='grid grid-cols-5 gap-4 mt-10'>
           {Array(10).fill(0).map((_, i) => (
