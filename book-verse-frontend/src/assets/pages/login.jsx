@@ -4,12 +4,12 @@ import { faEnvelope, faLock, faEye } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-const navigate = useNavigate();
-const [viewPassword, setViewPassword] = useState(false)
+  const navigate = useNavigate();
+  const [viewPassword, setViewPassword] = useState(false)
 
   const handleLogin = (e) => {
-  e.preventDefault();
-  navigate('/home')
+    e.preventDefault();
+    navigate('/home')
   }
   return (
     <>
@@ -23,7 +23,7 @@ const [viewPassword, setViewPassword] = useState(false)
               <h1 className='font-bold text-xl'>Welcome Back! </h1>
               <p>sign in your account to keep reading!</p>
             </div>
-            <form className='space-y-3' onSubmit={handleLogin}>
+            <form className='space-y-3 ' onSubmit={handleLogin}>
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'> Email Address</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
@@ -36,12 +36,14 @@ const [viewPassword, setViewPassword] = useState(false)
                 <div className='border-gray-200 border pl-2 flex items-center'>
                   <FontAwesomeIcon icon={faLock} />
                   <input type={viewPassword ? "text" : "password"} className=' p-1 w-full outline-none' placeholder='Enter your password' />
-                  <FontAwesomeIcon icon={faEye} className='cursor-pointer' onClick={() => setViewPassword(!viewPassword)}/>
+                  <FontAwesomeIcon icon={faEye} className='cursor-pointer' onClick={() => setViewPassword(!viewPassword)} />
                 </div>
               </div>
-              <button 
-              type='submit'
-              className='w-full  bg-[#1B1F3B] p-1 rounded-lg text-white cursor-pointer hover:text-gray-200' >Login</button>
+              <div className='flex place-content-center'>
+                <button
+                  type='submit'
+                  className='xl:w-full w-6/12  bg-[#1B1F3B] p-1 rounded-lg text-white cursor-pointer hover:text-gray-200' >Login</button>
+              </div>
             </form>
           </div>
         </div>
