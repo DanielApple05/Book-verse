@@ -9,11 +9,11 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className='flex w-full'>
+      <div className='xl:flex grid'>
         <SideNavBar />
         <HomeCard />
+        <MobileNavBar />
       </div>
-      <MobileNavBar />
       <Footer />
     </>
   );

@@ -41,11 +41,11 @@ const RecommendedBooks = () => {
             ))}
           </div>
         ) : (
-          <div className='gap-4 flex w-full'>
+          <div className='gap-4 flex w-full h-64'>
             {recommendedBooks?.map((item) => (
-              <div key={item.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer xl:h-full h-60'>
+              <div key={item.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer xl:h-full'>
                 <img src={item.volumeInfo.imageLinks?.thumbnail} className='w-full xl:h-40 h-28 rounded-t-lg' />
-                 <div className='p-2 text-xs space-y-3'>
+                 <div className='p-2 text-xs xl:space-y-3 space-y-1'>
                 <h2 className='text-sm font-semibold'>{item.volumeInfo.authors?.[0]}</h2>
                 <p>{item.volumeInfo.title}</p>
               </div>
