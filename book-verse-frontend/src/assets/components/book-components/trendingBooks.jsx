@@ -24,7 +24,7 @@ const TrendingBooks = () => {
   }, []);
 
   return (
-    <div className='w-full '>
+    <div className=''>
       <h1 className='text-lg font-semibold my-6'>Trending Books</h1>
       {loading ? (
         <div className='gap-4 flex w-full'>

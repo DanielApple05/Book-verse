@@ -7,15 +7,15 @@ import MobileNavBar from '../components/navigations/mobileNavBar';
 
 const Home = () => {
   return (
-    <>
+    <div>
       <Header />
-      <div className='xl:flex grid'>
+  <div className='flex flex-col xl:flex-row'>
         <SideNavBar />
         <HomeCard />
-        <MobileNavBar />
       </div>
+      <MobileNavBar />
       <Footer />
-    </>
+    </div>
   );
 }
 

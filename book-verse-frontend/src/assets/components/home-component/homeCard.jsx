@@ -7,7 +7,7 @@ import Banner1 from '../explore-banner/banner1';
 const HomeCard = () => {
 
   return (
-    <>
+    
       <div className='p-5 mt-20 '>
         <h1 className='text-2xl font-semibold'>Good day User</h1>
         <p>Let's continue your reading.</p>
@@ -17,7 +17,7 @@ const HomeCard = () => {
         <NewArrivals />
         <Banner1 />
       </div>
-    </>
+  
   );
 }
 

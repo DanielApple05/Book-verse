@@ -26,7 +26,7 @@ const RecommendedBooks = () => {
 
   return (
     <>
-      <div className='w-full'>
+      <div className='w-full '>
         <h1 className='text-lg font-semibold my-6'>Recommended Books For You</h1>
         {loading ? (
           <div className='gap-4 flex w-full'>
