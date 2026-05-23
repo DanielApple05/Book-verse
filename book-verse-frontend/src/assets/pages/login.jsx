@@ -28,14 +28,14 @@ const Login = () => {
                 <label className='font-semibold'> Email Address</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
                   <FontAwesomeIcon icon={faEnvelope} />
-                  <input type="email" className='p-1 w-full outline-none ' placeholder='Enter your email' />
+                  <input type="email" className='p-2 w-full outline-none ' placeholder='Enter your email' />
                 </div>
               </div>
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'> Password</label>
-                <div className='border-gray-200 border pl-2 flex items-center'>
+                <div className='border-gray-200 border px-2 flex items-center'>
                   <FontAwesomeIcon icon={faLock} />
-                  <input type={viewPassword ? "text" : "password"} className=' p-1 w-full outline-none' placeholder='Enter your password' />
+                  <input type={viewPassword ? "text" : "password"} className=' p-2 w-full outline-none' placeholder='Enter your password' />
                   <FontAwesomeIcon icon={faEye} className='cursor-pointer' onClick={() => setViewPassword(!viewPassword)} />
                 </div>
               </div>
