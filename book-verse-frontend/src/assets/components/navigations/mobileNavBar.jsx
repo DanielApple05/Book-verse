@@ -1,9 +1,12 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tabs from '../navigations/navTabs'
+import { NavLink } from 'react-router-dom';
 
 const  MobileNavBar = () => {
   return (
-     <div className='min-w-2/12 h-screen bg-[#F9F6F1] flex justify-center sticky z-0 top-5 '>
-        <div className="space-y-4 flex mt-20">
+     <div className='w-full bg-[#F9F6F1] flex  '>
+        <div className="space-y-4 flex">
           {Tabs.map(tab => (
             <NavLink
               key={tab.id}
@@ -14,7 +17,6 @@ const  MobileNavBar = () => {
               }
             >
               <FontAwesomeIcon icon={tab.icon} className="text-xl" />
-              <span>{tab.name}</span>
             </NavLink>
           ))}
         </div>
