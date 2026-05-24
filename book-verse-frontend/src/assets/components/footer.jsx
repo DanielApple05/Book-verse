@@ -4,8 +4,8 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
-    <footer className='bg-[#FAF7F2] border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5 '>
-      <div className='flex justify-between'>
+    <div className='bg-[#FAF7F2] border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5 '>
+      <div className='xl:flex grid grid-cols-3 justify-between'>
         <div className='space-y-3 max-w-xs'>
           <div className='flex items-center font-bold space-x-2'>
             <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
@@ -41,7 +41,7 @@ const Footer = () => {
       <div className='border-t border-gray-200 mt-8 pt-4 text-center'>
         <p className='text-xs text-gray-400'>© 2024 BookVerse. All rights reserved.</p>
       </div>
-    </footer>
+    </div>
   );
 };
 
