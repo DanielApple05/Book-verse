@@ -12,9 +12,7 @@ const Header = () => {
           <p> BookVerse </p>
         </div>
         <div className='xl:flex hidden w-5/6 justify-center'> <Search /></div>
-
         <FontAwesomeIcon icon={faCircleUser} className='text-[#1A1A2E] text-2xl ' />
-
       </div>
     </>
   );
