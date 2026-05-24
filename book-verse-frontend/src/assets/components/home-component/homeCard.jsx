@@ -10,7 +10,7 @@ const HomeCard = () => {
   return (
 
     <div className='p-5 xl:mt-20 mt-15 w-full'>
-      <div className='xl:hidden flex'> <Search /> </div>
+      <div className='xl:hidden flex mb-3'> <Search /> </div>
       <h1 className='text-2xl font-semibold'>Good day User</h1>
       <p>Let's continue your reading.</p>
       <RecommendedBooks />
