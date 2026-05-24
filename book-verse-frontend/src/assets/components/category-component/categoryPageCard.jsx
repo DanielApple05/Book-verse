@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllCategories } from "../../../apiBooks";
 import Banner2 from "../explore-banner/banner2";
+import Search from "../search";
 
 const CategoryCard = () => {
   const [books, setBooks] = useState({});
@@ -23,7 +24,12 @@ const CategoryCard = () => {
   }, []);
 
   return (
-    <div className=''>
+    <div className='p-5 xl:mt-20 mt-15 w-full'>
+       <div className='xl:hidden flex mb-3 bg-white/30 sticky top-14 rounded-lg '> <Search /> </div>
+      <div className=' '>
+        <p className='xl:text-2xl text-lg font-bold'>Categories</p>
+        <p className='xl:text-base text-sm'>Explore books by categories and find your next favorite read</p>
+      </div>
       {loading ? (
         <div className='grid xl:grid-cols-5 grid-cols-2 gap-4 mt-10'>
           {Array(10).fill(0).map((_, i) => (
@@ -51,7 +57,7 @@ const CategoryCard = () => {
           </div>
         ))
       )}
-      <Banner2/>
+      <Banner2 />
     </div>
   );
 };

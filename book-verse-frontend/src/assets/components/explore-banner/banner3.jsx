@@ -5,7 +5,7 @@ const Banner3 = () => {
       <div className='bg-cover bg-center h-72 relative my-6 bg-no-repeat w-full rounded-xl' style={{ backgroundImage: 'url(/images/banner-img3.png)' }}>
       <div className='absolute inset-0 bg-black/30 rounded-xl' />
 
-      <div className='absolute flex flex-col p-20 items-center'>
+      <div className='absolute flex flex-col items-center justify-center inset-0 xl:text-base text-sm'>
         <div>
           <p className='font-bold text-xl text-white'>Find books that speaks to you</p>
           <p className='text-white/80 text-sm mt-1'>Personalized pick, based on your reading habit</p>
