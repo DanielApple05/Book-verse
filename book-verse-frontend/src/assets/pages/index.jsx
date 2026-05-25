@@ -11,9 +11,10 @@ const Index = () => {
       <Header />
       <div className='bg-cover bg-no-repeat bg-center flex xl:h-screen h-80 min-w-full relative rounded-b-lg border-b border-b-amber-200 shadow-2xl inset-0 ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
         <div className='absolute inset-0 bg-black/30 rounded-xl' />
-        <div className='absolute inset-0 flex flex-col justify-center xl:ml-20 ml-5 text-white'>
-          <h1 className='xl:text-4xl text-xl  font-bold'>Read More.</h1>
-          <h1 className='xl:text-4xl text-xl font-bold'>Discover More.</h1>
+        <div className='absolute inset-0 flex flex-col justify-center xl:ml-20 ml-5 text-white w-[50%]'>
+          <h1 className='xl:text-[55px] text-xl font-bold leading-none'>Read More. <br /> Discover More.</h1>
+          <p>BookVerse is your all-in-one reading companion.</p>
+          <p className='xl:text-base text-sm w-[55%]'>Explore thousands of books, track your progress, and build your perfect reading habit.</p>
           <div className='flex xl:text-base text-sm xl:space-x-6 space-x-2 mt-5'>
             {
               youAre.map((areYou) => (
