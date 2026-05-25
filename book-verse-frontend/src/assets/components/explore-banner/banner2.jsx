@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Banner2 = () => {
@@ -11,9 +12,9 @@ const Banner2 = () => {
           <p className='font-bold text-xl text-white'>Can't find what you're looking for?</p>
           <p className='text-white/80 text-sm mt-1'>Use our advanced search to find more books and authors</p>
         </div>
-        <button className='bg-black text-white px-6 py-3 cursor-pointer rounded-lg hover:bg-gray-800 transition-all whitespace-nowrap mt-5'>
+        <Link to='/discovery'  className='bg-black text-white px-6 py-3 cursor-pointer rounded-lg hover:bg-gray-800 transition-all whitespace-nowrap mt-5'>
           Explore more books
-        </button>
+        </Link>
       </div>
     </div>
   );
