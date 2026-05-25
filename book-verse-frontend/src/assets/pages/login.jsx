@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faEye } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
+import { EyeOff, Eye } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const Login = () => {
                   <FontAwesomeIcon icon={faLock} />
                   <input type={viewPassword ? "text" : "password"} className=' p-2 w-full outline-none' placeholder='Enter your password' />
                   <FontAwesomeIcon icon={faEye} className='cursor-pointer' onClick={() => setViewPassword(!viewPassword)} />
+                  
                 </div>
               </div>
               <div className='flex place-content-center'>
