@@ -26,10 +26,9 @@ const Index = () => {
             }
           </div>
         </div>
-
-      </div>
-
+      </div>   
       <BrandServices />
+         <img src={'/images/banner-img2.png'} alt="" className='w-full h-auto mt-10 rounded-lg' />
       <Footer />
     </>
   );
