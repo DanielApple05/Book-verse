@@ -1,11 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-  const Tabs = [{ id: 1, name: "Home" }, { id: 2, name: "Features" }, { id: 3, name: "Categories" }, { id: 4, name: "About" }]
-  console.log(Tabs)
 
   return (
     <>
@@ -14,17 +13,9 @@ const Header = () => {
           <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
           <p> BookVerse </p>
         </div>
-        <div className=' xl:flex hidden space-x-15 w-7/12 '>
-          {
-            Tabs.map((tab) => (
-              <div key={tab.id} className='font-bold'>
-                <p className='cursor-pointer'>
-                  {tab.name}
-                </p>
-              </div>
-            ))
-          }
-        </div>
+        <Link to='/signin' className='cursor-pointer p-2 rounded-xl shadow-2xl bg-amber-100 hover:text-white hover:bg-[#1B1F3B]'>
+           Sign in 
+        </Link>
       </div>
     </>
   );

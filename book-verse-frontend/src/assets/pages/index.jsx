@@ -26,9 +26,17 @@ const Index = () => {
             }
           </div>
         </div>
-      </div>   
+      </div>
       <BrandServices />
-         <img src={'/images/banner-img2.png'} alt="" className='w-full h-auto mt-10 rounded-lg' />
+      <div className=' flex relative my-15 '>
+        <img src={'/images/banner-img2.png'} alt="" className=' mx-auto w-11/12 xl:h-100 h-auto rounded-lg' />
+        <div className='inset-0 w-11/12 xl:h-100 h-auto  bg-black/50 absolute mx-auto rounded-lg' />
+        <div className='absolute text-white xl:w-[25%] w-[50%] xl:left-30 left-10 pt-10 space-y-2 xl:text-base text-xs '>
+          <h3 className='font-bold xl:text-xl text-sm  tracking-widest'> Take your library everywhere you go.</h3>
+          <p> Read on your phone tablet or any device. </p>
+          <p>Tour next favorite book is just a tap away.</p>
+        </div>
+      </div>
       <Footer />
     </>
   );
