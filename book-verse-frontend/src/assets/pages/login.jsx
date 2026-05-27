@@ -7,7 +7,11 @@ import { EyeOff, Eye } from 'lucide-react';
 const Login = () => {
   const navigate = useNavigate();
   const [viewPassword, setViewPassword] = useState([EyeOff]);
-  const [notUser, setNotUser] = useState(false)
+  const [notUser, setNotUser] = useState(false);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,38 +19,50 @@ const Login = () => {
   }
   return (
     <>
-      <div className='xl:flex grid gap-5 xl:text-sm text-xs min-h-screen w-full'>
-        <div className='xl:h-screen h-full w-full bg-cover bg-center bg-no-repeat rounded-b-xl ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
+      <div className='xl:flex grid gap-5 xl:text-sm text-xs h-screen w-full'>
+        <div className='xl:h-screen h-full xl:w-[50%] w-full  bg-cover bg-center bg-no-repeat rounded-b-xl ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
         </div>
-        <div className='w-full justify-self-center flex flex-col p-5'>
+        <div className='xl:w-[50%] w-full  flex flex-col p-5'>
           <p className='place-self-end '> {notUser ? "Already have an account?" : "Don't have an account?"} <span onClick={() => setNotUser(!notUser)} className='text-red-400 cursor-pointer'> {notUser ? "Login" : "Sign up"}</span>  </p>
           <div className='space-y-3 flex flex-col xl:p-15 p-5 xl:w-10/12 w-full '>
             <div className='space-y-2'>
-              <h1 className='font-bold text-xl'>Welcome Back! </h1>
-              <p>sign in your account to keep reading!</p>
+              {notUser ? 
+              (<div><h1 className='font-bold text-xl'>Welcome Back! </h1> <p>sign in your account to keep reading!</p></div>) : 
+              (<div><h1 className='font-bold text-xl'>Create Account</h1> <p>sign up to create your account</p></div>)}
             </div>
-            <form className=' space-y-5' onSubmit={handleLogin}>
-             { notUser && <div className='grid gap-2 w-full'>
-                <label className='font-semibold'> Username</label>
+            <form className=' space-y-3 h-60' onSubmit={handleLogin}>
+              {notUser && <div className='grid gap-2 w-full'>
+                <label 
+                  className='font-semibold'> Username</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
                   <FontAwesomeIcon icon={faCircleUser} />
                   <input
                     type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     className='p-2 w-full outline-none ' placeholder='Enter your username' />
                 </div>
-              </div> }
+              </div>}
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'> Email Address</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
                   <FontAwesomeIcon icon={faEnvelope} />
-                  <input type="email" className='p-2 w-full outline-none ' placeholder='Enter your email' />
+                  <input 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className='p-2 w-full outline-none ' placeholder='Enter your email' />
                 </div>
               </div>
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'> Password</label>
                 <div className='border-gray-200 border px-2 flex items-center'>
                   <FontAwesomeIcon icon={faLock} />
-                  <input type={viewPassword ? "text" : "password"} className=' p-2 w-full outline-none' placeholder='Enter your password' />
+                  <input 
+                  type={viewPassword ? "text" : "password"} 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className=' p-2 w-full outline-none' placeholder='Enter your password' />
                   <div className='cursor-pointer' onClick={() => setViewPassword(!viewPassword)}>
                     {viewPassword ? <FontAwesomeIcon icon={faEye} />
                       : <EyeOff className='w-4' />
@@ -54,15 +70,17 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-                { notUser && <div className='grid gap-2 w-full'>
+              {notUser && <div className='grid gap-2 w-full'>
                 <label className='font-semibold'> Confirm password</label>
                 <div className='border-gray-200 border pl-2 flex items-center'>
                   <FontAwesomeIcon icon={faLock} />
                   <input
                     type={viewPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className='p-2 w-full outline-none ' placeholder='Confirm password' />
                 </div>
-              </div> }
+              </div>}
               <div className='flex place-content-center'>
                 <button
                   type='submit'
