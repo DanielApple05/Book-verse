@@ -18,7 +18,7 @@ const Header = () => {
         <Logo />
         <div className='xl:flex hidden w-5/6 justify-center'> <Search /></div>
         <div className='flex items-center space-x-2'>
-      { user ? (<span className='font-semibold'>{firstLetter}</span>) : (<Link to='/login'><FontAwesomeIcon icon={faCircleUser} className='text-[#1A1A2E] text-2xl ' /></Link>) }
+      { user ? (<span className='font-semibold'>{firstLetter}</span>) : (<Link to='/login'><FontAwesomeIcon icon={faCircleUser} className=' cursor-pointer text-[#1A1A2E] text-2xl ' /></Link>) }
          
         </div>
       </div>
