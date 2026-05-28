@@ -1,12 +1,14 @@
 import React from 'react';
 import { fetchTrendingBooks } from '../../../apiBooks';
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 const TrendingBooks = () => {
 
   const [trendingBooks, setTrendingBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getTrending = async () => {
@@ -41,7 +43,7 @@ const TrendingBooks = () => {
       ) : (
          <div className='xl:flex grid grid-cols-2  gap-4 w-full'>
           {trendingBooks.map((book) => (
-            <div key={book.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer'>
+            <div key={book.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer' onClick={() => navigate(`/book/${book.id}`)}>
               <img src={book.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
               <div className='p-2 text-xs space-y-3'>
                 <h2 className='text-sm font-semibold'>{book.volumeInfo.authors?.[0]}</h2>
