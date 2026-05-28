@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { fetchBookById } from '../../apiBooks';
 import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
+import { Calendar, UserPen, NotebookText, Star } from 'lucide-react';
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -70,22 +71,22 @@ const BookDetail = () => {
               <div className='flex flex-wrap gap-4 text-sm text-gray-600'>
                 {info?.pageCount && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
-                    📄 {info.pageCount} pages
+                    <NotebookText className='inline-block mr-2' /> {info.pageCount} pages
                   </span>
                 )}
                 {info?.publishedDate && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
-                    📅 {info.publishedDate}
+                    <Calendar className='inline-block mr-2' /> {info.publishedDate}
                   </span>
                 )}
                 {info?.publisher && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
-                    🏢 {info.publisher}
+                    <UserPen className='inline-block mr-2' /> {info.publisher}
                   </span>
                 )}
                 {info?.averageRating && (
                   <span className='bg-amber-100 px-3 py-1 rounded-full'>
-                    ⭐ {info.averageRating} / 5
+                    <Star className='inline-block mr-2' /> {info.averageRating} / 5
                   </span>
                 )}
               </div>
