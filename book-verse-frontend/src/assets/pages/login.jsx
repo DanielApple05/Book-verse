@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faEye, faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import { EyeOff, Eye } from 'lucide-react';
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,10 +38,24 @@ const Login = () => {
     setError(newError);
 
     if (Object.keys(newError).length === 0) {
-      navigate('/home')
+       // Login
+      try{
+        if(notUser){
+          const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+          localStorage.setItem('token', response.data.token);
+          navigate('/home');
+        } else { //register
+          await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+          setNotUser(true);
+        }
+      } catch (err) {
+        setError({ general: err.response.data.message || 'An error occurred' });
+      }
 
     }
   }
+
+
   return (
     <>
       <div className='xl:flex grid gap-5 xl:text-sm text-xs h-screen w-full'>
