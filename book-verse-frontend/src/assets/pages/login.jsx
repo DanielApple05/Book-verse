@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
   const [isRegistering, setIsRegistering] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
   const [username, setUsername] = useState('');
@@ -40,14 +41,14 @@ const Login = () => {
 
     try {
       if (isRegistering) {
-        await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+        await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
         setIsRegistering(false);
         setUsername('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
       } else {
-        const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+        const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
         localStorage.setItem('token', response.data.token);
         navigate('/home');
       }
