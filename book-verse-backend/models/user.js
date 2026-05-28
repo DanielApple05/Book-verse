@@ -15,7 +15,8 @@ username: {
  },
  password: {
   type: String,
-  reqired: true
+  required: true,
+  trim: true,
  }
 },{ timestamps: true });
 
