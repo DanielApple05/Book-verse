@@ -64,7 +64,7 @@ const BookDetail = () => {
 
             {/* Right - details */}
             <div className='flex-1 space-y-4'>
-              <h1 className='text-3xl font-bold text-[#1A1A2E]'>{info?.title}</h1>
+              <h1 className='text-3xl font-bold text-[#1A1A2E]'>{info?.title.length > 50 ? info.title.substring(0, 50) + '...' : info.title}</h1>
               <p className='text-gray-500 text-sm'>by {info?.authors?.join(', ')}</p>
 
               {/* Meta info */}
