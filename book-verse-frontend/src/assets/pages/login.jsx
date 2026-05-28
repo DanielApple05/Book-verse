@@ -15,6 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState({});
+  const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ const Login = () => {
     setError(newError);
     if (Object.keys(newError).length > 0) return;
 
+    setIsPending(true);
     try {
       if (isRegistering) {
         await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
@@ -54,6 +56,8 @@ const Login = () => {
       }
     } catch (err) {
       setError({ api: err.response?.data?.message || 'Could not complete the request' });
+    } finally {
+      setIsPending(false);
     }
   };
 
@@ -162,9 +166,10 @@ const Login = () => {
             <div className='flex place-content-center'>
               <button
                 type='submit'
+                disabled={isPending}
                 className='xl:w-full w-6/12 bg-[#1B1F3B] p-2 rounded-lg text-white cursor-pointer hover:text-gray-200'
               >
-                {isRegistering ? 'Sign Up' : 'Login'}
+                { isPending ? 'Processing...' : isRegistering ? 'Sign Up' : 'Login'}
               </button>
             </div>
           </form>
