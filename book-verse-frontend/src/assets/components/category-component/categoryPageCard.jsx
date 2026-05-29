@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { fetchAllCategories } from "../../../apiBooks";
 import Banner2 from "../explore-banner/banner2";
 import Search from "../search";
+import Categories from "./categories";
+
 
 const CategoryCard = () => {
   const [books, setBooks] = useState({});
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const getBooks = async () => {
@@ -25,11 +28,12 @@ const CategoryCard = () => {
 
   return (
     <div className='p-5 xl:mt-20 mt-15 w-full'>
-       <div className='xl:hidden flex mb-3 bg-white/30 sticky top-14 rounded-lg '> <Search /> </div>
+      <div className='xl:hidden flex mb-3 bg-white/30 sticky top-14 rounded-lg '> <Search /> </div>
       <div className=' '>
         <p className='xl:text-2xl text-lg font-bold'>Categories</p>
         <p className='xl:text-base text-sm'>Explore books by categories and find your next favorite read</p>
       </div>
+      <Categories />
       {loading ? (
         <div className='grid xl:grid-cols-5 grid-cols-2 gap-4 mt-10'>
           {Array(10).fill(0).map((_, i) => (
@@ -42,7 +46,7 @@ const CategoryCard = () => {
         </div>
       ) : (
         Object.entries(books).map(([category, items]) => (
-          <div key={category} className='w-full grid space-y-3 mt-5'>
+          <div key={category} id={category} className='w-full grid space-y-3 mt-5'>
             <h2 className='font-semibold'>{category.toUpperCase()}</h2>
             <div className='xl:flex grid grid-cols-2 gap-4'>
               {items?.map(book => (

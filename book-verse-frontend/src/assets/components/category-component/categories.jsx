@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import categoryTabs from './categoryTabs';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const iconColors = [
   'bg-[#F5E6D0] text-[#E8834A]',
@@ -13,12 +14,26 @@ const iconColors = [
 ];
 
 const Categories = () => {
+   const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = (tab) => {
+    if (location.pathname === '/category') {
+      // on category page — scroll
+      const section = document.getElementById(tab);
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // on any other page — navigate
+      navigate(`/category/${tab}`);
+    }
+  };
   return (
     <div className='my-6 '>
       <h1 className='flex items-center text-lg font-semibold '>Popular Categories</h1>
       <div className='flex py-2 gap-3 w-full overflow-x-auto'>
         {categoryTabs.map((tab, index) => (
           <div
+            onClick={() => handleClick(tab.tab)}
             key={tab.id}
             className='flex flex-col items-center gap-2 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer min-w-24'
           >
