@@ -3,11 +3,13 @@ import { fetchAllCategories } from "../../../apiBooks";
 import Banner2 from "../explore-banner/banner2";
 import Search from "../search";
 import Categories from "./categories";
+import { useNavigate} from 'react-router-dom';
 
 
 const CategoryCard = () => {
   const [books, setBooks] = useState({});
   const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const CategoryCard = () => {
             <h2 className='font-semibold'>{category.toUpperCase()}</h2>
             <div className=' grid xl:grid-cols-5 grid-cols-2 gap-4'>
               {items?.map(book => (
-                <div key={book.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer grid'>
+                <div key={book.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer grid' onClick={() => navigate(`/book/${book.id}`)}>
                   <img src={book.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
                   <div className='bg-amber-100'>
                     <p className='text-xs py-4 pl-2'>{book.volumeInfo.authors?.[0]}</p>
