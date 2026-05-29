@@ -48,7 +48,7 @@ const CategoryCard = () => {
         Object.entries(books).map(([category, items]) => (
           <div key={category} id={category} className='w-full grid space-y-3 mt-5'>
             <h2 className='font-semibold'>{category.toUpperCase()}</h2>
-            <div className='xl:flex grid grid-cols-2 gap-4'>
+            <div className=' grid xl:grid-cols-5 grid-cols-2 gap-4'>
               {items?.map(book => (
                 <div key={book.id} className='w-full ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer grid'>
                   <img src={book.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />

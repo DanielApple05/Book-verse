@@ -18,7 +18,7 @@ export const fetchAllCategories = async () => {
 
   for (const category of categories) {
     const response = await axios.get(BASE_URL, {
-      params: { q: `subject:${category}`, key: API_KEY, maxResults: 5 }
+      params: { q: `subject:${category}`, key: API_KEY, maxResults: 20 }
     });
     allBooks[category] = response.data.items;
     await new Promise(resolve => setTimeout(resolve, 300));
