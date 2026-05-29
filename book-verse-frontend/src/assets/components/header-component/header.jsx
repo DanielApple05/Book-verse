@@ -17,9 +17,9 @@ const Header = () => {
       <div className='flex items-center justify-between p-4 border-b xl:text-2xl text-sm  border-gray-200 w-full fixed top-0 z-50 bg-white '>
         <Logo />
         <div className='xl:flex hidden w-5/6 justify-center'> <Search /></div>
-        <div className='flex items-center space-x-2'>
-      { user ? (<span className='font-semibold'>{firstLetter}</span>) : (<Link to='/signin'><FontAwesomeIcon icon={faCircleUser} className=' cursor-pointer text-[#1A1A2E] text-2xl ' /></Link>) }
-         
+        <div className='flex items-center h-8 w-8'>
+          {user ? (<span className=' w-full h-full bg-[#E8834A] text-xl rounded-full text-center font-semibold'>{firstLetter}</span>) : (<Link to='/signin'><FontAwesomeIcon icon={faCircleUser} className=' cursor-pointer text-[#1A1A2E] text-2xl ' /></Link>)}
+
         </div>
       </div>
     </>
