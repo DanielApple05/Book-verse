@@ -11,4 +11,15 @@ const categoryTabs = [
   { id: 8, tab: 'thriller', icon: faMagnifyingGlass },
 ];
 
-export default categoryTabs;
+const iconColors = [
+  'bg-[#F5E6D0] text-[#E8834A]',
+  'bg-[#D6EAD8] text-green-600',
+  'bg-[#E8E4F5] text-purple-500',
+  'bg-[#F5E0E0] text-red-400',
+  'bg-[#E6F1FB] text-blue-500',
+  'bg-[#FAEEDA] text-yellow-600',
+  'bg-pink-100 text-pink-500',
+  'bg-gray-100 text-gray-600',
+];
+
+export {categoryTabs, iconColors}; 

@@ -22,6 +22,7 @@ function App() {
          <Route path="/category/:tab" element={<Category />} />
         <Route path="/discovery" element={<Discovery/ >} />
         <Route path="/book/:id" element={<BookDetail />} />
+        
     </Routes>
 </div>
 

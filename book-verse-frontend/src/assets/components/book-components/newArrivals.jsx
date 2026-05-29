@@ -43,7 +43,7 @@ const NewArrivals = () => {
           {newArrivals.map((item) => (
             <div 
                onClick={() => navigate(`/book/${item.id}`)}
-            key={item.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer'>
+            key={item.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer '>
               <img src={item.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
               <div className='p-2 text-xs space-y-3'>
                 <h2 className='text-sm font-semibold'>{item.volumeInfo.authors?.[0]}</h2>

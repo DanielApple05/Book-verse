@@ -44,7 +44,7 @@ const BookDetail = () => {
       <div className='xl:flex grid'>
         <SideNavBar />
         <div className='flex-1 p-8 mt-20'>
-          {/* Back button */}
+  
           <button
             onClick={() => navigate(-1)}
             className='text-sm text-gray-500 hover:text-gray-800 mb-6 flex items-center gap-2'
@@ -53,7 +53,7 @@ const BookDetail = () => {
           </button>
 
           <div className='xl:flex grid gap-10'>
-            {/* Left - cover */}
+         
             <div className='flex flex-col items-center gap-4'>
               <img
                 src={info?.imageLinks?.thumbnail}
@@ -62,12 +62,10 @@ const BookDetail = () => {
               />
             </div>
 
-            {/* Right - details */}
             <div className='flex-1 space-y-4'>
               <h1 className='text-3xl font-bold text-[#1A1A2E]'>{info?.title.length > 50 ? info.title.substring(0, 50) + '...' : info.title}</h1>
               <p className='text-gray-500 text-sm'>by {info?.authors?.join(', ')}</p>
 
-              {/* Meta info */}
               <div className='flex flex-wrap gap-4 text-sm text-gray-600'>
                 {info?.pageCount && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
@@ -91,7 +89,6 @@ const BookDetail = () => {
                 )}
               </div>
 
-              {/* Categories */}
               {info?.categories && (
                 <div className='flex gap-2 flex-wrap'>
                   {info.categories.map((cat, i) => (
@@ -102,7 +99,6 @@ const BookDetail = () => {
                 </div>
               )}
 
-              {/* Description */}
               <div>
                 <h2 className='font-semibold text-lg mb-2'>About this book</h2>
                 <p className='text-gray-600 text-sm leading-relaxed'>
