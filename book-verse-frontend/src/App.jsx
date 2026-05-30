@@ -7,6 +7,7 @@ import Library from './assets/pages/library';
 import Category from './assets/pages/category';
 import Discovery from './assets/pages/discovery';
 import BookDetail from './assets/pages/bookDetail';
+import SearchResults from './assets/pages/searchResults';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
          <Route path="/category/:tab" element={<Category />} />
         <Route path="/discovery" element={<Discovery/ >} />
         <Route path="/book/:id" element={<BookDetail />} />
-        
+        <Route path="/search" element={<SearchResults />} />
     </Routes>
 </div>
 
