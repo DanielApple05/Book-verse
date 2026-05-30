@@ -21,7 +21,7 @@ const Search = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className='outline-none w-full ml-2' />
-        <FontAwesomeIcon icon={faMagnifyingGlass} onSubmit={handleSubmit} className='text-[#1A1A2E] absolute right-3' />
+        <FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleSubmit} className=' cursor-pointer text-[#1A1A2E] absolute right-3' />
       </form>
     </>
   );
