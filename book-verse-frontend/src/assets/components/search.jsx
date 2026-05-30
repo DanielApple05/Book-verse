@@ -20,7 +20,8 @@ const Search = () => {
         type="text" 
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className='outline-none w-full ml-2' />
+        className='outline-none w-full ml-2 placeholder:text-sm placeholder:text-gray-400'
+        placeholder='Search books, genres or authors...' />
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleSubmit} className=' cursor-pointer text-[#1A1A2E] absolute right-3' />
       </form>
     </>
