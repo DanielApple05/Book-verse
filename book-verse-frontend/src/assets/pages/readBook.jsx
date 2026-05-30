@@ -74,9 +74,9 @@ const ReadBook = () => {
             // fallback to google books id
             viewer.load(
               id,
-              () => setViewerLoaded(true), // ✅ id success
+              () => setViewerLoaded(true), 
               () => {
-                setViewerLoaded(false); // ❌ both failed
+                setViewerLoaded(false); 
                 console.error('Book not available for preview');
               }
             );
