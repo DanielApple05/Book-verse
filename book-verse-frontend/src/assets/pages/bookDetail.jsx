@@ -44,7 +44,7 @@ const BookDetail = () => {
       <div className='xl:flex grid'>
         <SideNavBar />
         <div className='flex-1 p-8 mt-20'>
-  
+
           <button
             onClick={() => navigate(-1)}
             className='text-sm text-gray-500 hover:text-gray-800 mb-6 flex items-center gap-2'
@@ -53,7 +53,7 @@ const BookDetail = () => {
           </button>
 
           <div className='xl:flex grid gap-10'>
-         
+
             <div className='flex flex-col items-center gap-4'>
               <img
                 src={info?.imageLinks?.thumbnail}
@@ -107,6 +107,12 @@ const BookDetail = () => {
                     : 'No description available.'}
                 </p>
               </div>
+              <button
+                onClick={() => navigate(`/read/${id}`)}
+                className='bg-[#E8834A] text-white text-sm py-2 px-6 rounded-lg hover:bg-opacity-90 w-48'
+              >
+                Start Reading
+              </button>
             </div>
           </div>
         </div>

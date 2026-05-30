@@ -8,6 +8,7 @@ import Category from './assets/pages/category';
 import Discovery from './assets/pages/discovery';
 import BookDetail from './assets/pages/bookDetail';
 import SearchResults from './assets/pages/searchResults';
+import ReadBook from './assets/pages/readBook';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/discovery" element={<Discovery/ >} />
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path='/read/:id' element={<ReadBook />} />
     </Routes>
 </div>
 
