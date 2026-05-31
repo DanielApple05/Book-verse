@@ -4,8 +4,14 @@ import SideNavBar from '../components/navigations/sideNavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import MobileNavBar from '../components/navigations/mobileNavBar';
+import { useNavigate } from 'react-router-dom';
 
 const Settings = () => {
+  const navigate = useNavigate();
+const signOut = () => {
+  localStorage.removeItem('token');
+  navigate('/signIn');
+};
 
   return (
     <div>
@@ -58,7 +64,7 @@ const Settings = () => {
           </div>
           <div className='bg-white rounded p-3 xl:w-70 w-full space-y-3 shadow-2xl mt-5'>
             <p className='font-bold border-b border-b-gray-200 pb-2'> Others</p>
-            <div className=' border-b border-b-gray-200 pb-2 cursor-pointer'>
+            <div onClick={signOut} className=' border-b border-b-gray-200 pb-2 cursor-pointer'>
               <p className='text-red-500'>Sign Out</p>
               <p className='text-xs'>Sign out of your account</p>
             </div>
