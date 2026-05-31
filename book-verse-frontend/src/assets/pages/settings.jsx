@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import MobileNavBar from '../components/navigations/mobileNavBar';
 
 const Settings = () => {
   return (
@@ -13,25 +14,51 @@ const Settings = () => {
         <div className='mt-20 flex-1 pl-5 bg-amber-50'>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
-          <div className='bg-white rounded p-3 w-80'>
-            <div className='flex items-center gap-4'>
+          <div className='bg-white rounded p-3 w-70 space-y-3 shadow-2xl'>
+            <div className='flex items-center gap-4 border-b border-b-gray-200 pb-2'>
               <FontAwesomeIcon icon={faCircleUser} />
-              Account
+              <p>Account</p>
             </div>
-            <div>
-               
-              <div>
+            <div className='flex items-center gap-4 border-b border-b-gray-200'>
+              <div className='mb-2' >
                 <p> Profile information</p>
-                <p>Update your personal Information</p>
+                <p className=' text-xs'>Update your personal Information</p>
+              </div>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+            <div className='flex items-center gap-4 '>
+              {/* <FontAwesomeIcon icon={ fa } /> */}
+              <div className='mb-2'>
+                <p> Change Password</p>
+                <p className=' text-xs'>keep your account secure</p>
+              </div>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+          </div>
+          <div className='bg-white rounded p-3 w-70 space-y-3 shadow-2xl mt-5'>
+            <p>Preferences</p>
+            <div className='flex'>
+              <div>
+                <p> Theme</p>
+                <p className='text-xs'> Choose your preferred theme</p>
+              </div>
+              <div className='text-sm  '>
+                <button className='p-1 rounded-xl m-2 border hover:text-white hover:bg-blue-950'>Light</button>
+                <button className='p-1 rounded-xl border hover:text-white hover:bg-blue-950'>Dark</button>
               </div>
             </div>
-            <div>
-              {/* <FontAwesomeIcon icon={ fa } /> */}
-              Change Password
+            <div className='flex items-center '>
+              <div>
+                <p>Auto Dark Mode </p>
+                <p className='text-xs'> Switch to dark mode at night </p>
+              </div>
+            <input type="checkbox" name="" id="" />
+          
             </div>
           </div>
         </div>
       </div>
+      <MobileNavBar />
     </div>
   );
 }
