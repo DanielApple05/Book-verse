@@ -6,7 +6,7 @@ import { faCircleUser, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import MobileNavBar from '../components/navigations/mobileNavBar';
 
 const Settings = () => {
-  localStorage.getItem('token')
+
   return (
     <div>
       <Header />
@@ -58,7 +58,7 @@ const Settings = () => {
           </div>
           <div className='bg-white rounded p-3 xl:w-70 w-full space-y-3 shadow-2xl mt-5'>
             <p className='font-bold border-b border-b-gray-200 pb-2'> Others</p>
-            <div onClick={localStorage.removeItem('token')} className=' border-b border-b-gray-200 pb-2 cursor-pointer'>
+            <div className=' border-b border-b-gray-200 pb-2 cursor-pointer'>
               <p className='text-red-500'>Sign Out</p>
               <p className='text-xs'>Sign out of your account</p>
             </div>
