@@ -19,14 +19,14 @@ const Settings = () => {
               <FontAwesomeIcon icon={faCircleUser} />
               <p>Account</p>
             </div>
-            <div className='flex items-center gap-4 border-b border-b-gray-200'>
+            <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
               <div className='mb-2' >
                 <p> Profile information</p>
                 <p className=' text-xs'>Update your personal Information</p>
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
-            <div className='flex items-center gap-4 '>
+            <div className='flex items-center gap-4 justify-between'>
               {/* <FontAwesomeIcon icon={ fa } /> */}
               <div className='mb-2'>
                 <p> Change Password</p>
