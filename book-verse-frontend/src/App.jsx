@@ -9,6 +9,7 @@ import Discovery from './assets/pages/discovery';
 import BookDetail from './assets/pages/bookDetail';
 import SearchResults from './assets/pages/searchResults';
 import ReadBook from './assets/pages/readBook';
+import Settings from './assets/pages/settings'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path='/read/:id' element={<ReadBook />} />
+        <Route path='/settings' element={<Settings />} />
     </Routes>
 </div>
 
