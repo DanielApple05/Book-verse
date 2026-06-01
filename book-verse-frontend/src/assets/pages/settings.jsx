@@ -31,11 +31,11 @@ const Settings = () => {
           <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
             <div className='flex items-center gap-4 border-b border-b-gray-200 pb-2'>
               <FontAwesomeIcon icon={faUserGear} />
-              <p>Account</p>
+              <p className='font-bold'>Account</p>
             </div>
             <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
               <div className='mb-2' >
-                <p> Profile information</p>
+                <p className='font-semibold'> Profile information</p>
                 <p className=' text-xs'>Update your personal Information</p>
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
@@ -43,7 +43,7 @@ const Settings = () => {
             <div className='flex items-center gap-4 justify-between'>
               {/* <FontAwesomeIcon icon={ fa } /> */}
               <div className='mb-2'>
-                <p> Change Password</p>
+                <p className='font-semibold'> Change Password</p>
                 <p className=' text-xs'>keep your account secure</p>
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
@@ -53,7 +53,7 @@ const Settings = () => {
             <p className='font-bold  border-b border-b-gray-200 pb-2'>Preferences</p>
             <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
               <div>
-                <p> Theme</p>
+                <p className='font-semibold'> Theme</p>
                 <p className='text-xs'> Choose your preferred theme</p>
               </div>
               <div className='text-sm  '>
@@ -63,7 +63,7 @@ const Settings = () => {
             </div>
             <div className='flex items-center justify-between gap-4 '>
               <div>
-                <p>Auto Dark Mode </p>
+                <p className='font-semibold'>Auto Dark Mode </p>
                 <p className='text-xs'> Switch to dark mode at night </p>
               </div>
               <div>
