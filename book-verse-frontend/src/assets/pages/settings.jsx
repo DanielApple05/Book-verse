@@ -2,28 +2,35 @@ import React from 'react';
 import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faUserGear, faArrowRight, faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import MobileNavBar from '../components/navigations/mobileNavBar';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Settings = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isloggedIn, setIsLoggedIn] = useState(!!token);
   const signOut = () => {
     localStorage.removeItem('token');
     navigate('/signIn');
   };
+
+
+
 
   return (
     <div>
       <Header />
       <div className='flex'>
         <SideNavBar />
-        <div className='mt-20 flex-1 p-5 bg-amber-50'>
+        <div className='mt-20 flex-1 p-5 bg-amber-50 '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
-          <div className='bg-white rounded p-3 xl:w-70 w-full space-y-3 shadow-2xl'>
+          <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
             <div className='flex items-center gap-4 border-b border-b-gray-200 pb-2'>
-              <FontAwesomeIcon icon={faCircleUser} />
+              <FontAwesomeIcon icon={faUserGear} />
               <p>Account</p>
             </div>
             <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
@@ -42,7 +49,7 @@ const Settings = () => {
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
           </div>
-          <div className='bg-white rounded p-3 xl:w-70 w-full space-y-3 shadow-2xl mt-5'>
+          <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
             <p className='font-bold  border-b border-b-gray-200 pb-2'>Preferences</p>
             <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
               <div>
@@ -50,8 +57,8 @@ const Settings = () => {
                 <p className='text-xs'> Choose your preferred theme</p>
               </div>
               <div className='text-sm  '>
-                <button className='p-1 rounded-xl m-2 border hover:text-white hover:bg-blue-950'>Light</button>
-                <button className='p-1 rounded-xl border hover:text-white hover:bg-blue-950'>Dark</button>
+                <button className='p-1 rounded-xl m-2 border-2 border-[#f3b795] hover:text-white hover:bg-blue-950 cursor-pointer'>Light</button>
+                <button className='p-1 rounded-xl border-2 border-[#f3b795] hover:text-white hover:bg-blue-950 cursor-pointer'>Dark</button>
               </div>
             </div>
             <div className='flex items-center justify-between gap-4 '>
@@ -59,25 +66,29 @@ const Settings = () => {
                 <p>Auto Dark Mode </p>
                 <p className='text-xs'> Switch to dark mode at night </p>
               </div>
-              <input type="checkbox" />
+              <div>
+                <FontAwesomeIcon icon={isDarkMode ? faToggleOn : faToggleOff}
+                  className='text-3xl cursor-pointer text-[#E8834A] '
+                  onClick={() => setIsDarkMode(!isDarkMode)} />
+              </div>
             </div>
           </div>
-          <div className='bg-white rounded p-3 xl:w-70 w-full space-y-3 shadow-2xl mt-5'>
-            <p className='font-bold border-b border-b-gray-200 pb-2'> Others</p>
-            <div onClick={signOut} className=' border-b border-b-gray-200 pb-2 flex items-center justify-between cursor-pointer'>
+          <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mt-5 '>
+            <p className='font-bold pb-2 border-b border-b-gray-200'> Others</p>
+            <div onClick={signOut} className=' flex items-center justify-between cursor-pointer'>
               <div>
-                <p className='text-red-500'>Sign Out</p>
-                <p className='text-xs'>Sign out of your account</p>
+                <p className='text-red-500'>{isloggedIn ? 'Sign Out' : 'Sign In'}</p>
+                <p className='text-xs'>{isloggedIn ? 'Sign out of your account' : 'Sign in to your account'}</p>
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
-            <div className=' flex items-center justify-between cursor-pointer'>
-             <div>
-               <p className='text-red-500'>Delete Account</p>
-              <p className='text-xs'>Delete your account</p>
-             </div>
+              {isloggedIn &&  <div className=' pt-2 border-t border-t-gray-200 flex items-center justify-between cursor-pointer'>
+              <div>
+                <p className='text-red-500'>Delete Account</p>
+                <p className='text-xs'>Delete your account </p>
+              </div>
               <FontAwesomeIcon icon={faArrowRight} />
-            </div>
+            </div> }
           </div>
         </div>
       </div>
