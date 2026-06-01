@@ -57,8 +57,8 @@ const Settings = () => {
                 <p className='text-xs'> Choose your preferred theme</p>
               </div>
               <div className='text-sm  '>
-                <button className='p-1 rounded-xl m-2 border-2 border-[#f3b795] hover:text-white hover:bg-blue-950 cursor-pointer'>Light</button>
-                <button className='p-1 rounded-xl border-2 border-[#f3b795] hover:text-white hover:bg-blue-950 cursor-pointer'>Dark</button>
+                <button className='p-1 rounded-xl m-2 border-2 border-[#f3b795] hover:text-white font-semibold hover:bg-[#E8834A] cursor-pointer'>Light</button>
+                <button className='p-1 font-semibold rounded-xl border-2 border-[#f3b795] hover:text-white hover:bg-[#E8834A] cursor-pointer'>Dark</button>
               </div>
             </div>
             <div className='flex items-center justify-between gap-4 '>
