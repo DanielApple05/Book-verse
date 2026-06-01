@@ -17,7 +17,7 @@ const Settings = () => {
     navigate('/signIn');
   };
 
-
+// userMail = token ? JSON.parse((token.split('.')[1])).email : null;
 
 
   return (
@@ -25,7 +25,7 @@ const Settings = () => {
       <Header />
       <div className='flex'>
         <SideNavBar />
-        <div className='mt-20 flex-1 p-5 bg-amber-50 '>
+        <div className='mt-15 flex-1 p-5 bg-amber-50 '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
           <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
