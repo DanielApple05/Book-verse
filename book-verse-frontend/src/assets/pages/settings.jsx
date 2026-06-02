@@ -6,19 +6,19 @@ import { faUserGear, faArrowRight, faToggleOn, faToggleOff } from '@fortawesome/
 import MobileNavBar from '../components/navigations/mobileNavBar';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useTheme } from '../../context/themeContext';
 
 const Settings = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode } = useTheme();
   const [isloggedIn, setIsLoggedIn] = useState(!!token);
   const signOut = () => {
     localStorage.removeItem('token');
     navigate('/signIn');
   };
 
-// userMail = token ? JSON.parse((token.split('.')[1])).email : null;
-
+  const themes = ['Light', 'Dark'];
 
   return (
     <div>
@@ -56,9 +56,22 @@ const Settings = () => {
                 <p className='font-semibold'> Theme</p>
                 <p className='text-xs'> Choose your preferred theme</p>
               </div>
-              <div className='text-sm  '>
-                <button className='p-1 rounded-xl m-2 border-2 border-[#f3b795] hover:text-white font-semibold hover:bg-[#E8834A] cursor-pointer'>Light</button>
-                <button className='p-1 font-semibold rounded-xl border-2 border-[#f3b795] hover:text-white hover:bg-[#E8834A] cursor-pointer'>Dark</button>
+              <div className='text-sm'>
+                {themes.map((theme) => (
+                  <button
+                    key={theme}
+                    onClick={() => {
+                      if (theme === 'Dark' && !darkMode) toggleDarkMode();
+                      if (theme === 'Light' && darkMode) toggleDarkMode();
+                    }}
+                    className={`p-1 rounded-xl m-2 border-2 border-[#f3b795] hover:text-white font-semibold hover:bg-[#E8834A] cursor-pointer ${(theme === 'Dark' && darkMode) || (theme === 'Light' && !darkMode)
+                        ? 'bg-[#E8834A] text-white'
+                        : ''
+                      }`}
+                  >
+                    {theme}
+                  </button>
+                ))}
               </div>
             </div>
             <div className='flex items-center justify-between gap-4 '>
@@ -67,9 +80,9 @@ const Settings = () => {
                 <p className='text-xs'> Switch to dark mode at night </p>
               </div>
               <div>
-                <FontAwesomeIcon icon={isDarkMode ? faToggleOn : faToggleOff}
+                <FontAwesomeIcon  icon={autoDarkMode ? faToggleOn : faToggleOff}
                   className='text-3xl cursor-pointer text-[#E8834A] '
-                  onClick={() => setIsDarkMode(!isDarkMode)} />
+                  onClick={toggleAutoDarkMode} />
               </div>
             </div>
           </div>
@@ -82,13 +95,13 @@ const Settings = () => {
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
-              {isloggedIn &&  <div className=' pt-2 border-t border-t-gray-200 flex items-center justify-between cursor-pointer'>
+            {isloggedIn && <div className=' pt-2 border-t border-t-gray-200 flex items-center justify-between cursor-pointer'>
               <div>
                 <p className='text-red-500'>Delete Account</p>
                 <p className='text-xs'>Delete your account </p>
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
-            </div> }
+            </div>}
           </div>
         </div>
       </div>
