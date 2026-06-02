@@ -24,7 +24,7 @@ const NewArrivals = () => {
   }, []);
 
   return (
-    <div className='w-full '>
+    <div className='w-full dark:text-white text-black '>
       <h1 className='text-lg font-semibold my-6'>New Arrivals</h1>
       {loading ? (
         <div className='gap-4  xl:flex grid grid-cols-2 w-full'>
@@ -39,13 +39,13 @@ const NewArrivals = () => {
           ))}
         </div>
       ) : (
-        <div className='xl:flex grid grid-cols-2  gap-4 w-full'>
+        <div className='xl:flex grid grid-cols-2 gap-4 w-full'>
           {newArrivals.map((item) => (
             <div 
                onClick={() => navigate(`/book/${item.id}`)}
-            key={item.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer '>
+            key={item.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer dark:bg-gray-800'>
               <img src={item.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
-              <div className='p-2 text-xs space-y-3'>
+              <div className='p-2 text-xs space-y-3 '>
                 <h2 className='text-sm font-semibold'>{item.volumeInfo.authors?.[0]}</h2>
                 <p>{item.volumeInfo.title.substring(0, 30)}...</p>
               </div>

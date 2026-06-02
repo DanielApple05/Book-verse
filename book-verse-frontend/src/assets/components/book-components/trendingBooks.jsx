@@ -26,7 +26,7 @@ const TrendingBooks = () => {
   }, []);
 
   return (
-    <div className=' w-full '>
+    <div className=' w-full dark:text-white text-black '>
       <h1 className='text-lg font-semibold my-6'>Trending Books</h1>
       {loading ? (
         <div className='gap-4  xl:flex grid grid-cols-2 w-full'>
@@ -43,7 +43,7 @@ const TrendingBooks = () => {
       ) : (
          <div className='xl:flex grid grid-cols-2  gap-4 w-full'>
           {trendingBooks.map((book) => (
-            <div key={book.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer' onClick={() => navigate(`/book/${book.id}`)}>
+            <div key={book.id} className='w-full sm:w-1/2 xl:w-1/3 2xl:w-1/4 ring ring-amber-100 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer dark:bg-gray-800' onClick={() => navigate(`/book/${book.id}`)}>
               <img src={book.volumeInfo.imageLinks?.thumbnail} className='w-full h-40 rounded-t-lg' />
               <div className='p-2 text-xs space-y-3'>
                 <h2 className='text-sm font-semibold'>{book.volumeInfo.authors?.[0]}</h2>

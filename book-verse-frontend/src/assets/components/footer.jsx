@@ -4,7 +4,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
-    <div className='bg-[#FAF7F2] border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5 '>
+    <div className=' dark:bg-gray-950 bg-[#FAF7F2] dark:text-gray-200 text-black border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5 '>
       <div className='xl:flex grid grid-cols-3 justify-between'>
         <div className='space-y-3 max-w-xs'>
           <div className='flex items-center font-bold space-x-2'>
