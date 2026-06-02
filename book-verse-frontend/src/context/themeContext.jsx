@@ -3,19 +3,19 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [autoDarkMode, setAutoDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true' || false);
+  const [autoDarkMode, setAutoDarkMode] = useState(localStorage.getItem('autoDarkMode') === 'true' || false);
 
   const toggleDarkMode = () => setDarkMode(prev => !prev);
   const toggleAutoDarkMode = () => setAutoDarkMode(prev => !prev);
 
-  // auto dark mode based on time
+
   useEffect(() => {
     if (!autoDarkMode) return;
 
     const checkTime = () => {
       const hour = new Date().getHours();
-      // dark mode between 7pm (19) and 6am (6)
+  
       if (hour >= 19 || hour < 6) {
         setDarkMode(true);
       } else {
@@ -23,10 +23,10 @@ export const ThemeProvider = ({ children }) => {
       }
     };
 
-    checkTime(); // run immediately
-    const interval = setInterval(checkTime, 60000); // check every minute
+    checkTime();
+    const interval = setInterval(checkTime, 60000); 
 
-    return () => clearInterval(interval); // cleanup
+    return () => clearInterval(interval); 
   }, [autoDarkMode]);
 
   useEffect(() => {
@@ -36,6 +36,9 @@ export const ThemeProvider = ({ children }) => {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
+
+  localStorage.setItem('darkMode', darkMode);
+  localStorage.setItem('autoDarkMode', autoDarkMode);
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode }}>
