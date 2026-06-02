@@ -15,7 +15,7 @@ import Settings from './assets/pages/settings'
 function App() {
   
   return (
-<div>
+<div className="min-h-screen dark:bg-gray-950 bg-gray-100 text-black dark:text-white transition-colors duration-300">
     <Routes>
       <Route path="/" element={<Index />} />
        <Route path="/signIn" element={<SignIn />} />
