@@ -10,12 +10,13 @@ import BookDetail from './assets/pages/bookDetail';
 import SearchResults from './assets/pages/searchResults';
 import ReadBook from './assets/pages/readBook';
 import Settings from './assets/pages/settings'
+import { useTheme } from './context/themeContext';
 
 
 function App() {
   
   return (
-<div className="min-h-screen dark:bg-gray-950 bg-gray-100 text-black dark:text-white transition-colors duration-300">
+<div className="min-h-screen dark:bg-gray-950 text-black dark:text-white transition-colors duration-300">
     <Routes>
       <Route path="/" element={<Index />} />
        <Route path="/signIn" element={<SignIn />} />

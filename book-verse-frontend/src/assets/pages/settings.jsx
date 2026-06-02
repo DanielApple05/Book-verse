@@ -25,10 +25,10 @@ const Settings = () => {
       <Header />
       <div className='flex'>
         <SideNavBar />
-        <div className='mt-15 flex-1 p-5 bg-amber-50 '>
+        <div className='mt-15 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
-          <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
+          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
             <div className='flex items-center gap-4 border-b border-b-gray-200 pb-2'>
               <FontAwesomeIcon icon={faUserGear} />
               <p className='font-bold'>Account</p>
@@ -49,7 +49,7 @@ const Settings = () => {
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
           </div>
-          <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
+          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
             <p className='font-bold  border-b border-b-gray-200 pb-2'>Preferences</p>
             <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
               <div>
@@ -73,7 +73,7 @@ const Settings = () => {
               </div>
             </div>
           </div>
-          <div className='bg-white rounded p-3 w-full space-y-3 shadow-xl mt-5 '>
+          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mt-5 '>
             <p className='font-bold pb-2 border-b border-b-gray-200'> Others</p>
             <div onClick={signOut} className=' flex items-center justify-between cursor-pointer'>
               <div>
