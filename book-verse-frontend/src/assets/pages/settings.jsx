@@ -11,11 +11,11 @@ import { jwtDecode } from 'jwt-decode';
 
 const Settings = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token' );
-    const isValidToken = token && token !== 'undefined' && token.split('.').length === 3;
+  const token = localStorage.getItem('token');
+  const isValidToken = token && token !== 'undefined' && token.split('.').length === 3;
   const user = isValidToken ? jwtDecode(token) : null;
   const { darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode } = useTheme();
-const isLoggedIn = !!token;
+  const isLoggedIn = !!token;
   const [showDetails, setShowDetails] = useState(false);
   const signOut = () => {
     localStorage.removeItem('token');
@@ -23,6 +23,11 @@ const isLoggedIn = !!token;
   };
 
   const themes = ['Light', 'Dark'];
+  const maskEmail = (email) => {
+    const [name, domain] = email.split('@');
+    return `${name.slice(0, 3)}***@${domain}`;
+  };
+
 
   return (
     <div>
@@ -43,13 +48,19 @@ const isLoggedIn = !!token;
                   <p className='font-semibold'> Profile information</p>
                   <p className=' text-xs'>Update your personal Information</p>
                 </div>
-                <FontAwesomeIcon icon={ showDetails ? faAngleUp : faAngleDown} />
+                <FontAwesomeIcon icon={showDetails ? faAngleUp : faAngleDown} />
               </div>
               {
                 showDetails &&
-                <div className='mb-2 border-t border-gray-200'>
-                  <p className='text-sm'>Name: {user ? user.username : 'John Doe'}</p>
-                  <p className='text-sm'>Email: {user ? user.email : ''}</p>
+                <div className='mb-2 border-t border-gray-200 space-y-3'>
+                  <div className='flex justify-between items-center'>
+                    <p className='text-sm'>Name: {user ? user.username : 'John Doe'}</p>
+                    <p className='text-xs text-blue-500'> edit</p>
+                  </div>
+                  <div className='flex justify-between items-center'>
+                    <p className='text-sm'>Email: {user ? maskEmail(user.email) : ''}</p>
+                    <p className='text-xs text-blue-500'> edit</p>
+                  </div>
                 </div>
               }
             </div>
