@@ -135,19 +135,19 @@ const Settings = () => {
                   <p className='font-semibold'> Change Password</p>
                   <p className=' text-xs'>keep your account secure</p>
                 </div>
-                <FontAwesomeIcon icon={faAngleDown} />
+                <FontAwesomeIcon icon={ passwordInfo ? faAngleUp : faAngleDown} />
               </div>
               {
                 passwordInfo &&
-                <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2'>
+                <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2 '>
                   <div>
-                    <p className='text-xs font-semibold'>Current Password</p>
+                    <p className='text-xs font-semibold mb-1'>Current Password</p>
                     <input type={viewPassword ? 'text' : 'password'} value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                   </div>
                   <div>
-                    <p className='text-xs font-semibold'>New Password</p>
-                    <div className='flex items-center w-[50%] relative'  >  
+                    <p className='text-xs font-semibold mb-1'>New Password</p>
+                    <div className='flex items-center relative w-[50%]'  >
                       <input type={viewPassword ? 'text' : 'password'} value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1 flex-1' />
                       {viewPassword ? (
                         <Eye className='w-4 cursor-pointer absolute right-0' onClick={() => setViewPassword(!viewPassword)} />
@@ -158,7 +158,7 @@ const Settings = () => {
                     {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                   </div>
                   <div>
-                    <p className='text-xs font-semibold'>Confirm New Password</p>
+                    <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
                     <input type={viewPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
