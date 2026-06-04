@@ -49,20 +49,47 @@ router.post('/login', async (req, res) => {
 router.put('/change-password', async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
+
     const token = req.headers.authorization?.split(' ')[1];
+
+    if (!token) {
+      return res.status(401).json({
+        message: 'Authentication required',
+      });
+    }
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
     const user = await User.findById(decoded.id);
 
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!user) {
+      return res.status(404).json({
+        message: 'User not found',
+      });
+    }
+
+    const isMatch = await bcrypt.compare(
+      currentPassword,
+      user.password
+    );
+
     if (!isMatch) {
-      return res.status(400).json({ message: 'Current password is incorrect' });
+      return res.status(400).json({
+        message: 'Current password is incorrect',
+      });
     }
 
     user.password = await bcrypt.hash(newPassword, 10);
+
     await user.save();
-    res.json({ message: 'Password changed successfully' });
+
+    res.status(200).json({
+      message: 'Password changed successfully',
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Error changing password' });
+    res.status(500).json({
+      message: 'Error changing password',
+    });
   }
 });
 

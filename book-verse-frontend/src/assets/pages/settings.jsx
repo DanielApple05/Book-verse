@@ -9,26 +9,20 @@ import { useState } from 'react';
 import { useTheme } from '../../context/themeContext';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
-import { useFormStatus } from 'react-dom';
-
-  const SubmitButton = () => {
-    const { pending } = useFormStatus();
-    return (
-      <button
-        type='submit'
-        disabled={pending}
-        className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer disabled:opacity-50'
-      >
-        {pending ? 'Updating...' : 'Update Password'}
-      </button>
-    );
-  };
 
 const Settings = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const isValidToken = token && token !== 'undefined' && token.split('.').length === 3;
-  const user = isValidToken ? jwtDecode(token) : null;
+  let user = null;
+
+  try {
+    if (isValidToken) {
+      user = jwtDecode(token);
+    }
+  } catch (error) {
+    console.error('Invalid token');
+  }
   const { darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode } = useTheme();
   const isLoggedIn = !!token;
   const [showDetails, setShowDetails] = useState(false);
@@ -37,6 +31,8 @@ const Settings = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const signOut = () => {
     localStorage.removeItem('token');
     navigate('/signIn');
@@ -76,6 +72,7 @@ const Settings = () => {
     if (Object.keys(newError).length > 0) return;
 
     try {
+      setLoading(true);
       const API_URL = import.meta.env.VITE_BACKEND_URL;
       await axios.put(`${API_URL}/api/auth/change-password`, {
         currentPassword,
@@ -90,6 +87,8 @@ const Settings = () => {
       setConfirmPassword('');
     } catch (err) {
       setError({ api: err.response?.data?.message || 'Failed to change password' });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -155,7 +154,13 @@ const Settings = () => {
                     {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
                   {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
-                  <SubmitButton />
+                  <button
+                    type='submit'
+                    disabled={loading}
+                    className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer disabled:opacity-50'
+                  >
+                    {loading ? 'Updating...' : 'Update Password'}
+                  </button>
                 </form>
               }
             </div>
