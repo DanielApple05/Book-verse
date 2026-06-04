@@ -3,6 +3,7 @@ import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGear, faAngleDown, faArrowRight, faToggleOn, faToggleOff, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { EyeOff, Eye } from 'lucide-react';
 import MobileNavBar from '../components/navigations/mobileNavBar';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -32,6 +33,7 @@ const Settings = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
+  const [viewPassword, setViewPassword] = useState(false);
 
   const signOut = () => {
     localStorage.removeItem('token');
@@ -140,17 +142,24 @@ const Settings = () => {
                 <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2'>
                   <div>
                     <p className='text-xs font-semibold'>Current Password</p>
-                    <input type='password' value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
+                    <input type={viewPassword ? 'text' : 'password'} value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                   </div>
                   <div>
                     <p className='text-xs font-semibold'>New Password</p>
-                    <input type='password' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
+                    <div className='flex items-center w-[50%] relative'  >  
+                      <input type={viewPassword ? 'text' : 'password'} value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1 flex-1' />
+                      {viewPassword ? (
+                        <Eye className='w-4 cursor-pointer absolute right-0' onClick={() => setViewPassword(!viewPassword)} />
+                      ) : (
+                        <EyeOff className='w-4 cursor-pointer absolute right-0' onClick={() => setViewPassword(!viewPassword)} />
+                      )}
+                    </div>
                     {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                   </div>
                   <div>
                     <p className='text-xs font-semibold'>Confirm New Password</p>
-                    <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
+                    <input type={viewPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
                   {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
@@ -222,7 +231,7 @@ const Settings = () => {
         </div>
       </div>
       <MobileNavBar />
-    </div>
+    </div >
   );
 }
 
