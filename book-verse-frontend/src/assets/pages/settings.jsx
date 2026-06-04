@@ -17,7 +17,11 @@ const Settings = () => {
   const { darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode } = useTheme();
   const isLoggedIn = !!token;
   const [showDetails, setShowDetails] = useState(false);
-  const [passwordInfo, setPasswordInfo] = useState(false)
+  const [passwordInfo, setPasswordInfo] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState({});
   const signOut = () => {
     localStorage.removeItem('token');
     navigate('/signIn');
@@ -32,6 +36,28 @@ const Settings = () => {
     const domain = email.substring(atIndex + 1);
     return `${name.slice(0, 3)}***@${domain}`;
   };
+
+  const changePassword =  async (e) => {
+    e.preventDefault();
+    const currentPassword = user.password;
+    
+    let newError = {};
+
+    if (currentPassword === '') {
+      newError.currentPassword = 'Current password is required';
+    } else if (currentPassword !== currentPassword) {
+      newError.currentPassword = 'Current password is incorrect';
+    }
+    if (newPassword === '') {
+      newError.newPassword = 'New password is required';
+    } else if (newPassword === currentPassword) {
+      newError.newPassword = 'New password must be different from current password';
+    }
+    if  (confirmPassword !== newPassword) {
+      newError.confirmPassword = 'password do not match';
+    } 
+    setError(newError);
+  }
 
   return (
     <div>
@@ -78,23 +104,37 @@ const Settings = () => {
               </div>
               {
                 passwordInfo &&
-                <form className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2'>
+                <form className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2' onSubmit={changePassword}>
                   <div>
                     <p className='text-xs font-semibold'>Current Password</p>
                     <input 
                     type="password"
-                     
+                     value={currentPassword}
+                     onChange={(e) => setCurrentPassword(e.target.value) }
                     className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                   </div>
                   <div>
                     <p className='text-xs font-semibold'>New Password</p>
-                    <input type="password" className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    <input type="password"
+                     value={newPassword}
+                     onChange={(e) => setNewPassword(e.target.value)}
+                     className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                   </div>
                   <div>
                     <p className='text-xs font-semibold'>Confirm New Password</p>
-                    <input type="password" className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    <input type="password"
+                     value={confirmPassword}
+                     onChange={(e) => setConfirmPassword(e.target.value)}
+                     className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
-                  <button className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer'>Update Password</button>
+                  <button 
+                  type='submit'
+                  className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer' 
+                  >
+                    Update Password</button>
                 </form>
               }
             </div>
