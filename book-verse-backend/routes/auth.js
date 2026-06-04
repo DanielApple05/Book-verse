@@ -51,6 +51,7 @@ router.put('/change-password', async (req, res) => {
     const { currentPassword, newPassword } = req.body;
 
     const token = req.headers.authorization?.split(' ')[1];
+    console.log(req.headers.authorization);
 
     if (!token) {
       return res.status(401).json({
