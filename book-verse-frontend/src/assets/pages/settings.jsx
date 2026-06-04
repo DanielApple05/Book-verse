@@ -45,8 +45,8 @@ const Settings = () => {
               <FontAwesomeIcon icon={faUserGear} />
               <p className='font-bold'>Account</p>
             </div>
-            <div className=' border-b border-b-gray-200 cursor-pointer' onClick={() => setShowDetails(prev => !prev)}>
-              <div className='flex items-center justify-between gap-4 mb-1'>
+            <div className=' border-b border-b-gray-200 cursor-pointer'>
+              <div className='flex items-center justify-between gap-4 mb-1' onClick={() => setShowDetails(prev => !prev)}>
                 <div className='mb-2 space-y-1' >
                   <p className='font-semibold'> Profile information</p>
                   <p className=' text-xs'>Update your personal Information</p>
@@ -55,14 +55,14 @@ const Settings = () => {
               </div>
               {
                 showDetails &&
-                <div className='mb-2 border-t border-gray-200 space-y-3'>
+                <div className='mb-2 border-t border-gray-200 space-y-3 text-sm py-3'>
                   <div className='flex justify-between items-center'>
-                    <p className='text-sm'>Name: {user ? user.username : 'John Doe'}</p>
-                    <p className='text-xs text-blue-500'> edit</p>
+                    <p className=''>Name: {user ? user.username : 'John Doe'}</p>
+                    <p className=' text-blue-500 pr-2'> edit</p>
                   </div>
                   <div className='flex justify-between items-center'>
-                    <p className='text-sm'>Email: {user ? maskEmail(user.email) : ''}</p>
-                    <p className='text-xs text-blue-500'> edit</p>
+                    <p className=''>Email: {user ? maskEmail(user.email) : ''}</p>
+                    <p className=' text-blue-500 pr-2'> edit</p>
                   </div>
                 </div>
               }
