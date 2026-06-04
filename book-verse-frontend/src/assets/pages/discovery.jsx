@@ -15,8 +15,8 @@ const Discover = () => {
            <DiscoveryPageCard />
         </div>
       </div>
-      <MobileNavBar />
       <Footer/>
+      <MobileNavBar />
     </>
   );
 }

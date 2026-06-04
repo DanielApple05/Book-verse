@@ -14,8 +14,8 @@ const Category = () => {
         <SideNavBar />
         <CategoryPageCard />
       </div>
-      <MobileNavBar />
       <Footer/>
+      <MobileNavBar />
     </>
   );
 }

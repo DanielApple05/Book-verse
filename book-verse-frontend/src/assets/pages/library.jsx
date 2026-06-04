@@ -17,8 +17,8 @@ const Library = () => {
            {/* <LibraryCard /> */}
         </div>
       </div>
-      <MobileNavBar />
       <Footer/>
+      <MobileNavBar />
     </>
   );
 }

@@ -13,8 +13,8 @@ const Home = () => {
         <SideNavBar />
         <HomeCard />
       </div>
+      <Footer /> 
       <MobileNavBar />
-      <Footer />
     </>
   );
 }
