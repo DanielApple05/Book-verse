@@ -24,10 +24,13 @@ const Settings = () => {
 
   const themes = ['Light', 'Dark'];
   const maskEmail = (email) => {
-    const [name, domain] = email.split('@');
-    return `${name.slice(0, 3)}***@${domain}`;
-  };
-
+  if (!email) return '';
+  const atIndex = email.indexOf('@');
+  if (atIndex === -1) return email;
+  const name = email.substring(0, atIndex);
+  const domain = email.substring(atIndex + 1);
+  return `${name.slice(0, 3)}***@${domain}`;
+};
 
   return (
     <div>
