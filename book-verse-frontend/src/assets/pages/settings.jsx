@@ -8,6 +8,21 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useTheme } from '../../context/themeContext';
 import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
+import { useFormStatus } from 'react-dom';
+
+  const SubmitButton = () => {
+    const { pending } = useFormStatus();
+    return (
+      <button
+        type='submit'
+        disabled={pending}
+        className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer disabled:opacity-50'
+      >
+        {pending ? 'Updating...' : 'Update Password'}
+      </button>
+    );
+  };
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -37,27 +52,46 @@ const Settings = () => {
     return `${name.slice(0, 3)}***@${domain}`;
   };
 
-  const changePassword =  async (e) => {
+  const changePassword = async (e) => {
     e.preventDefault();
-    const currentPassword = user.password;
-    
+
     let newError = {};
 
     if (currentPassword === '') {
       newError.currentPassword = 'Current password is required';
-    } else if (currentPassword !== currentPassword) {
-      newError.currentPassword = 'Current password is incorrect';
     }
     if (newPassword === '') {
       newError.newPassword = 'New password is required';
     } else if (newPassword === currentPassword) {
       newError.newPassword = 'New password must be different from current password';
     }
-    if  (confirmPassword !== newPassword) {
-      newError.confirmPassword = 'password do not match';
-    } 
+    if (confirmPassword === '') {
+      newError.confirmPassword = 'Please confirm your new password';
+    } else if (confirmPassword !== newPassword) {
+      newError.confirmPassword = 'Passwords do not match';
+    }
+
     setError(newError);
-  }
+
+    if (Object.keys(newError).length > 0) return;
+
+    try {
+      const API_URL = import.meta.env.VITE_BACKEND_URL;
+      await axios.put(`${API_URL}/api/auth/change-password`, {
+        currentPassword,
+        newPassword
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert('Password changed successfully');
+      setPasswordInfo(false);
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (err) {
+      setError({ api: err.response?.data?.message || 'Failed to change password' });
+    }
+  };
 
   return (
     <div>
@@ -104,37 +138,24 @@ const Settings = () => {
               </div>
               {
                 passwordInfo &&
-                <form className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2' onSubmit={changePassword}>
+                <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2'>
                   <div>
                     <p className='text-xs font-semibold'>Current Password</p>
-                    <input 
-                    type="password"
-                     value={currentPassword}
-                     onChange={(e) => setCurrentPassword(e.target.value) }
-                    className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    <input type='password' value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                   </div>
                   <div>
                     <p className='text-xs font-semibold'>New Password</p>
-                    <input type="password"
-                     value={newPassword}
-                     onChange={(e) => setNewPassword(e.target.value)}
-                     className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    <input type='password' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                   </div>
                   <div>
                     <p className='text-xs font-semibold'>Confirm New Password</p>
-                    <input type="password"
-                     value={confirmPassword}
-                     onChange={(e) => setConfirmPassword(e.target.value)}
-                     className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                    <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
-                  <button 
-                  type='submit'
-                  className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer' 
-                  >
-                    Update Password</button>
+                  {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
+                  <SubmitButton />
                 </form>
               }
             </div>
