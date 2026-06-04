@@ -17,6 +17,7 @@ const Settings = () => {
   const { darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode } = useTheme();
   const isLoggedIn = !!token;
   const [showDetails, setShowDetails] = useState(false);
+  const [passwordInfo, setPasswordInfo] = useState(false)
   const signOut = () => {
     localStorage.removeItem('token');
     navigate('/signIn');
@@ -24,13 +25,13 @@ const Settings = () => {
 
   const themes = ['Light', 'Dark'];
   const maskEmail = (email) => {
-  if (!email) return '';
-  const atIndex = email.indexOf('@');
-  if (atIndex === -1) return email;
-  const name = email.substring(0, atIndex);
-  const domain = email.substring(atIndex + 1);
-  return `${name.slice(0, 3)}***@${domain}`;
-};
+    if (!email) return '';
+    const atIndex = email.indexOf('@');
+    if (atIndex === -1) return email;
+    const name = email.substring(0, atIndex);
+    const domain = email.substring(atIndex + 1);
+    return `${name.slice(0, 3)}***@${domain}`;
+  };
 
   return (
     <div>
@@ -67,12 +68,35 @@ const Settings = () => {
                 </div>
               }
             </div>
-            <div className='flex items-center gap-4 justify-between'>
-              <div className='mb-2'>
-                <p className='font-semibold'> Change Password</p>
-                <p className=' text-xs'>keep your account secure</p>
+            <div className=''>
+              <div className='flex items-center gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
+                <div className='mb-2'>
+                  <p className='font-semibold'> Change Password</p>
+                  <p className=' text-xs'>keep your account secure</p>
+                </div>
+                <FontAwesomeIcon icon={faAngleDown} />
               </div>
-              <FontAwesomeIcon icon={faAngleDown} />
+              {
+                passwordInfo &&
+                <form className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2'>
+                  <div>
+                    <p className='text-xs font-semibold'>Current Password</p>
+                    <input 
+                    type="password"
+                     
+                    className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                  </div>
+                  <div>
+                    <p className='text-xs font-semibold'>New Password</p>
+                    <input type="password" className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                  </div>
+                  <div>
+                    <p className='text-xs font-semibold'>Confirm New Password</p>
+                    <input type="password" className='outline-none border border-gray-300 rounded text-sm p-1'  />
+                  </div>
+                  <button className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer'>Update Password</button>
+                </form>
+              }
             </div>
           </div>
           <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
