@@ -4,12 +4,16 @@ import { fetchBookById } from '../../apiBooks';
 import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { Calendar, UserPen, NotebookText, Star } from 'lucide-react';
+import useLibrary from '../../hooks/useLibrary';
 
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
+  const { addBook } = useLibrary();
   const [loading, setLoading] = useState(true);
+  const [added, setAdded] = useState(false);
+
 
   useEffect(() => {
     const getBook = async () => {
@@ -106,6 +110,21 @@ const BookDetail = () => {
                     ? info.description.replace(/<[^>]*>/g, '')
                     : 'No description available.'}
                 </p>
+              </div>
+              <div className='flex flex-col gap-2 w-48'>
+                <button onClick={() => { addBook(book, 'currently_reading'); setAdded(true); }}
+                  className='bg-[#1B1F3B] text-white text-sm py-2 rounded-lg'>
+                  Currently Reading
+                </button>
+                <button onClick={() => { addBook(book, 'want_to_read'); setAdded(true); }}
+                  className='border border-[#1B1F3B] text-[#1B1F3B] text-sm py-2 rounded-lg'>
+                  Want to Read
+                </button>
+                <button onClick={() => { addBook(book, 'completed'); setAdded(true); }}
+                  className='border border-gray-300 text-gray-600 text-sm py-2 rounded-lg'>
+                  Mark as Completed
+                </button>
+                {added && <p className='text-green-500 text-xs text-center'>Added to your library!</p>}
               </div>
               <button
                 onClick={() => navigate(`/read/${id}`)}
