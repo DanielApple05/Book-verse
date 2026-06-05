@@ -11,6 +11,7 @@ import SearchResults from './assets/pages/searchResults';
 import ReadBook from './assets/pages/readBook';
 import Settings from './assets/pages/settings'
 import { useTheme } from './context/themeContext';
+import Authors from './assets/pages/authors'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/search" element={<SearchResults />} />
         <Route path='/read/:id' element={<ReadBook />} />
         <Route path='/settings' element={<Settings />} />
+        <Route path='/authors' element={<Authors />} />
     </Routes>
 </div>
 
