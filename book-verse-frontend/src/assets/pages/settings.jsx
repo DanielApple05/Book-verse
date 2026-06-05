@@ -276,6 +276,7 @@ const Settings = () => {
                       placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded text-sm p-1 placeholder:text-xs' />
                     <button 
                     type='submit' 
+                    disabled={loading}
                     className='bg-red-500 text-white px-3 py-1 cursor-pointer rounded'>{ loading ? 'Deleting...' : 'Yes, delete'}</button>
                   </form>
                     {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
