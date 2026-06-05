@@ -94,4 +94,24 @@ router.put('/change-password', async (req, res) => {
   }
 });
 
+router.delete('/delete-account', async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { password } = req.body;
+
+    const user = await User.findById(decoded.id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    // verify password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: 'Incorrect password' });
+
+    await User.findByIdAndDelete(decoded.id);
+    res.json({ message: 'Account deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting account' });
+  }
+});
+
 module.exports = router;

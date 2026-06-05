@@ -34,6 +34,33 @@ const Settings = () => {
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deleteError, setDeleteError] = useState('');
+
+  const deleteAccount = async (e) => {
+    e.preventDefault();
+
+    if (deletePassword === '') {
+      setDeleteError('Password is required');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const API_URL = import.meta.env.VITE_BACKEND_URL;
+      await axios.delete(`${API_URL}/api/auth/delete-account`, {
+        headers: { Authorization: `Bearer ${token}` },
+        data: { password: deletePassword }
+      });
+      localStorage.removeItem('token');
+      navigate('/signIn');
+    } catch (err) {
+      setDeleteError(err.response?.data?.message || 'Failed to delete account');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const signOut = () => {
     localStorage.removeItem('token');
@@ -108,7 +135,8 @@ const Settings = () => {
               <p className='font-bold'>Account</p>
             </div>
             <div className=' border-b border-b-gray-200 cursor-pointer'>
-              <div className='flex items-center justify-between gap-4 mb-1' onClick={() => setShowDetails(prev => !prev)}>
+              <div className='flex items-center justify-between gap-4 mb-1'
+                onClick={() => setShowDetails(prev => !prev)}>
                 <div className='mb-2 space-y-1' >
                   <p className='font-semibold'> Profile information</p>
                   <p className=' text-xs'>Update your personal Information</p>
@@ -135,31 +163,40 @@ const Settings = () => {
                   <p className='font-semibold'> Change Password</p>
                   <p className=' text-xs'>keep your account secure</p>
                 </div>
-                <FontAwesomeIcon icon={ passwordInfo ? faAngleUp : faAngleDown} />
+                <FontAwesomeIcon icon={passwordInfo ? faAngleUp : faAngleDown} />
               </div>
               {
                 passwordInfo &&
                 <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2 '>
-                  <div>
+                  <div className='w-[30%]'>
                     <p className='text-xs font-semibold mb-1'>Current Password</p>
                     <input type={viewPassword ? 'text' : 'password'} value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
                     {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                   </div>
-                  <div>
+                  <div className=''>
                     <p className='text-xs font-semibold mb-1'>New Password</p>
-                    <div className='flex items-center relative w-[50%]'  >
-                      <input type={viewPassword ? 'text' : 'password'} value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1 flex-1' />
+                    <div className='flex items-center relative '  >
+                      <input type={viewPassword ? 'text' : 'password'}
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        className='outline-none border border-gray-300 rounded text-sm p-1 ' />
                       {viewPassword ? (
-                        <Eye className='w-4 cursor-pointer absolute right-0' onClick={() => setViewPassword(!viewPassword)} />
+                        <Eye
+                          className='w-4 cursor-pointer absolute right-2'
+                          onClick={() => setViewPassword(!viewPassword)} />
                       ) : (
-                        <EyeOff className='w-4 cursor-pointer absolute right-0' onClick={() => setViewPassword(!viewPassword)} />
+                        <EyeOff
+                          className='w-4 cursor-pointer absolute right-2'
+                          onClick={() => setViewPassword(!viewPassword)} />
                       )}
                     </div>
                     {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                   </div>
-                  <div>
+                  <div className='w-[30%]'>
                     <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
-                    <input type={viewPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
+                    <input type={viewPassword ? 'text' : 'password'} value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className='outline-none border border-gray-300 rounded text-sm p-1 ' />
                     {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
                   {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
@@ -220,12 +257,31 @@ const Settings = () => {
               </div>
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
-            {isLoggedIn && <div className=' pt-2 border-t border-t-gray-200 flex items-center justify-between cursor-pointer'>
-              <div>
-                <p className='text-red-500'>Delete Account</p>
-                <p className='text-xs'>Delete your account </p>
+            {isLoggedIn && <div className=' pt-2 border-t border-t-gray-200 '>
+              <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
+                <div >
+                  <p className='text-red-500'>Delete Account</p>
+                  <p className='text-xs'>Delete your account </p>
+                </div>
+                <FontAwesomeIcon icon={faArrowRight} />
               </div>
-              <FontAwesomeIcon icon={faArrowRight} />
+              {deleteModal &&
+                <div className='border-t border-t-gray-300 mt-2 py-2'>
+                  <p className='text-red-500 text-xs mb-2'>Are you sure you want to delete your account?</p>
+                  <form className='flex items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
+                    <input
+                      type='password'
+                      value={deletePassword}
+                      onChange={(e) => setDeletePassword(e.target.value)}
+                      placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded text-sm p-1 placeholder:text-xs' />
+                    <button 
+                    type='submit' 
+                    className='bg-red-500 text-white px-3 py-1 cursor-pointer rounded'>{ loading ? 'Deleting...' : 'Yes, delete'}</button>
+                  </form>
+                    {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
+                </div>
+
+              }
             </div>}
           </div>
         </div>
