@@ -5,10 +5,9 @@ import useLibrary from '../../../hooks/useLibrary';
 
 const LibraryCard = () => {
  const { library } = useLibrary();
-  console.log(library); // check what's in localStorage
   
   return (
-    <div>
+    <div className='bg-white rounded-lg shadow-xl p-5 mt-5'>
       <h1>My Library</h1>
       <p>{library.length} books</p>
     </div>
