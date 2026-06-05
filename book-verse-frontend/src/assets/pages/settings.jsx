@@ -122,11 +122,11 @@ const Settings = () => {
   };
 
   return (
-    <div>
+    <>
       <Header />
-      <div className='flex'>
+      <div className='xl:flex block flex-row '>
         <SideNavBar />
-        <div className='mt-15 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 '>
+        <div className='mt-15 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
           <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
@@ -274,12 +274,12 @@ const Settings = () => {
                       value={deletePassword}
                       onChange={(e) => setDeletePassword(e.target.value)}
                       placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded text-sm p-1 placeholder:text-xs' />
-                    <button 
-                    type='submit' 
-                    disabled={loading}
-                    className='bg-red-500 text-white px-3 py-1 cursor-pointer rounded'>{ loading ? 'Deleting...' : 'Yes, delete'}</button>
+                    <button
+                      type='submit'
+                      disabled={loading}
+                      className='bg-red-500 text-white px-3 py-1 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
                   </form>
-                    {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
+                  {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
                 </div>
               }
             </div>}
@@ -287,7 +287,7 @@ const Settings = () => {
         </div>
       </div>
       <MobileNavBar />
-    </div >
+    </ >
   );
 }
 
