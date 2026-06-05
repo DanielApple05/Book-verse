@@ -7,7 +7,7 @@ const LibraryCard = () => {
  const { library } = useLibrary();
   
   return (
-    <div className='bg-white rounded-lg shadow-xl p-5 mt-5'>
+    <div className='bg-white rounded-lg shadow-xl p-5 mt-5 h-screen'>
       <h1>My Library</h1>
       <p>{library.length} books</p>
     </div>
