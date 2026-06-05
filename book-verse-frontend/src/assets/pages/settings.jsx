@@ -167,19 +167,23 @@ const Settings = () => {
               </div>
               {
                 passwordInfo &&
-                <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2 '>
-                  <div className='w-[30%]'>
+                <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 text-sm py-2  flex flex-col' >
+                  <div className=' xl:w-[20%] w-[50%]'>
                     <p className='text-xs font-semibold mb-1'>Current Password</p>
-                    <input type={viewPassword ? 'text' : 'password'} value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} className='outline-none border border-gray-300 rounded text-sm p-1' />
+                    <input
+                      type={viewPassword ? 'text' : 'password'}
+                      value={currentPassword}
+                      onChange={(e) => setCurrentPassword(e.target.value)}
+                      className='outline-none border border-gray-300 rounded text-sm p-1 w-full' />
                     {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                   </div>
-                  <div className=''>
+                  <div className='xl:w-[20%] w-[50%]'>
                     <p className='text-xs font-semibold mb-1'>New Password</p>
                     <div className='flex items-center relative '  >
                       <input type={viewPassword ? 'text' : 'password'}
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        className='outline-none border border-gray-300 rounded text-sm p-1 ' />
+                        className='outline-none border border-gray-300 rounded text-sm p-1  flex flex-1 ' />
                       {viewPassword ? (
                         <Eye
                           className='w-4 cursor-pointer absolute right-2'
@@ -192,18 +196,20 @@ const Settings = () => {
                     </div>
                     {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                   </div>
-                  <div className='w-[30%]'>
+                  <div className='xl:w-[20%] w-[50%]'>
                     <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
-                    <input type={viewPassword ? 'text' : 'password'} value={confirmPassword}
+                    <input
+                      type={viewPassword ? 'text' : 'password'}
+                      value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      className='outline-none border border-gray-300 rounded text-sm p-1 ' />
+                      className='outline-none border border-gray-300 rounded text-sm p-1 w-full' />
                     {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                   </div>
                   {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
                   <button
                     type='submit'
                     disabled={loading}
-                    className='bg-[#E8834A] text-white px-3 py-1 rounded cursor-pointer disabled:opacity-50'
+                    className='bg-[#E8834A] text-white px-3 py-1 xl:w-[20%] w-[50%] rounded cursor-pointer disabled:opacity-50'
                   >
                     {loading ? 'Updating...' : 'Update Password'}
                   </button>
