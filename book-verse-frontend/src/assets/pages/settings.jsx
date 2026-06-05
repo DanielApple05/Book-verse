@@ -280,7 +280,6 @@ const Settings = () => {
                   </form>
                     {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
                 </div>
-
               }
             </div>}
           </div>
