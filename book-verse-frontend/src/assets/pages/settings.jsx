@@ -179,7 +179,7 @@ const Settings = () => {
                   </div>
                   <div className='xl:w-[20%] w-[50%]'>
                     <p className='text-xs font-semibold mb-1'>New Password</p>
-                    <div className='flex items-center relative '  >
+                    <div className='flex items-center relative justify-between '  >
                       <input type={viewPassword ? 'text' : 'password'}
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
@@ -283,7 +283,7 @@ const Settings = () => {
                     <button
                       type='submit'
                       disabled={loading}
-                      className='bg-red-500 text-white px-3 py-1 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
+                      className='bg-red-500 text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
                   </form>
                   {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
                 </div>
