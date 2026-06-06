@@ -2,8 +2,7 @@ import React from 'react';
 import useLibrary from '../../../hooks/useLibrary';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import FavoriteButton from '../button-component/favoriteBtn';
 
 
 const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Favorites'];
@@ -11,7 +10,7 @@ const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Fa
 const LibraryCard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('All Books');
-  const { library, favorites, currentlyReading, completed, wantToRead, toggleFavorite, removeBook } = useLibrary();
+  const { library, favorites, currentlyReading, completed, wantToRead, removeBook } = useLibrary();
 
   const getBooks = () => {
     switch (activeTab) {
@@ -26,8 +25,7 @@ const LibraryCard = () => {
   const books = getBooks();
 
   return (
-    <div className='bg-white rounded-lg shadow-xl p-5 mt-5 h-screen'>
-      <h1>My Library</h1>
+    <div className='bg-white rounded-lg shadow-xl p-5 mt-5'>
       <div className='flex gap-2 my-6 overflow-x-auto'>
         {tabs.map(tab => (
           <button
@@ -74,7 +72,7 @@ const LibraryCard = () => {
               key={book.id}
               className='bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer'
             >
-              <img src={book.thumbnail} alt={book.title} className='w-full h-40 object-cover'   onClick={() => navigate(`/book/${book.id}`)} />
+              <img src={book.thumbnail} alt={book.title} className='w-full h-40 object-cover' onClick={() => navigate(`/book/${book.id}`)} />
               <div className='p-2'>
                 <p className='text-xs font-semibold truncate'>{book.title}</p>
                 <p className='text-xs text-gray-500 truncate'>{book.author}</p>
@@ -87,11 +85,8 @@ const LibraryCard = () => {
                   </div>
                 )}
               </div>
-              <div className='flex items-center justify-between mx-2'>
-                < FontAwesomeIcon icon={faHeart}
-                  onClick={() => toggleFavorite(book.id)}
-                  className={`text-sm ${book.status === 'favorite' ? 'text-red-500' : 'text-gray-300'}`}
-                />
+              <div className='flex items-center justify-between m-2'>
+                <FavoriteButton book={book} />
                 <button
                   onClick={() => removeBook(book.id)}
                   className='text-xs text-red-400 hover:text-red-600'
