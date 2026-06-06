@@ -111,27 +111,27 @@ const BookDetail = () => {
                     : 'No description available.'}
                 </p>
               </div>
-              <div className='flex flex-col gap-2 w-48'>
-                <button onClick={() => { addBook(book, 'currently_reading'); setAdded(true); }}
-                  className='bg-[#1B1F3B] text-white text-sm py-2 rounded-lg'>
-                  Currently Reading
-                </button>
-                <button onClick={() => { addBook(book, 'want_to_read'); setAdded(true); }}
-                  className='border border-[#1B1F3B] text-[#1B1F3B] text-sm py-2 rounded-lg'>
-                  Want to Read
-                </button>
-                <button onClick={() => { addBook(book, 'completed'); setAdded(true); }}
-                  className='border border-gray-300 text-gray-600 text-sm py-2 rounded-lg'>
-                  Mark as Completed
-                </button>
-                {added && <p className='text-green-500 text-xs text-center'>Added to your library!</p>}
-              </div>
-              <button
+              <div className='flex xl:flex-row flex-col gap-2 w-full'>
+                 <button
                 onClick={() => navigate(`/read/${id}`)}
                 className='bg-[#E8834A] text-white text-sm py-2 px-6 rounded-lg hover:bg-opacity-90 w-48'
               >
                 Start Reading
               </button>
+                <button onClick={() => { addBook(book, 'currently_reading'); setAdded(true); }}
+                  className='bg-[#1B1F3B] text-white text-sm p-2 rounded-lg'>
+                  Currently Reading
+                </button>
+                <button onClick={() => { addBook(book, 'want_to_read'); setAdded(true); }}
+                  className='border border-[#1B1F3B] text-[#1B1F3B] text-sm p-2 rounded-lg'>
+                  Want to Read
+                </button>
+                <button onClick={() => { addBook(book, 'completed'); setAdded(true); }}
+                  className='border border-gray-300 text-gray-600 text-sm p-2 rounded-lg'>
+                  Mark as Completed
+                </button>
+                {added && <p className='text-green-500 text-xs text-center'>Added to your library!</p>}
+              </div>
             </div>
           </div>
         </div>

@@ -13,10 +13,8 @@ const useLibrary = () => {
     let updated;
 
     if (exists) {
-      // update status if already in library
       updated = library.map(b => b.id === book.id ? { ...b, status } : b);
     } else {
-      // add new book
       updated = [...library, {
         id: book.id,
         title: book.volumeInfo.title,
@@ -35,9 +33,41 @@ const useLibrary = () => {
     setLibrary(updated);
   };
 
+  const toggleFavorite = (bookId) => {
+    const updated = library.map(b => {
+      if (b.id === bookId) {
+        return {
+          ...b,
+          status: b.status === 'favorite' ? 'want_to_read' : 'favorite'
+        };
+      }
+      return b;
+    });
+    localStorage.setItem('library', JSON.stringify(updated));
+    setLibrary(updated);
+  };
+
+  const removeBook = (bookId) => {
+    const updated = library.filter(b => b.id !== bookId);
+    localStorage.setItem('library', JSON.stringify(updated));
+    setLibrary(updated);
+  };
+
+  // filtered lists
+  const favorites = library.filter(b => b.status === 'favorite');
+  const currentlyReading = library.filter(b => b.status === 'currently_reading');
+  const completed = library.filter(b => b.status === 'completed');
+  const wantToRead = library.filter(b => b.status === 'want_to_read');
+
   return {
     library,
+    favorites,
+    currentlyReading,
+    completed,
+    wantToRead,
     addBook,
+    toggleFavorite,
+    removeBook,
   };
 };
 
