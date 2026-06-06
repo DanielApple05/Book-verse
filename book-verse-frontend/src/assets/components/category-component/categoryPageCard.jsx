@@ -4,6 +4,7 @@ import Banner2 from "../explore-banner/banner2";
 import Search from "../search";
 import Categories from "./categories";
 import { useNavigate} from 'react-router-dom';
+import FavoriteButton from "../button-component/favoriteBtn";
 
 
 const CategoryCard = () => {
@@ -57,6 +58,7 @@ const CategoryCard = () => {
                   <div className='bg-amber-100'>
                     <p className='text-xs py-4 pl-2'>{book.volumeInfo.authors?.[0]}</p>
                   </div>
+                  < FavoriteButton book={book} />
                 </div>
               ))}
             </div>

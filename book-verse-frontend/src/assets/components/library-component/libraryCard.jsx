@@ -24,7 +24,7 @@ const books = bookCollections[activeTab];
 
   return (
     <div className='bg-white rounded-lg shadow-xl p-5 mt-5 dark:bg-gray-800'>
-      <div className='flex gap-2 my-6 overflow-x-auto'>
+      <div className='xl:flex grid grid-cols-2 gap-2 my-6 overflow-x-auto'>
         {tabs.map(tab => (
           <button
             key={tab}
