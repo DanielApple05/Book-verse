@@ -55,7 +55,7 @@ const RecommendedBooks = () => {
                 <h2 className='text-sm font-semibold'>{item.volumeInfo.authors?.[0]}</h2>
                 <p>{item.volumeInfo.title}</p>
               </div>
-              <FavoriteButton book={item} /> {/* ✅ outside navigate */}
+              <FavoriteButton book={item} />
             </div>
           ))}
         </div>

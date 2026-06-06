@@ -2,7 +2,7 @@ import React from 'react';
 import { fetchTrendingBooks } from '../../../apiBooks';
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import FavoriteButton from '../button-component/favoriteBtn';
 
 const TrendingBooks = () => {
 
@@ -49,6 +49,7 @@ const TrendingBooks = () => {
                 <h2 className='text-sm font-semibold'>{book.volumeInfo.authors?.[0]}</h2>
                 <p>{book.volumeInfo.title}</p>
               </div>
+              <FavoriteButton book={book} />
             </div>
           ))}
         </div>
