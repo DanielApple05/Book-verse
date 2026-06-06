@@ -1,5 +1,6 @@
 import React from 'react';
-import useLibrary from '../../../hooks/useLibrary';
+// import useLibrary from '../../../hooks/useLibrary';
+import { useLibrary } from '../../../context/libraryContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import FavoriteButton from '../button-component/favoriteBtn';
@@ -10,7 +11,7 @@ const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Fa
 const LibraryCard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('All Books');
-  const { library, favorites, currentlyReading, completed, wantToRead, removeBook, toggleFavorite } = useLibrary();
+  const { library, favorites, currentlyReading, completed, wantToRead, removeBook } = useLibrary();
 
   const bookCollections = {
   'All Books': library,
@@ -84,7 +85,7 @@ const books = bookCollections[activeTab];
                 )}
               </div>
               <div className='flex items-center justify-between m-2'>
-                <FavoriteButton book={book} toggleFavorite={toggleFavorite} />
+                <FavoriteButton book={book}  />
                 <button
                   onClick={() => removeBook(book.id)}
                   className='text-xs text-red-400 hover:text-red-600'

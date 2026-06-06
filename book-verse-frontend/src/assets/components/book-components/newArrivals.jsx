@@ -2,21 +2,21 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { fetchNewArrivals } from '../../../apiBooks';
 import { useNavigate } from 'react-router-dom';
-import useLibrary from '../../../hooks/useLibrary';
+// import useLibrary from '../../../hooks/useLibrary';
 import FavoriteButton from '../button-component/favoriteBtn';
 
 const NewArrivals = () => {
   const [newArrivals, setNewArrivals] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const { library, toggleFavorite } = useLibrary();
+  // const { library, toggleFavorite } = useLibrary();
 
-  const isFavorite = (bookId) =>
-    library.some(
-      book =>
-        book.id === bookId &&
-        book.status === 'favorite'
-    );
+  // const isFavorite = (bookId) =>
+  //   library.some(
+  //     book =>
+  //       book.id === bookId &&
+  //       book.status === 'favorite'
+  //   );
 
   useEffect(() => {
     const getNewArrivals = async () => {
@@ -59,7 +59,7 @@ const NewArrivals = () => {
                 <h2 className='text-sm font-semibold'>{item.volumeInfo.authors?.[0]}</h2>
                 <p>{item.volumeInfo.title.substring(0, 30)}...</p>
               </div>
-              <div>
+              {/* <div>
                 <FavoriteButton
                   book={{
                     ...item,
@@ -69,7 +69,7 @@ const NewArrivals = () => {
                   }}
                   toggleFavorite={toggleFavorite}
                 />
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
