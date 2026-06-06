@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
 
-
-body{
+body {
+  width: 100%;
   max-width: 1440px;
-  margin: 0 auto;
   overflow-x: hidden;
-} 
+  margin: 0 auto;
+}
