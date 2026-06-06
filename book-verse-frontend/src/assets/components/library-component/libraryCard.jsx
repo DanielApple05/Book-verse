@@ -2,6 +2,8 @@ import React from 'react';
 import useLibrary from '../../../hooks/useLibrary';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Favorites'];
@@ -70,10 +72,9 @@ const LibraryCard = () => {
           {books.map(book => (
             <div
               key={book.id}
-              onClick={() => navigate(`/book/${book.id}`)}
               className='bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer'
             >
-              <img src={book.thumbnail} alt={book.title} className='w-full h-40 object-cover' />
+              <img src={book.thumbnail} alt={book.title} className='w-full h-40 object-cover'   onClick={() => navigate(`/book/${book.id}`)} />
               <div className='p-2'>
                 <p className='text-xs font-semibold truncate'>{book.title}</p>
                 <p className='text-xs text-gray-500 truncate'>{book.author}</p>
@@ -87,14 +88,12 @@ const LibraryCard = () => {
                 )}
               </div>
               <div className='flex items-center justify-between mx-2'>
+                < FontAwesomeIcon icon={faHeart}
+                  onClick={() => toggleFavorite(book.id)}
+                  className={`text-sm ${book.status === 'favorite' ? 'text-red-500' : 'text-gray-300'}`}
+                />
                 <button
-                  onClick={() => toggleFavorite(books.id)}
-                  className={`text-sm ${books.status === 'favorite' ? 'text-red-500' : 'text-gray-300'}`}
-                >
-                  ♥
-                </button>
-                <button
-                  onClick={() => removeBook(books.id)}
+                  onClick={() => removeBook(book.id)}
                   className='text-xs text-red-400 hover:text-red-600'
                 >
                   Remove
