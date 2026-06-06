@@ -12,7 +12,7 @@ const FavoriteButton = ({ book }) => {
       icon={isFavorite ? faHeartCircleCheck : faHeart}
       onClick={(e) => {
         e.stopPropagation();
-        toggleFavorite(book.id, book); // ✅ pass full book object
+        toggleFavorite(book.id, book);
       }}
       className={`text-sm cursor-pointer m-2 transition-colors ${
         isFavorite ? 'text-red-500' : 'text-gray-300 hover:text-red-300'
