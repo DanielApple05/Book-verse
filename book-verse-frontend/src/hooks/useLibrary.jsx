@@ -34,15 +34,18 @@ const useLibrary = () => {
   };
 
   const toggleFavorite = (bookId) => {
-    const updated = library.map(b => {
-      if (b.id === bookId) {
-        return {
-          ...b,
-          status: b.status === 'favorite' ? 'want_to_read' : 'favorite'
-        };
-      }
-      return b;
-    });
+    const updated = library.map(book =>
+      book.id === bookId
+        ? {
+          ...book,
+          status:
+            book.status === 'favorite'
+              ? 'want_to_read'
+              : 'favorite',
+        }
+        : book
+    );
+
     localStorage.setItem('library', JSON.stringify(updated));
     setLibrary(updated);
   };

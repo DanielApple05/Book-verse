@@ -10,19 +10,17 @@ const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Fa
 const LibraryCard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('All Books');
-  const { library, favorites, currentlyReading, completed, wantToRead, removeBook } = useLibrary();
+  const { library, favorites, currentlyReading, completed, wantToRead, removeBook, toggleFavorite } = useLibrary();
 
-  const getBooks = () => {
-    switch (activeTab) {
-      case 'Currently Reading': return currentlyReading;
-      case 'Want to Read': return wantToRead;
-      case 'Completed': return completed;
-      case 'Favorites': return favorites;
-      default: return library;
-    }
-  };
+  const bookCollections = {
+  'All Books': library,
+  'Currently Reading': currentlyReading,
+  'Want to Read': wantToRead,
+  'Completed': completed,
+  'Favorites': favorites,
+};
 
-  const books = getBooks();
+const books = bookCollections[activeTab];
 
   return (
     <div className='bg-white rounded-lg shadow-xl p-5 mt-5'>
@@ -86,7 +84,7 @@ const LibraryCard = () => {
                 )}
               </div>
               <div className='flex items-center justify-between m-2'>
-                <FavoriteButton book={book} />
+                <FavoriteButton book={book} toggleFavorite={toggleFavorite} />
                 <button
                   onClick={() => removeBook(book.id)}
                   className='text-xs text-red-400 hover:text-red-600'
