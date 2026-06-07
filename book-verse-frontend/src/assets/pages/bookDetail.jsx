@@ -74,7 +74,7 @@ const BookDetail = () => {
 
               <div className='flex  gap-5'>  
                {isInLibrary && (
-                <span className='bg-green-100 text-green-600 text-sm w-5/12  px-3 py-1 rounded-full'>
+                <span className='bg-green-100 text-green-600 text-sm xl:w-3/12 w-5/12  px-3 py-1 rounded-full'>
                   ✅ {isInLibrary.status.replace(/_/g, ' ')}
                 </span>
               )}
