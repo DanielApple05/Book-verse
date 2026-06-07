@@ -4,13 +4,19 @@ import { fetchBookById } from '../../apiBooks';
 import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { Calendar, UserPen, NotebookText, Star } from 'lucide-react';
-// import useLibrary from '../../hooks/useLibrary';
+import { useLibrary } from '../../context/libraryContext';
 
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
-  // const { addBook } = useLibrary();
+const { addBook, library } = useLibrary();
+const isInLibrary = library.find(b => b.id === id);
+{isInLibrary && (
+  <span className='bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full'>
+    ✅ {isInLibrary.status.replace('_', ' ')}
+  </span>
+)}
   const [loading, setLoading] = useState(true);
   const [added, setAdded] = useState(false);
 
@@ -118,7 +124,7 @@ const BookDetail = () => {
                 >
                   Start Reading
                 </button>
-                {/* <button onClick={() => { addBook(book, 'currently_reading'); setAdded(true); }}
+                <button onClick={() => { addBook(book, 'currently_reading'); setAdded(true); }}
                   className='bg-[#1B1F3B] text-white text-sm p-2 rounded-lg'>
                   Currently Reading
                 </button>
@@ -130,7 +136,7 @@ const BookDetail = () => {
                   className='border border-gray-300 text-gray-600 text-sm p-2 rounded-lg'>
                   Mark as Completed
                 </button>
-                {added && <p className='text-green-500 text-xs text-center'>Added to your library!</p>} */}
+                {added && <p className='text-green-500 text-xs text-center'>Added to your library!</p>}
               </div>
             </div>
           </div>
