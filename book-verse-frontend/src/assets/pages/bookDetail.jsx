@@ -72,15 +72,14 @@ const BookDetail = () => {
               </h1>
               <p className='text-gray-500 text-sm'>by {info?.authors?.join(', ')}</p>
 
-              <div className='flex  gap-5'>  
-               {isInLibrary && (
-                <span className='bg-green-100 text-green-600 text-sm xl:w-3/12 w-5/12  px-3 py-1 rounded-full'>
-                  ✅ {isInLibrary.status.replace(/_/g, ' ')}
-                </span>
-              )}
+              <div className='flex gap-5'>
+                {isInLibrary && (
+                  <span className='bg-green-100 text-green-600 text-sm xl:w-3/12 w-5/12  px-3 py-1 rounded-full'>
+                    ✅ {isInLibrary.status.replace(/_/g, ' ')}
+                  </span>
+                )}
                 <FavoriteButton book={book} />
               </div>
-
               <div className='flex flex-wrap gap-4 text-sm text-gray-600 mt-4'>
                 {info?.pageCount && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>

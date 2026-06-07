@@ -14,7 +14,7 @@ const FavoriteButton = ({ book }) => {
         e.stopPropagation();
         toggleFavorite(book.id, book);
       }}
-      className={`text-sm cursor-pointer m-2 transition-colors ${
+      className={`text-sm cursor-pointer transition-colors ${
         isFavorite ? 'text-red-500' : 'text-gray-300 hover:text-red-300'
       }`}
     />

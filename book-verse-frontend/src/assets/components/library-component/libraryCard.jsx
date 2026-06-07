@@ -46,7 +46,7 @@ const LibraryCard = () => {
     </div>
   );
 
-   const BookSection = ({ title, books }) => {
+  const BookSection = ({ title, books }) => {
     if (books.length === 0) return null;
     return (
       <div className='mb-8'>
@@ -66,18 +66,16 @@ const LibraryCard = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ${
-              activeTab === tab
+            className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ${activeTab === tab
                 ? 'dark:bg-[#2e3355] bg-[#1B1F3B] text-white'
                 : 'bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-white'
-            }`}
+              }`}
           >
             {tab}
           </button>
         ))}
       </div>
 
-      {/* Stats */}
       <div className='grid xl:grid-cols-4 grid-cols-2 gap-4 mb-8'>
         {[
           { label: 'Total Books', value: library.length, bg: 'bg-blue-50', text: 'text-blue-500' },
@@ -92,7 +90,6 @@ const LibraryCard = () => {
         ))}
       </div>
 
-      {/* All Books — sections */}
       {activeTab === 'All Books' ? (
         library.length === 0 ? (
           <div className='flex flex-col items-center justify-center h-48 text-gray-400'>
@@ -103,15 +100,14 @@ const LibraryCard = () => {
           </div>
         ) : (
           <>
-            <BookSection title='Currently Reading 📖' books={currentlyReading} />
-            <BookSection title='Want to Read 🔖' books={wantToRead} />
-            <BookSection title='Completed ✅' books={completed} />
-            <BookSection title='Favorites ❤️' books={favorites} />
-            
+            <BookSection title='Currently Reading ' books={currentlyReading} />
+            <BookSection title='Want to Read ' books={wantToRead} />
+            <BookSection title='Completed ' books={completed} />
+            <BookSection title='Favorites ' books={favorites} />
           </>
         )
       ) : (
-        // filtered tabs
+      
         bookCollections[activeTab]?.length === 0 ? (
           <div className='flex flex-col items-center justify-center h-48 text-gray-400'>
             <p className='text-lg'>No books here yet</p>
