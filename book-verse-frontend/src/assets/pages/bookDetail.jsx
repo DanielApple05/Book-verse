@@ -5,21 +5,17 @@ import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { Calendar, UserPen, NotebookText, Star } from 'lucide-react';
 import { useLibrary } from '../../context/libraryContext';
+import FavoriteButton from '../components/button-component/favoriteBtn';
 
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
-const { addBook, library } = useLibrary();
-const isInLibrary = library.find(b => b.id === id);
-{isInLibrary && (
-  <span className='bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full'>
-    ✅ {isInLibrary.status.replace('_', ' ')}
-  </span>
-)}
   const [loading, setLoading] = useState(true);
   const [added, setAdded] = useState(false);
+  const { addBook, library } = useLibrary();
 
+  const isInLibrary = library.find(b => b.id === id);
 
   useEffect(() => {
     const getBook = async () => {
@@ -54,7 +50,6 @@ const isInLibrary = library.find(b => b.id === id);
       <div className='xl:flex grid'>
         <SideNavBar />
         <div className='flex-1 p-8 mt-20'>
-
           <button
             onClick={() => navigate(-1)}
             className='text-sm text-gray-500 hover:text-gray-800 mb-6 flex items-center gap-2'
@@ -63,7 +58,6 @@ const isInLibrary = library.find(b => b.id === id);
           </button>
 
           <div className='xl:flex grid gap-10'>
-
             <div className='flex flex-col items-center gap-4'>
               <img
                 src={info?.imageLinks?.thumbnail}
@@ -73,28 +67,39 @@ const isInLibrary = library.find(b => b.id === id);
             </div>
 
             <div className='flex-1 space-y-4'>
-              <h1 className='text-3xl font-bold text-[#1A1A2E]'>{info?.title.length > 50 ? info.title.substring(0, 50) + '...' : info.title}</h1>
+              <h1 className='text-3xl font-bold text-[#1A1A2E]'>
+                {info?.title?.length > 50 ? info.title.substring(0, 50) + '...' : info?.title}
+              </h1>
               <p className='text-gray-500 text-sm'>by {info?.authors?.join(', ')}</p>
 
-              <div className='flex flex-wrap gap-4 text-sm text-gray-600'>
+              <div className='flex  gap-5'>  
+               {isInLibrary && (
+                <span className='bg-green-100 text-green-600 text-sm w-5/12  px-3 py-1 rounded-full'>
+                  ✅ {isInLibrary.status.replace(/_/g, ' ')}
+                </span>
+              )}
+                <FavoriteButton book={book} />
+              </div>
+
+              <div className='flex flex-wrap gap-4 text-sm text-gray-600 mt-4'>
                 {info?.pageCount && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
-                    <NotebookText className='inline-block mr-2' /> {info.pageCount} pages
+                    <NotebookText className='inline-block mr-2 w-4' /> {info.pageCount} pages
                   </span>
                 )}
                 {info?.publishedDate && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
-                    <Calendar className='inline-block mr-2' /> {info.publishedDate}
+                    <Calendar className='inline-block mr-2 w-4' /> {info.publishedDate}
                   </span>
                 )}
                 {info?.publisher && (
                   <span className='bg-gray-100 px-3 py-1 rounded-full'>
-                    <UserPen className='inline-block mr-2' /> {info.publisher}
+                    <UserPen className='inline-block mr-2 w-4' /> {info.publisher}
                   </span>
                 )}
                 {info?.averageRating && (
                   <span className='bg-amber-100 px-3 py-1 rounded-full'>
-                    <Star className='inline-block mr-2' /> {info.averageRating} / 5
+                    <Star className='inline-block mr-2 w-4' /> {info.averageRating} / 5
                   </span>
                 )}
               </div>
@@ -117,10 +122,11 @@ const isInLibrary = library.find(b => b.id === id);
                     : 'No description available.'}
                 </p>
               </div>
+
               <div className='flex xl:flex-row flex-col gap-2 w-full'>
                 <button
                   onClick={() => navigate(`/read/${id}`)}
-                  className='bg-[#E8834A] text-white text-sm py-2 px-6 rounded-lg hover:bg-opacity-90 w-48'
+                  className='bg-[#E8834A] text-white text-sm py-2 px-6 rounded-lg hover:bg-opacity-90'
                 >
                   Start Reading
                 </button>
@@ -136,7 +142,7 @@ const isInLibrary = library.find(b => b.id === id);
                   className='border border-gray-300 text-gray-600 text-sm p-2 rounded-lg'>
                   Mark as Completed
                 </button>
-                {added && <p className='text-green-500 text-xs text-center'>Added to your library!</p>}
+                {added && <p className='text-green-500 text-xs'>Added to your library!</p>}
               </div>
             </div>
           </div>
