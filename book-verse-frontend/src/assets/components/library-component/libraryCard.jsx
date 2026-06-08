@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useLibrary } from '../../../context/libraryContext';
 import { useNavigate } from 'react-router-dom';
-import FavoriteButton from '../button-component/favoriteBtn';
+import LibraryBookCard from './libraryBookCard';
+import BookSection from './bookSection';
 
 const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Favorites'];
 
@@ -17,46 +18,18 @@ const LibraryCard = () => {
     'Favorites': favorites,
   };
 
-  const BookCard = ({ book }) => (
-    <div className='bg-white dark:bg-gray-900 rounded-lg shadow-xl border border-gray-100 overflow-hidden hover:-translate-y-1 transition-all'>
-      <img
-        src={book.thumbnail}
-        alt={book.title}
-        onClick={() => navigate(`/book/${book.id}`)}
-        className='w-full h-40 object-cover cursor-pointer'
-      />
-      <div className='p-2'>
-        <p className='text-xs font-semibold truncate'>{book.title}</p>
-        <p className='text-xs text-gray-500 truncate'>{book.author}</p>
-        {book.status === 'currently_reading' && (
-          <div className='mt-2'>
-            <div className='w-full h-1 bg-gray-200 rounded-full'>
-              <div className='h-1 bg-[#E8834A] rounded-full' style={{ width: `${book.progress}%` }} />
-            </div>
-            <p className='text-xs text-gray-400 mt-1'>{book.progress}% complete</p>
-          </div>
-        )}
-      </div>
-      <div className='flex items-center justify-between m-2'>
-        <FavoriteButton book={book} />
-        <button onClick={() => removeBook(book.id)} className='text-xs text-red-400 hover:text-red-600'>
-          Remove
-        </button>
-      </div>
-    </div>
-  );
 
-  const BookSection = ({ title, books }) => {
-    if (books.length === 0) return null;
-    return (
-      <div className='mb-8'>
-        <h2 className='text-lg font-semibold mb-4'>{title}</h2>
-        <div className='grid xl:grid-cols-5 grid-cols-2 gap-4'>
-          {books.map(book => <BookCard key={book.id} book={book} />)}
-        </div>
-      </div>
-    );
-  };
+  // const BookSection = ({ title, books }) => {
+  //   if (books.length === 0) return null;
+  //   return (
+  //     <div className='mb-8'>
+  //       <h2 className='text-lg font-semibold mb-4'>{title}</h2>
+  //       <div className='grid xl:grid-cols-5 grid-cols-2 gap-4'>
+  //         {books.map(book => <LibraryBookCard key={book.id} book={book} />)}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className='bg-white rounded-lg shadow-xl p-5 mt-5 dark:bg-gray-800'>
@@ -117,7 +90,7 @@ const LibraryCard = () => {
           </div>
         ) : (
           <div className='grid xl:grid-cols-5 grid-cols-2 gap-4'>
-            {bookCollections[activeTab]?.map(book => <BookCard key={book.id} book={book} />)}
+            {bookCollections[activeTab]?.map(book => <LibraryBookCard key={book.id} book={book} />)}
           </div>
         )
       )}

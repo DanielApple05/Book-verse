@@ -51,28 +51,8 @@ export const LibraryProvider = ({ children }) => {
     setLibrary(updated);
   };
 
- const toggleFavorite = (bookId, book) => {
-  const exists = library.find(b => b.id === bookId);
-
-  let updated;
-
-  if (!exists) {
-
-    updated = [...library, {
-      id: book.id,
-      title: book.volumeInfo.title,
-      author: book.volumeInfo.authors?.[0],
-      thumbnail: book.volumeInfo.imageLinks?.thumbnail,
-      totalPages: book.volumeInfo.pageCount,
-      currentPage: 0,
-      progress: 0,
-      status: 'favorite',
-      dateAdded: new Date().toISOString(),
-      lastRead: null,
-    }];
-  } else {
-   
-    updated = library.map(b => {
+  const toggleFavorite = (bookId) => {
+    const updated = library.map(b => {
       if (b.id === bookId) {
         return {
           ...b,
@@ -81,11 +61,9 @@ export const LibraryProvider = ({ children }) => {
       }
       return b;
     });
-  }
-
-  localStorage.setItem('library', JSON.stringify(updated));
-  setLibrary(updated);
-};
+    localStorage.setItem('library', JSON.stringify(updated));
+    setLibrary(updated);
+  };
 
   const removeBook = (bookId) => {
     const updated = library.filter(b => b.id !== bookId);
@@ -93,6 +71,7 @@ export const LibraryProvider = ({ children }) => {
     setLibrary(updated);
   };
 
+  // filtered lists
   const favorites = library.filter(b => b.status === 'favorite');
   const currentlyReading = library.filter(b => b.status === 'currently_reading');
   const completed = library.filter(b => b.status === 'completed');
