@@ -6,22 +6,18 @@ import { EyeOff, Eye } from 'lucide-react';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { getUserFromToken } from '../../../utils';
+import { getToken } from '../../../helpers';
 
 const DeleteAccount = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
-  const isValidToken = token && token !== 'undefined' && token.split('.').length === 3;
-  let user = null;
-
-  try {
-    if (isValidToken) {
-      user = jwtDecode(token);
-    }
-  } catch (error) {
-    console.error('Invalid token');
-  }
-
+  let user = getUserFromToken();
+  const token = getToken();
   const isLoggedIn = !!token;
+  if (!isLoggedIn) {
+    return null;
+  }
+  
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);

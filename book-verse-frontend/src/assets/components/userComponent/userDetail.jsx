@@ -3,20 +3,17 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { jwtDecode } from 'jwt-decode';
+import { getUserFromToken } from '../../../utils';
+import { getToken } from '../../../helpers';
 
 const UserDetail = () => {
   const [showDetails, setShowDetails] = useState(false);
-   const token = localStorage.getItem('token');
-    const isValidToken = token && token !== 'undefined' && token.split('.').length === 3;
-    let user = null;
-  
-    try {
-      if (isValidToken) {
-        user = jwtDecode(token);
-      }
-    } catch (error) {
-      console.error('Invalid token');
-    }
+  let user = getUserFromToken();
+  const token = getToken();
+  const isLoggedIn = !!token;
+  if (!isLoggedIn) {
+    return null;
+  }
 
   const maskEmail = (email) => {
     if (!email) return '';
@@ -26,7 +23,7 @@ const UserDetail = () => {
     const domain = email.substring(atIndex + 1);
     return `${name.slice(0, 3)}***@${domain}`;
   };
-  
+
   return (
     <div className=' border-b border-b-gray-200 cursor-pointer'>
       <div className='flex items-center justify-between gap-4 mb-1'
