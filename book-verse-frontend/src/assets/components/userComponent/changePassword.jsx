@@ -4,21 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { EyeOff, Eye } from 'lucide-react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
+import { getUserFromToken } from '../../../utils';
 
 const ChangePassword = () => {
-  const token = localStorage.getItem('token');
-  const isValidToken = token && token !== 'undefined' && token.split('.').length === 3;
-  let user = null;
 
-  try {
-    if (isValidToken) {
-      user = jwtDecode(token);
-    }
-  } catch (error) {
-    console.error('Invalid token');
-  }
-  const isLoggedIn = !!token;
+  let user = getUserFromToken();
+
+  const isLoggedIn = user.token
   const [passwordInfo, setPasswordInfo] = useState(false);
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');

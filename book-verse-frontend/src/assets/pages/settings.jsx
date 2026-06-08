@@ -1,11 +1,8 @@
-import React from 'react';
 import Header from '../components/header-component/header';
 import SideNavBar from '../components/navigations/sideNavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGear } from '@fortawesome/free-solid-svg-icons';
 import MobileNavBar from '../components/navigations/mobileNavBar';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import Themes from '../components/themes';
 import UserDetail from '../components/userComponent/userDetail';
 import ChangePassword from '../components/userComponent/changePassword';
