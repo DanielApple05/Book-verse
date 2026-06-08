@@ -10,7 +10,7 @@ const ChangePassword = () => {
 
   let user = getUserFromToken();
 
-  const isLoggedIn = user.token
+  const isLoggedIn = !!user
   const [passwordInfo, setPasswordInfo] = useState(false);
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');

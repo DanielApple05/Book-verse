@@ -1,9 +1,10 @@
 // utils/getUserFromToken.js
 import { jwtDecode } from "jwt-decode";
+import { getToken } from "./helpers";
 
 export const getUserFromToken = () => {
   try {
-    const token = localStorage.getItem("token");
+    const token = getToken();
 
     const isValidToken =
       typeof token === "string" &&
