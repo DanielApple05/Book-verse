@@ -1,10 +1,12 @@
 import React from 'react';
 import FavoriteButton from '../button-component/favoriteBtn';
 import { useLibrary } from '../../../context/libraryContext';
+import { useNavigate } from 'react-router-dom';
 
 const libraryBookCard = ({ book }) => {
 
   const { library, removeBook } = useLibrary();
+  const navigate = useNavigate();
 
   return (
     <div className='bg-white dark:bg-gray-900 rounded-lg shadow-xl border border-gray-100 overflow-hidden hover:-translate-y-1 transition-all'>
