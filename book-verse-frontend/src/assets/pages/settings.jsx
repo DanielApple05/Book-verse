@@ -8,9 +8,15 @@ import UserDetail from '../components/userComponent/userDetail';
 import ChangePassword from '../components/userComponent/changePassword';
 import DeleteAccount from '../components/userComponent/deleteAccount';
 import SignOut from '../components/userComponent/signOut';
+import { getToken } from '../../helpers';
+import { Link } from 'react-router-dom';
 
 
 const Settings = () => {
+
+  const token = getToken();
+  const isLoggedIn = !!token;
+ 
 
   return (
     <>
@@ -25,8 +31,11 @@ const Settings = () => {
               <FontAwesomeIcon icon={faUserGear} />
               <p className='font-bold'>Account</p>
             </div>
-            <UserDetail />
-            <ChangePassword />
+            {isLoggedIn ?
+            <div>
+              <UserDetail />
+              <ChangePassword />            
+            </div> : <p> <Link to='/signIn' className='text-red-500'> sign in  </Link> to see account info </p> }
           </div>
           < Themes />
           <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mt-5 '>
