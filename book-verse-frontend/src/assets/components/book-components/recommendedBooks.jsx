@@ -50,12 +50,13 @@ const RecommendedBooks = () => {
               />
               <div
                 onClick={() => navigate(`/book/${item.id}`)}
-                className='p-2 text-xs xl:space-y-3 space-y-1 cursor-pointer'
-              >
+                className='p-2 text-xs space-y-3 grid' >
                 <h2 className='text-sm font-semibold'>{item.volumeInfo.authors?.[0]}</h2>
                 <p>{item.volumeInfo.title}</p>
+                <div>
+                  <FavoriteButton book={item} />
+                </div>
               </div>
-              <FavoriteButton book={item} />
             </div>
           ))}
         </div>

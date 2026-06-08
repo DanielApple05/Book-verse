@@ -57,7 +57,7 @@ export const LibraryProvider = ({ children }) => {
   let updated;
 
   if (!exists) {
-    // add book to library as favorite
+
     updated = [...library, {
       id: book.id,
       title: book.volumeInfo.title,
@@ -71,7 +71,7 @@ export const LibraryProvider = ({ children }) => {
       lastRead: null,
     }];
   } else {
-    // toggle favorite status
+   
     updated = library.map(b => {
       if (b.id === bookId) {
         return {
@@ -93,7 +93,6 @@ export const LibraryProvider = ({ children }) => {
     setLibrary(updated);
   };
 
-  // filtered lists
   const favorites = library.filter(b => b.status === 'favorite');
   const currentlyReading = library.filter(b => b.status === 'currently_reading');
   const completed = library.filter(b => b.status === 'completed');
