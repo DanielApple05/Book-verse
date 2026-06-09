@@ -40,9 +40,9 @@ const Login = () => {
 
     setError(newError);
     if (Object.keys(newError).length > 0) return;
-
-    setIsPending(true);
+   
     try {
+       setIsPending(true);
       if (isRegistering) {
         await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
         setIsRegistering(false);
