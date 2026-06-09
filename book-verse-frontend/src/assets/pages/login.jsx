@@ -167,7 +167,7 @@ const Login = () => {
             <div className='flex place-content-center'>
               <button
                 type='submit'
-                disabled={isPending, isRegistering}
+                disabled={isPending}
                 className='xl:w-full w-6/12 bg-[#1B1F3B] p-2 rounded-lg text-white cursor-pointer hover:text-gray-200'
               >
                 { isPending ? 'Processing...' : isRegistering ? 'Sign Up' : 'Login'}
