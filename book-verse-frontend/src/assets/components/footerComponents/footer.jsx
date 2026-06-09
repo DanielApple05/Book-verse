@@ -1,12 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
+
+  const navLinks = [{ id: 1, tab: 'Home', path: '/home' }, { id: 2, tab: 'Features', path: '/discovery' }, { id: 3, tab: 'Categories', path: '/categories' }, { id: 4, tab: 'Pricing', path: '/library' }];
+  const companyLinks = [{ id: 1, links: 'About Us', path: '/settings' }, { id: 2, links: 'Blog', path: '/library' }, { id: 3, links: 'Careers', path: '/home' }, { id: 4, links: 'Contact', path: '/discovery' }];
+
   return (
-    <div className=' dark:bg-gray-950 bg-[#FAF7F2] dark:text-gray-200 text-black border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5  '>
+    <div className=' dark:bg-gray-950 bg-[#FAF7F2] dark:text-gray-100 text-black border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5  '>
       <div className='xl:flex grid grid-cols-3 justify-between'>
-        <div className='space-y-3 max-w-xs'>
+        <div className='space-y-3 max-w-xs text-gray-200'>
           <div className='flex items-center font-bold space-x-2'>
             <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
             <p className='xl:text-base text-xs'> BookVerse </p>
@@ -17,24 +23,31 @@ const Footer = () => {
             <FontAwesomeIcon icon={faFacebook} className='cursor-pointer hover:text-[#1B1F3B]' />
           </div>
         </div>
-        <div className='space-y-3 xl:text-sm text-xs'>
+        <div className='space-y-3 grid xl:text-sm text-xs'>
           <h2 className='font-semibold '>Links</h2>
-          {['Home', 'Features', 'Categories', 'Pricing'].map((link) => (
-            <p key={link} className=' text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link}</p>
+          {navLinks.map((navs) => (
+            < Link
+              to={navs.path}
+              key={navs.id}
+              className='text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{navs.tab}</Link>
           ))}
         </div>
 
-        <div className='space-y-3 xl:text-sm text-xs'>
+        <div className='space-y-3 grid xl:text-sm text-xs'>
           <h2 className='font-semibold  '>Company</h2>
-          {['About Us', 'Blog', 'Careers', 'Contact'].map((link) => (
-            <p key={link} className=' text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link}</p>
+          {companyLinks.map((link) => (
+            <Link
+              to={link.path}
+              key={link.id}
+              className='text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link.links}
+            </Link>
           ))}
         </div>
 
         <div className='space-y-3 xl:text-sm text-xs'>
           <h2 className='font-semibold text-sm'>Connect</h2>
-          <p className=' text-gray-500'>support@bookverse.com</p>
-          <p className=' text-gray-500'>@bookverse</p>
+          <p className=' '>support@bookverse.com</p>
+          <p className=''>@bookverse</p>
         </div>
 
       </div>

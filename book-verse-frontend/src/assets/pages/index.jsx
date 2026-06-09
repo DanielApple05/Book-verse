@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/header-component/landing-header'
 import { Link } from 'react-router-dom';
-import Footer from '../components/footer';
+import Footer from '../components//footerComponents/footer';
 import BrandServices from '../components/brandServices';
 
 const Index = () => {
