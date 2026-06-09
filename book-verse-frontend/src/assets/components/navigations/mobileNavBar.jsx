@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const  MobileNavBar = () => {
   return (
-     <div className='w-full dark:bg-gray-800 bg-[#F9F6F1] sticky bottom-0 flex xl:hidden dark:text-white p-3'>
+     <div className='w-full dark:bg-gray-800 bg-[#F9F6F1] fixed bottom-0 flex xl:hidden dark:text-white p-3'>
         <div className="space-x-4 flex w-full justify-around">
           {Tabs.map(tab => (
             <NavLink
