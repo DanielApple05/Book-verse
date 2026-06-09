@@ -168,7 +168,7 @@ const Login = () => {
               <button
                 type='submit'
                 disabled={isPending}
-                className='xl:w-full w-6/12 bg-[#1B1F3B] p-2 rounded-lg text-white cursor-pointer hover:text-gray-200'
+                className='xl:w-full w-6/12 bg-[#1B1F3B] p-2 rounded-lg disabled:opacity-50 text-white cursor-pointer hover:text-gray-200'
               >
                 { isPending ? 'Processing...' : isRegistering ? 'Sign Up' : 'Login'}
               </button>

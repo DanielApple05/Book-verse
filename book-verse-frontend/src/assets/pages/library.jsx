@@ -3,9 +3,12 @@ import SideNavBar from '../components/navigations/sideNavBar';
 import Header from '../components/header-component/header';
 import Footer from '../components/footer';
 import MobileNavBar from '../components/navigations/mobileNavBar';
-import LibraryCard from '../components/library-component/libraryCard'
+import LibraryCard from '../components/library-component/libraryCard';
+import { getToken } from '../../helpers';
 
 const Library = () => {
+  const Token = getToken();
+  const isLoggedIn = !!Token
   return (
     <>
       <Header />
@@ -17,7 +20,7 @@ const Library = () => {
            <LibraryCard />
         </div>
       </div>
-      <Footer/>
+     { isLoggedIn && <Footer/> }
       <MobileNavBar />
     </>
   );
