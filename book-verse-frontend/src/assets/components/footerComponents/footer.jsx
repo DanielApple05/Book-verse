@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
@@ -9,19 +9,17 @@ const Footer = () => {
   const navLinks = [{ id: 1, tab: 'Home', path: '/home' }, { id: 2, tab: 'Features', path: '/discovery' }, { id: 3, tab: 'Categories', path: '/categories' }, { id: 4, tab: 'Pricing', path: '/library' }];
   const companyLinks = [{ id: 1, links: 'About Us', path: '/settings' }, { id: 2, links: 'Blog', path: '/library' }, { id: 3, links: 'Careers', path: '/home' }, { id: 4, links: 'Contact', path: '/discovery' }];
 
+
   return (
-    <div className=' dark:bg-gray-950 bg-[#FAF7F2] dark:text-gray-100 text-black border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5  '>
+    <div className=' dark:bg-gray-800 bg-[#FAF7F2] dark:text-gray-100 text-black border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5  '>
       <div className='xl:flex grid grid-cols-3 justify-between'>
-        <div className='space-y-3 max-w-xs text-gray-200'>
+        <div className='space-y-3 max-w-xs'>
           <div className='flex items-center font-bold space-x-2'>
-            <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E]' />
+            <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E] dark:text-gray-100' />
             <p className='xl:text-base text-xs'> BookVerse </p>
           </div>
-          <div className='flex gap-4 text-gray-500'>
-            <FontAwesomeIcon icon={faTwitter} className='cursor-pointer hover:text-[#1B1F3B]' />
-            <FontAwesomeIcon icon={faInstagram} className='cursor-pointer hover:text-[#1B1F3B]' />
-            <FontAwesomeIcon icon={faFacebook} className='cursor-pointer hover:text-[#1B1F3B]' />
-          </div>
+            <FontAwesomeIcon icon={faLinkedin} className='cursor-pointer text:gray-500 hover:text-[#1B1F3B]' />
+          
         </div>
         <div className='space-y-3 grid xl:text-sm text-xs'>
           <h2 className='font-semibold '>Links</h2>
@@ -29,7 +27,7 @@ const Footer = () => {
             < Link
               to={navs.path}
               key={navs.id}
-              className='text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{navs.tab}</Link>
+              className=' cursor-pointer hover:text-[#1B1F3B]'>{navs.tab}</Link>
           ))}
         </div>
 
@@ -39,7 +37,7 @@ const Footer = () => {
             <Link
               to={link.path}
               key={link.id}
-              className='text-gray-500 cursor-pointer hover:text-[#1B1F3B]'>{link.links}
+              className=' cursor-pointer hover:text-[#1B1F3B]'>{link.links}
             </Link>
           ))}
         </div>
