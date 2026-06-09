@@ -3,6 +3,7 @@ import { useLibrary } from '../../../context/libraryContext';
 import { useNavigate } from 'react-router-dom';
 import LibraryBookCard from './libraryBookCard';
 import BookSection from './bookSection';
+import { getToken } from '../../../helpers';
 
 const tabs = ['All Books', 'Currently Reading', 'Want to Read', 'Completed', 'Favorites'];
 
@@ -10,6 +11,9 @@ const LibraryCard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('All Books');
   const { library, favorites, currentlyReading, completed, wantToRead, removeBook } = useLibrary();
+  const token = getToken();
+  const isLoggedIn = !!token;
+  if (!isLoggedIn) return (<p className='flex flex-1 xl:text-4xl text-xl xl:p-20 p-5 font-bold'> Please Log in to discover Library</p>)
 
   const bookCollections = {
     'Currently Reading': currentlyReading,
@@ -27,8 +31,8 @@ const LibraryCard = () => {
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ${activeTab === tab
-                ? 'dark:bg-[#2e3355] bg-[#1B1F3B] text-white'
-                : 'bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-white'
+              ? 'dark:bg-[#2e3355] bg-[#1B1F3B] text-white'
+              : 'bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-white'
               }`}
           >
             {tab}
@@ -67,7 +71,7 @@ const LibraryCard = () => {
           </>
         )
       ) : (
-      
+
         bookCollections[activeTab]?.length === 0 ? (
           <div className='flex flex-col items-center justify-center h-48 text-gray-400'>
             <p className='text-lg'>No books here yet</p>
