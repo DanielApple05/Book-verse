@@ -51,7 +51,8 @@ export const LibraryProvider = ({ children }) => {
     setLibrary(updated);
   };
 
-  const toggleFavorite = (bookId) => {
+  const toggleFavorite = (bookId, book) => {
+    if (!library.some(b => b.id === bookId)) return addBook(book, 'favorite');
     const updated = library.map(b => {
       if (b.id === bookId) {
         return {
