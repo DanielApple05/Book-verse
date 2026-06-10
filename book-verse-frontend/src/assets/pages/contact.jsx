@@ -12,8 +12,8 @@ const Contact = () => {
       <div style={{ backgroundImage: 'url(/images/contact-hero.png)' }} className='bg-cover bg-center h-72 lg:h-[80vh] relative bg-no-repeat mt-15  '>
         <div className='absolute inset-0 bg-black/50 ' />
       </div>
-      <div>
-        <div className='my-10 px-15 w-[50%]'>
+      <div className='flex xl:flex-row flex-col'>
+        <div className='xl:m-10 m-5 xl:p-10 p-5 xl:w-[50%] w-full shadow-2xl rounded'>
           <div className='space-y-2'>
             <div className='flex items-center gap-3 font-semibold'>
               <FontAwesomeIcon icon={faEnvelope} />
@@ -21,13 +21,13 @@ const Contact = () => {
             </div>
             <p className='text-sm'> Fill out the form below and we'll get back to you as soon as possible</p>
           </div>
-          <form className='grid space-y-5 mt-2 pt-3'>
+          <form className='grid space-y-5 mt-2 pt-3 '>
             <div className='flex justify-between gap-5 '>
-              <div className='flex flex-col gap-2 flex-1'>
+              <div className='flex flex-col gap-2 '>
                 <label className='font-semibold text-sm'> Your Name</label>
                 <input type="text" className='outline-none border border-gray-200 rounded' />
               </div>
-              <div className='flex flex-col gap-2 flex-1'>
+              <div className='flex flex-col gap-2'>
                 <label className='font-semibold text-sm'> Your Email</label>
                 <input type="text" className='outline-none border border-gray-200 rounded' />
               </div>
@@ -40,10 +40,13 @@ const Contact = () => {
             </div>
             <div className='flex flex-col gap-2'>
               <label className='font-semibold text-sm'> Message</label>
-              <textarea className='outline-none border border-gray-200 rounded' />
+              <textarea className='outline-none border border-gray-200 rounded h-32' />
             </div>
             <button className='bg-amber-700 p-2 w-60 cursor-pointer rounded-lg font-semibold'> Send Message </button>
           </form>
+        </div>
+        <div className='w-[50%]'>
+          hello
         </div>
       </div>
       <Footer />
