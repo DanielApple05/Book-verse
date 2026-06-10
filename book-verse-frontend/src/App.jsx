@@ -11,29 +11,30 @@ import SearchResults from './assets/pages/searchResults';
 import ReadBook from './assets/pages/readBook';
 import Settings from './assets/pages/settings'
 import { useTheme } from './context/themeContext';
-import Authors from './assets/pages/authors'
+import Authors from './assets/pages/authors';
+import Contact from './assets/pages/contact';
 
 
 function App() {
-  
+
   return (
-<div className="min-h-screen dark:bg-gray-950 text-black dark:text-white transition-colors duration-300">
-    <Routes>
-      <Route path="/" element={<Index />} />
-       <Route path="/signIn" element={<SignIn />} />
+    <div className="min-h-screen dark:bg-gray-950 text-black dark:text-white transition-colors duration-300">
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/signIn" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/library" element={<Library/ >} />
-        <Route path="/category" element={<Category/ >} />
-         <Route path="/category/:tab" element={<Category />} />
-        <Route path="/discovery" element={<Discovery/ >} />
+        <Route path="/library" element={<Library />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/category/:tab" element={<Category />} />
+        <Route path="/discovery" element={<Discovery />} />
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path='/read/:id' element={<ReadBook />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/authors' element={<Authors />} />
-    </Routes>
-</div>
-
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
+    </div>
   )
 }
 
