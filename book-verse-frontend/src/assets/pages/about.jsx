@@ -25,13 +25,13 @@ const About = () => {
           <p className='text-red-800 font-bold text-sm'>WHAT WE STAND FOR </p>
           <p className='text-xl font-semibold '>Our Values</p>
         </div>
-        <div className=' xl:flex grid grid-cols-2 justify-between items-center xl:px-15 px-5 py-5 xl:space-y-0 space-y-5 '>
+        <div className=' grid xl:grid-cols-4 grid-cols-2 justify-between place-items-center xl:px-15 px-0 py-5 xl:space-y-0 space-y-5 '>
           {
             Value.map((value) => (
-              <div className='flex flex-col justify-center items-center text-center xl:w-[20%] w-[80%] my-auto '>
+              <div key={value.id} className='flex flex-col place-content-center items-center text-center w-[80%] shadow-xl p-5 h-52 rounded-xl space-y-3 '>
                 <div className='rounded-full p-2 bg-orange-200'> <FontAwesomeIcon icon={value.logo} className='text-orange-950' /> </div>
                 <p className='font-semibold'>{value.topic}</p>
-                <p className='xl:text-base text-sm'>{value.text}</p>
+                <p className='xl:text-base text-xs'>{value.text}</p>
               </div>
             ))
           }
