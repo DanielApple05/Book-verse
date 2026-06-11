@@ -10,11 +10,11 @@ const About = () => {
       <Header />
       <div style={{ backgroundImage: 'url(/images/about-us-hero.png)' }} className='bg-cover bg-center h-72 lg:h-[80vh] relative bg-no-repeat mt-16'>
         <div className='absolute inset-0 bg-black/50' />
-        <div className='absolute inset-0 flex flex-col xl:p-10 p-5 xl:w-[40%] w-[70%] xl:space-y-5 space-y-2'>
+        <div className='absolute inset-0 flex flex-col xl:p-10 p-5 xl:w-[40%] w-full xl:space-y-5 space-y-3'>
           <span className='text-sm text-red-800 font-bold'>ABOUT US</span>
           <h1 className='text-white text-2xl xl:text-5xl font-bold'>Our story</h1>
-          <p className='text-white max-w-2xl'>Bookverse was born out of a simple belief - books have the power to inspire, educate, and transform lives.</p>
-          <p className='text-white '> We created BookVerse to be more than just a place to read. It's a community for book lovers to discover and connect, and grow fast.</p>
+          <p className='text-white text-xs'>Bookverse was born out of a simple belief - books have the power to inspire, educate, and transform lives.</p>
+          <p className='text-white text-xs '> We created BookVerse to be more than just a place to read. It's a community for book lovers to discover and connect, and grow fast.</p>
           <button className='bg-amber-800 p-2 rounded w-60 cursor-pointer hover:bg-amber-950 font-semibold '>Explore Our Lirary</button>
         </div>
       </div>
