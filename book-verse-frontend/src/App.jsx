@@ -13,6 +13,7 @@ import Settings from './assets/pages/settings'
 import { useTheme } from './context/themeContext';
 import Authors from './assets/pages/authors';
 import Contact from './assets/pages/contact';
+import About from './assets/pages/about';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/settings' element={<Settings />} />
         <Route path='/authors' element={<Authors />} />
         <Route path='/contact' element={<Contact />} />
+         <Route path='/about' element={<About />} />
       </Routes>
     </div>
   )
