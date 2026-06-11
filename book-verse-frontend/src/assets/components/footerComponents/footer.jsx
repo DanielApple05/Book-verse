@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
 
-  const navLinks = [{ id: 1, tab: 'Home', path: '/home' }, { id: 2, tab: 'Features', path: '/discovery' }, { id: 3, tab: 'Categories', path: '/categories' }, { id: 4, tab: 'Pricing', path: '/library' }];
+  const navLinks = [{ id: 1, tab: 'Home', path: '/home' }, { id: 2, tab: 'Features', path: '/discovery' }, { id: 3, tab: 'Categories', path: '/category' }, { id: 4, tab: 'Pricing', path: '/library' }];
   const companyLinks = [{ id: 1, links: 'About Us', path: '/settings' }, { id: 2, links: 'Blog', path: '/library' }, { id: 3, links: 'Careers', path: '/home' }, { id: 4, links: 'Contact', path: '/contact' }];
 
 
