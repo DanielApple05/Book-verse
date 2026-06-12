@@ -4,6 +4,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const Search = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();

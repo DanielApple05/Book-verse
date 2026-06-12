@@ -3,10 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tabs from '../navigations/navTabs'
 import { NavLink } from 'react-router-dom';
 import Search from '../search';
+import { useEffect } from "react";
 
 const MobileNavBar = () => {
 
   const [searchOpen, setSearchOpen] = useState(false)
+
+  useEffect(() => {
+  document.body.style.overflow = searchOpen ? "hidden" : "auto";
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [searchOpen]);
+
   return (
     <div className='w-full dark:bg-gray-800 bg-[#F9F6F1] fixed bottom-0 flex xl:hidden dark:text-white p-3'>
       {searchOpen && (
@@ -26,7 +36,7 @@ const MobileNavBar = () => {
             <button
               key={tab.id}
               onClick={() => setSearchOpen(!searchOpen)}
-              className={tab.style || ""}
+              className={ ({ isActive }) => `${tab.style || ""}  ${isActive ? "bg-[#E8834A]" : ""}` }
             >
               <FontAwesomeIcon
                 icon={tab.icon}
