@@ -16,12 +16,12 @@ const Footer = () => {
         <div className='space-y-3 max-w-xs'>
           <div className='flex items-center font-bold space-x-2'>
             <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E] dark:text-gray-100' />
-            <p className='xl:text-base text-xs'> BookVerse </p>
+            <p className=''> BookVerse </p>
           </div>
             <FontAwesomeIcon icon={faLinkedin} className='cursor-pointer text:gray-500 hover:text-[#1B1F3B]' />
           
         </div>
-        <div className='space-y-3 grid xl:text-sm text-xs'>
+        <div className='space-y-3 grid '>
           <h2 className='font-semibold '>Links</h2>
           {navLinks.map((navs) => (
             < Link
@@ -31,7 +31,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className='space-y-3 grid xl:text-sm text-xs xl:mt-0 mt-16'>
+        <div className='space-y-3 grid xl:mt-0 mt-16'>
           <h2 className='font-semibold  '>Company</h2>
           {companyLinks.map((link) => (
             <Link
@@ -42,7 +42,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className='space-y-3 xl:text-sm text-xs xl:mt-0 mt-16'>
+        <div className='space-y-3  xl:mt-0 mt-16'>
           <h2 className='font-semibold text-sm'>Connect</h2>
           <p className=' '>danejimofor@gmail.com</p>
           <p className=''>@bookverse</p>
