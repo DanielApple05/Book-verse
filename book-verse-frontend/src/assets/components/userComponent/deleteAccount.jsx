@@ -61,7 +61,7 @@ const DeleteAccount = () => {
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
           {deleteModal &&
-            <div className='border-t border-t-gray-300 mt-2 py-2'>
+            <div className='border-t border-t-gray-300 mt-2 py-2 mb-5'>
               <p className='text-red-500 text-xs mb-2'>Are you sure you want to delete your account?</p>
               <form className=' flex xl:flex-row flex-col items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
                 <input
