@@ -12,11 +12,11 @@ const MobileNavBar = () => {
       {searchOpen && (
         <>
           <div
-            className="fixed inset-0"
+            className="fixed inset-0 bg-black/30"
             onClick={() => setSearchOpen(false)}
           />
 
-          <div className="fixed bottom-20 left-4 right-4 z-50">
+          <div className="fixed bottom-20 left-4 right-4 z-50 bg-white">
             <Search />
           </div>
         </>

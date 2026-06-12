@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <div className='flex items-center justify-between p-4 border-b xl:text-2xl text-sm border-gray-200 w-full fixed top-0 z-50 dark:bg-gray-800/50 backdrop-blur-md ' >
       <Logo />
-      <Search />
+        <div className='xl:flex hidden'>  <Search /> </div>
       <div className='flex items-center gap-7'>
         <FontAwesomeIcon
           icon={darkMode ? faSun : faMoon}
