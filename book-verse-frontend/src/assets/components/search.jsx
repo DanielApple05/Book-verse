@@ -16,7 +16,7 @@ const Search = () => {
   };
   return (
     <>
-      <div className='flex xl:w-5/6 w-full justify-center'>
+      <div className='flex w-full justify-center'>
         <form className=' border border-gray-300 rounded-xl p-1 relative xl:w-5/12 w-full flex items-center  ' onSubmit={handleSubmit}>
           <input
             type="text"
