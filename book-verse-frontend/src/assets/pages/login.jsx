@@ -40,9 +40,9 @@ const Login = () => {
 
     setError(newError);
     if (Object.keys(newError).length > 0) return;
-   
+
     try {
-       setIsPending(true);
+      setIsPending(true);
       if (isRegistering) {
         await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
         setIsRegistering(false);
@@ -64,10 +64,21 @@ const Login = () => {
 
   return (
     <div className='xl:flex grid gap-5 xl:text-sm text-xs w-full'>
-      
-      <div className='xl:h-screen h-[80vh] xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
+
+      <div className=' relative xl:h-screen h-[60vh] xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
         style={{ backgroundImage: 'url(/images/landing-page.png)' }}
-      />
+       >
+        <div className='absolute inset-0 bg-black/30 rounded-xl' />
+        <div className='absolute inset-0 flex flex-col justify-center text-white p-10  space-y-5  '>
+          <p className='xl:text-4xl text-xl font-bold'>
+            Welcome back, <br />
+            book lover.
+          </p>
+          <p className=''>
+            Sign in to continue your reading journey.
+          </p>
+        </div>
+      </div>
       <div className='xl:w-[50%] w-full flex flex-col p-5'>
         <p className='place-self-end'>
           {isRegistering ? 'Already have an account?' : "Don't have an account?"}
@@ -168,7 +179,7 @@ const Login = () => {
                 disabled={isPending}
                 className='xl:w-full w-6/12 bg-[#1B1F3B] p-2 rounded-lg disabled:opacity-50 text-white cursor-pointer hover:text-gray-200'
               >
-                { isPending ? 'Processing...' : isRegistering ? 'Sign Up' : 'Login'}
+                {isPending ? 'Processing...' : isRegistering ? 'Sign Up' : 'Login'}
               </button>
             </div>
           </form>
