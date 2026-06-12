@@ -46,6 +46,7 @@ const DeleteAccount = () => {
       setDeleteError(err.response?.data?.message || 'Failed to delete account');
     } finally {
       setLoading(false);
+     
     }
   };
 
@@ -69,12 +70,13 @@ const DeleteAccount = () => {
                   value={deletePassword}
                   onChange={(e) => setDeletePassword(e.target.value)}
                   placeholder='Enter your password to confirm' className='outline-none border border-gray-300 xl:w-[50%] w-full rounded p-1 placeholder:text-xs' />
+                   {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
                 <button
                   type='submit'
                   disabled={loading}
                   className='bg-red-500 text-sm text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
               </form>
-              {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
+             
             </div>
           }
         </div>}
