@@ -64,12 +64,10 @@ const Login = () => {
 
   return (
     <div className='xl:flex grid gap-5 xl:text-sm text-xs h-screen w-full'>
-      {/* Left image */}
-      <div className='xl:h-screen h-full xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
+      
+      <div className='xl:h-screen h-[80vh] xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
         style={{ backgroundImage: 'url(/images/landing-page.png)' }}
       />
-
-      {/* Right form */}
       <div className='xl:w-[50%] w-full flex flex-col p-5'>
         <p className='place-self-end'>
           {isRegistering ? 'Already have an account?' : "Don't have an account?"}
