@@ -63,16 +63,16 @@ const DeleteAccount = () => {
           {deleteModal &&
             <div className='border-t border-t-gray-300 mt-2 py-2'>
               <p className='text-red-500 text-xs mb-2'>Are you sure you want to delete your account?</p>
-              <form className='flex items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
+              <form className=' flex xl:flex-row flex-col items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
                 <input
                   type='password'
                   value={deletePassword}
                   onChange={(e) => setDeletePassword(e.target.value)}
-                  placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded p-1 placeholder:text-xs' />
+                  placeholder='Enter your password to confirm' className='outline-none border border-gray-300 xl:w-[50%] w-full rounded p-1 placeholder:text-xs' />
                 <button
                   type='submit'
                   disabled={loading}
-                  className='bg-red-500 text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
+                  className='bg-red-500 text-sm text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
               </form>
               {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
             </div>
