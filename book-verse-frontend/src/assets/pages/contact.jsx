@@ -11,7 +11,7 @@ const Contact = () => {
   return (
     <>
       <Header />
-      <div style={{ backgroundImage: 'url(/images/contact-hero.png)' }} className='bg-cover bg-center h-72 lg:h-[80vh] relative bg-no-repeat xl:mt-20 mt-16'>
+      <div style={{ backgroundImage: 'url(/images/contact-hero.png)' }} className='bg-cover bg-center h-[80vh] relative bg-no-repeat xl:mt-20 mt-16'>
         <div className='absolute inset-0 bg-black/50' />
         <div className='absolute inset-0 flex flex-col items-center justify-center text-center px-5'>
           <h1 className='text-white text-3xl xl:text-5xl font-bold'>Contact Us</h1>

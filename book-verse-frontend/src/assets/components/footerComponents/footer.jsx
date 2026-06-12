@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <div className=' dark:bg-gray-800 bg-[#FAF7F2] dark:text-gray-100 text-black border-t w-full border-gray-200 xl:px-16 px-3 xl:py-10 py-5 xl:mb-0 mb-15 '>
-      <div className='xl:flex grid grid-cols-3 justify-between'>
+      <div className='xl:flex grid grid-cols-2 justify-between'>
         <div className='space-y-3 max-w-xs'>
           <div className='flex items-center font-bold space-x-2'>
             <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E] dark:text-gray-100' />
@@ -31,7 +31,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className='space-y-3 grid xl:text-sm text-xs'>
+        <div className='space-y-3 grid xl:text-sm text-xs xl:mt-0 mt-16'>
           <h2 className='font-semibold  '>Company</h2>
           {companyLinks.map((link) => (
             <Link
@@ -42,7 +42,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className='space-y-3 xl:text-sm text-xs'>
+        <div className='space-y-3 xl:text-sm text-xs xl:mt-0 mt-16'>
           <h2 className='font-semibold text-sm'>Connect</h2>
           <p className=' '>danejimofor@gmail.com</p>
           <p className=''>@bookverse</p>
