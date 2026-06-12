@@ -63,7 +63,7 @@ const Login = () => {
   };
 
   return (
-    <div className='xl:flex grid gap-5 xl:text-sm text-xs h-screen w-full'>
+    <div className='xl:flex grid gap-5 xl:text-sm text-xs w-full'>
       
       <div className='xl:h-screen h-[80vh] xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
         style={{ backgroundImage: 'url(/images/landing-page.png)' }}
