@@ -4,12 +4,14 @@ import Footer from '../components/footerComponents/footer';
 import MobileNavBar from '../components/navigations/mobileNavBar';
 import Value from '../components/value';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Search from '../components/search';
 
 
 const About = () => {
   return (
     <>
       <Header />
+      <search className='' />
       <div style={{ backgroundImage: 'url(/images/about-us-hero.png)' }} className='bg-cover bg-center h-72 lg:h-[80vh] relative bg-no-repeat mt-16'>
         <div className='absolute inset-0 bg-black/50' />
         <div className='absolute inset-0 flex flex-col xl:p-10 p-5 xl:w-[40%] w-full xl:space-y-5 space-y-3'>
@@ -31,17 +33,20 @@ const About = () => {
               <div key={value.id} className='flex flex-col place-content-center items-center text-center w-[80%] shadow-xl p-3 h-52 rounded-xl space-y-3 bg-white dark:bg-gray-800 '>
                 <div className='rounded-full p-2 bg-orange-200'> <FontAwesomeIcon icon={value.logo} className='text-orange-950' /> </div>
                 <p className='font-semibold'>{value.topic}</p>
-                <p className='xl:text-base text-xs'>{value.text}</p>
+                <p className='xl:text-sm text-xs'>{value.text}</p>
               </div>
             ))
           }
         </div>
-        <div className='flex xl:flex-row flex-col-reverse justify-evenly xl:mx-15 mx-5 py-5' >
-          <div className='flex xl:w-[50%] w-full ' >
-            hello
+        <div className='flex xl:flex-row flex-col-reverse justify-evenly xl:mx-20 mx-5 py-5 ' >
+          <div className='flex flex-col xl:w-[50%] p-5 w-full space-y-5 bg-amber-100 justify-center ' >
+            <p className='font-bold text-red-400 text-sm'> OUR MISSION</p>
+            <p className='xl:text-2xl text-base font-bold tracking-widest'> Making Reading <br /> Accessible To Everyone</p>
+            <p className='xl:w-[80%] w-full'> Our misson is to make reading enjoyable and accessible to everyone. Whether you're here to track your reading progress, discover new authors or connect with fellow readers, BookVerse is here for you</p>
+            <button className='p-2 font-semibold bg-orange-600 rounded-lg w-60'>Join Our Community</button>
           </div>
-          <div className='flex  h-60 xl:w-[50%] w-full '>
-            <img src={'/images/lady-reading.png'} className='w-full rounded-xl' />
+          <div className='flex h-full xl:w-[50%] w-full '>
+            <img src={'/images/lady-reading.png'} className='w-full ' />
           </div>
         </div>
       </div>

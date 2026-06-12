@@ -16,7 +16,7 @@ const  MobileNavBar = () => {
                 }`
               }
             >
-              <FontAwesomeIcon icon={tab.icon} className="text-xl" />
+              <FontAwesomeIcon icon={tab.icon} className={`text-xl ${tab.style}`} />
             </NavLink>
           ))}
         </div>
