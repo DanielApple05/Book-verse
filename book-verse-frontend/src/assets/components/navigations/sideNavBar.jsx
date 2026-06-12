@@ -8,13 +8,13 @@ const SideNavBar = () => {
     <>
       <div className='min-w-[20%] h-screen dark:bg-gray-800 bg-[#F9F6F1] xl:flex hidden justify-center border-r dark:text-gray-200 text-black border-gray-200 sticky top-0'>
         <div className="space-y-4 mt-25">
-          {Tabs.map(tab => (
+          {Tabs.filter(tab => !tab.action).map((tab) => (
             <NavLink
               key={tab.id}
               to={tab.path}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-lg p-2 font-semibold xl:text-sm text-xs hover:bg-[#cd8f6b]  ${isActive ? 'bg-[#E8834A] text-white' : ' '
-                }`
+                `flex items-center gap-3 rounded-lg p-2 font-semibold xl:text-sm text-xs hover:bg-[#cd8f6b]
+      ${isActive ? 'bg-[#E8834A] text-white' : ''}`
               }
             >
               <FontAwesomeIcon icon={tab.icon} className="text-xl" />

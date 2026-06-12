@@ -16,16 +16,17 @@ const MobileNavBar = () => {
             onClick={() => setSearchOpen(false)}
           />
           <div className="fixed bottom-20 left-4 right-4 z-50 bg-white m-5 rounded-lg">
-            <Search style />
+            <Search />
           </div>
         </>
       )}
-      <div className="space-x-4 flex w-full justify-around">
+      <div className="space-x-4 flex w-full justify-around items-center">
         {Tabs.map(tab => (
           tab.action === "search" ? (
             <button
               key={tab.id}
               onClick={() => setSearchOpen(!searchOpen)}
+              className={tab.style || ""}
             >
               <FontAwesomeIcon
                 icon={tab.icon}
