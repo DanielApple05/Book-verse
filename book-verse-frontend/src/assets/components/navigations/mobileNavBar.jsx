@@ -16,7 +16,7 @@ const MobileNavBar = () => {
             onClick={() => setSearchOpen(false)}
           />
 
-          <div className="fixed bottom-20 left-0 right-0 z-50">
+          <div className="fixed bottom-20 left-4 right-4 z-50">
             <Search />
           </div>
         </>
