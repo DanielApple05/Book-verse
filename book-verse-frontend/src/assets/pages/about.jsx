@@ -19,7 +19,7 @@ const About = () => {
           <h1 className='text-white text-2xl xl:text-5xl font-bold'>Our story</h1>
           <p className='text-white xl:text-base text-xs'>Bookverse was born out of a simple belief - books have the power to inspire, educate, and transform lives.</p>
           <p className='text-white xl:text-base text-xs '> We created BookVerse to be more than just a place to read. It's a community for book lovers to discover and connect, and grow fast.</p>
-          <button className='bg-amber-800 p-2 rounded w-60 cursor-pointer hover:bg-amber-950 font-semibold '>Explore Our Lirary</button>
+          <button className='bg-amber-600 p-2 rounded w-60 cursor-pointer hover:bg-amber-950 font-semibold '>Explore Our Lirary</button>
         </div>
       </div>
       <div>

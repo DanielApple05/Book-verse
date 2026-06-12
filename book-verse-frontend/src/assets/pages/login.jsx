@@ -101,7 +101,7 @@ const Login = () => {
 
           {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
 
-          <form className='space-y-3' onSubmit={handleSubmit}>
+          <form className='space-y-3' text-base onSubmit={handleSubmit}>
             {/* Username - register only */}
             {isRegistering && (
               <div className='grid gap-2 w-full'>
@@ -120,7 +120,6 @@ const Login = () => {
               </div>
             )}
 
-            {/* Email */}
             <div className='grid gap-2 w-full'>
               <label className='font-semibold'>Email Address</label>
               <div className='border-gray-200 border pl-2 flex items-center'>
@@ -136,7 +135,6 @@ const Login = () => {
               {error.email && <p className='text-red-500 text-xs'>{error.email}</p>}
             </div>
 
-            {/* Password */}
             <div className='grid gap-2 w-full'>
               <label className='font-semibold'>Password</label>
               <div className='border-gray-200 border px-2 flex items-center'>
@@ -155,7 +153,6 @@ const Login = () => {
               {error.password && <p className='text-red-500 text-xs'>{error.password}</p>}
             </div>
 
-            {/* Confirm Password - register only */}
             {isRegistering && (
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'>Confirm Password</label>
