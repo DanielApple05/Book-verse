@@ -30,7 +30,7 @@ const UserDetail = () => {
         <div className=' border-b border-b-gray-200 cursor-pointer'>
           <div className='flex items-center justify-between gap-4 mb-1'
             onClick={() => setShowDetails(prev => !prev)}>
-            <div className='mb-2 space-y-1' >
+            <div className='mb-2 space-y-3' >
               <p className='font-semibold'> Profile information</p>
               <p className=' text-xs'>Update your personal Information</p>
             </div>
@@ -45,7 +45,6 @@ const UserDetail = () => {
               </div>
               <div className='flex justify-between items-center'>
                 <p className=''>Email: {user ? maskEmail(user.email) : ''}</p>
-                <p className=' text-blue-500 pr-2'> edit</p>
               </div>
             </div>
           }
