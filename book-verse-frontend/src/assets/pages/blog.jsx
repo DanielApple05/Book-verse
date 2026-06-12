@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/header-component/header';
 import { Link } from 'react-router-dom';
 import MobileNavBar from '../components/navigations/mobileNavBar';
+import Footer from '../components/footerComponents/footer';
 
 const Blog = () => {
   return (
@@ -16,6 +17,7 @@ const Blog = () => {
         </div>
       </div>
       <MobileNavBar />
+      <Footer />
     </>
   );
 }
