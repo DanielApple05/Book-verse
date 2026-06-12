@@ -12,9 +12,9 @@ const About = () => {
     <>
       <Header />
       <search className='' />
-      <div style={{ backgroundImage: 'url(/images/about-us-hero.png)' }} className='bg-cover bg-center h-72 lg:h-[80vh] relative bg-no-repeat mt-16'>
+      <div style={{ backgroundImage: 'url(/images/about-us-hero.png)' }} className='bg-cover bg-center h-[80vh] relative bg-no-repeat mt-16'>
         <div className='absolute inset-0 bg-black/50' />
-        <div className='absolute inset-0 flex flex-col xl:p-10 p-5 xl:w-[40%] w-full xl:space-y-5 space-y-3'>
+        <div className='absolute inset-0 flex flex-col xl:p-10 p-5 xl:w-[40%] w-full space-y-5 justify-center'>
           <span className='text-sm text-red-800 font-bold'>ABOUT US</span>
           <h1 className='text-white text-2xl xl:text-5xl font-bold'>Our story</h1>
           <p className='text-white xl:text-base text-xs'>Bookverse was born out of a simple belief - books have the power to inspire, educate, and transform lives.</p>
