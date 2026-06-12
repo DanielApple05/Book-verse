@@ -52,17 +52,17 @@ const DeleteAccount = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className=' pt-2 border-t border-t-gray-200  '>
+        <div className=' py-2  border-t border-t-gray-200 '>
           <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
             <div >
-              <p className='text-red-500'>Delete Account</p>
+              <p className='text-red-500 mb-3'>Delete Account</p>
               <p className='text-xs'>Delete your account </p>
             </div>
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
           {deleteModal &&
-            <div className='border-t border-t-gray-300 mt-2 py-2 mb-5'>
-              <p className='text-red-500 text-xs mb-2'>Are you sure you want to delete your account?</p>
+            <div className='border-t border-t-gray-300 mt-5 py-2 '>
+              <p className='text-red-500 text-xs my-2'>Are you sure you want to delete your account?</p>
               <form className=' flex xl:flex-row flex-col items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
                 <input
                   type='password'

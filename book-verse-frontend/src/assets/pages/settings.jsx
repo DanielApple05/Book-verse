@@ -21,7 +21,7 @@ const Settings = () => {
   return (
     <>
       <Header />
-      <div className='xl:flex block'>
+      <div className='xl:flex block mb-10'>
         <SideNavBar />
         <div className='xl:mt-20 mt-15 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
           <h1 className='text-2xl font-bold '>Settings</h1>
@@ -39,7 +39,7 @@ const Settings = () => {
             }
           </div>
           < Themes />
-          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mt-5 mb-10 '>
+          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl my-5 '>
             <p className='font-bold pb-2 border-b border-b-gray-200'> Others</p>
             <SignOut />
             <DeleteAccount />
