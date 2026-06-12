@@ -17,7 +17,7 @@ const DeleteAccount = () => {
   if (!isLoggedIn) {
     return null;
   }
-  
+
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
@@ -51,32 +51,33 @@ const DeleteAccount = () => {
 
   return (
     <>
-      {isLoggedIn && <div className=' pt-2 border-t border-t-gray-200 '>
-        <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
-          <div >
-            <p className='text-red-500'>Delete Account</p>
-            <p className='text-xs'>Delete your account </p>
+      {isLoggedIn &&
+        <div className=' pt-2 border-t border-t-gray-200 mb-5 '>
+          <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
+            <div >
+              <p className='text-red-500'>Delete Account</p>
+              <p className='text-xs'>Delete your account </p>
+            </div>
+            <FontAwesomeIcon icon={faArrowRight} />
           </div>
-          <FontAwesomeIcon icon={faArrowRight} />
-        </div>
-        {deleteModal &&
-          <div className='border-t border-t-gray-300 mt-2 py-2'>
-            <p className='text-red-500 text-xs mb-2'>Are you sure you want to delete your account?</p>
-            <form className='flex items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
-              <input
-                type='password'
-                value={deletePassword}
-                onChange={(e) => setDeletePassword(e.target.value)}
-                placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded text-sm p-1 placeholder:text-xs' />
-              <button
-                type='submit'
-                disabled={loading}
-                className='bg-red-500 text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
-            </form>
-            {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
-          </div>
-        }
-      </div>}
+          {deleteModal &&
+            <div className='border-t border-t-gray-300 mt-2 py-2'>
+              <p className='text-red-500 text-xs mb-2'>Are you sure you want to delete your account?</p>
+              <form className='flex items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
+                <input
+                  type='password'
+                  value={deletePassword}
+                  onChange={(e) => setDeletePassword(e.target.value)}
+                  placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded text-sm p-1 placeholder:text-xs' />
+                <button
+                  type='submit'
+                  disabled={loading}
+                  className='bg-red-500 text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
+              </form>
+              {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
+            </div>
+          }
+        </div>}
     </>
   );
 }
