@@ -21,8 +21,8 @@ const ChangePassword = () => {
   const token = getToken();
   const isLoggedIn = !!token;
   if (!isLoggedIn) {
-  return null;
-   }
+    return null;
+  }
 
   const changePassword = async (e) => {
     e.preventDefault();
@@ -70,7 +70,8 @@ const ChangePassword = () => {
 
   return (
     <>
-      {isLoggedIn && <div className=''>
+      {isLoggedIn && 
+      <div>
         <div className='flex items-center gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
           <div className='mb-2'>
             <p className='font-semibold'> Change Password</p>

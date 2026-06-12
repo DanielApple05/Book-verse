@@ -22,7 +22,7 @@ const HomeCard = () => {
 
     <div className='p-5 xl:mt-20 mt-16 w-full text-black '>
       <h1 className='text-2xl font-semibold text-slate-900 dark:text-white'>{getGreeting()}, {user?.username || 'User'}</h1>
-      <p className='text-sm text-slate-600 dark:text-slate-300'>Let's continue your reading.</p>
+      <p className='text-sm text-slate-600 mt-7 dark:text-slate-300'>Let's continue your reading.</p>
       <RecommendedBooks />
       <Categories />
       <TrendingBooks />
