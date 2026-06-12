@@ -10,10 +10,10 @@ const Index = () => {
   return (
     <>
       <Header />
-      <div className='bg-cover bg-no-repeat bg-center flex xl:h-screen h-80 min-w-full relative rounded-b-lg border-b border-b-amber-200 shadow-2xl inset-0 ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
+      <div className='bg-cover bg-no-repeat bg-center flex xl:h-screen h-[80vh] min-w-full relative rounded-b-lg border-b border-b-amber-200 shadow-2xl inset-0 ' style={{ backgroundImage: 'url(/images/landing-page.png)' }}>
         <div className='absolute inset-0 bg-black/30 rounded-xl' />
-        <div className=' xl:text-base text-sm absolute inset-0 flex flex-col justify-center xl:ml-20 ml-5 mt-15  text-white w-[50%]'>
-          <h1 className='xl:text-[55px] text-xl font-bold leading-none'>Read More. <br /> Discover More.</h1>
+        <div className=' xl:text-base text-sm absolute inset-0 flex flex-col justify-center xl:ml-20 ml-5 mt-15 space-y-5 text-white w-[80%]'>
+          <h1 className='xl:text-[55px] text-base font-bold leading-none'>Read More. <br /> Discover More.</h1>
           <p>BookVerse is your all-in-one reading companion.</p>
           <p className=''>Explore thousands of books, track your progress, and build your perfect reading habit.</p>
           <div className='flex xl:text-base text-sm xl:space-x-6 space-x-2 mt-5'>
