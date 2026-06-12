@@ -52,7 +52,7 @@ const DeleteAccount = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className=' pt-2 border-t border-t-gray-200 mb-5 '>
+        <div className=' pt-2 border-t border-t-gray-200  '>
           <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
             <div >
               <p className='text-red-500'>Delete Account</p>
@@ -68,7 +68,7 @@ const DeleteAccount = () => {
                   type='password'
                   value={deletePassword}
                   onChange={(e) => setDeletePassword(e.target.value)}
-                  placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded text-sm p-1 placeholder:text-xs' />
+                  placeholder='Enter your password to confirm' className='outline-none border border-gray-300 rounded p-1 placeholder:text-xs' />
                 <button
                   type='submit'
                   disabled={loading}

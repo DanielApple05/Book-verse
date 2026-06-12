@@ -16,14 +16,14 @@ const Settings = () => {
 
   const token = getToken();
   const isLoggedIn = !!token;
- 
+
 
   return (
     <>
       <Header />
       <div className='xl:flex block'>
         <SideNavBar />
-        <div className='xl:mt-20 mt-16 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
+        <div className='xl:mt-20 mt-15 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
           <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
@@ -32,10 +32,11 @@ const Settings = () => {
               <p className='font-bold'>Account</p>
             </div>
             {isLoggedIn ?
-            <div>
-              <UserDetail />
-              <ChangePassword />            
-            </div> : <p> <Link to='/signIn' className='text-red-500'> sign in  </Link> to see account info </p> }
+              <div>
+                <UserDetail />
+                <ChangePassword />
+              </div> : <p> <Link to='/signIn' className='text-red-500'> sign in  </Link> to see account info </p>
+            }
           </div>
           < Themes />
           <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mt-5 '>
