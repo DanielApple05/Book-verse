@@ -39,7 +39,7 @@ const Settings = () => {
             }
           </div>
           < Themes />
-          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl my-5 '>
+          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mt-5 mb-10 '>
             <p className='font-bold pb-2 border-b border-b-gray-200'> Others</p>
             <SignOut />
             <DeleteAccount />
