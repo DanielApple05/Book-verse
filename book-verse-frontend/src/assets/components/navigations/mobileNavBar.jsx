@@ -18,7 +18,7 @@ const MobileNavBar = () => {
 
 
   return (
-    <div className='w-full dark:bg-gray-800 bg-[#F9F6F1] fixed bottom-0 flex xl:hidden dark:text-white p-3'>
+    <div className='w-full dark:bg-gray-800 bg-[#F9F6F1] fixed z-50 bottom-0 flex xl:hidden dark:text-white p-3'>
       {searchOpen && (
         <>
           <div
