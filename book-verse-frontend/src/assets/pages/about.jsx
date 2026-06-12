@@ -28,13 +28,21 @@ const About = () => {
         <div className=' grid xl:grid-cols-4 grid-cols-2 justify-between place-items-center xl:px-15 px-0 py-5 xl:space-y-0 space-y-5 '>
           {
             Value.map((value) => (
-              <div key={value.id} className='flex flex-col place-content-center items-center text-center w-[80%] shadow-xl p-5 h-52 rounded-xl space-y-3 '>
+              <div key={value.id} className='flex flex-col place-content-center items-center text-center w-[80%] shadow-xl p-3 h-52 rounded-xl space-y-3 bg-white dark:bg-gray-800 '>
                 <div className='rounded-full p-2 bg-orange-200'> <FontAwesomeIcon icon={value.logo} className='text-orange-950' /> </div>
                 <p className='font-semibold'>{value.topic}</p>
                 <p className='xl:text-base text-xs'>{value.text}</p>
               </div>
             ))
           }
+        </div>
+        <div className='flex xl:flex-row flex-col-reverse justify-evenly xl:mx-15 mx-5 py-5' >
+          <div className='flex xl:w-[50%] w-full ' >
+            hello
+          </div>
+          <div className='flex  h-60 xl:w-[50%] w-full '>
+            <img src={'/images/lady-reading.png'} className='w-full rounded-xl' />
+          </div>
         </div>
       </div>
       <Footer />
