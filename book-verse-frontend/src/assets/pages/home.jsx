@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className='xl:flex block flex-row'>
+      <div className='xl:flex block'>
         <SideNavBar />
         <HomeCard />
       </div>

@@ -7,7 +7,7 @@ import Categories from '../category-component/categories';
 
 const DiscoveryPageCard = () => {
   return (
-    <div>
+    <div className='xl:mt-20 mt-16 p-5 w-full '>
      <h1 className='text-2xl font-bold mb-2'>Discover New Books</h1>
      <p className='text-gray-500 mb-10'>Explore our curated selection of books across various genres and categories. Find your next great read today!</p>
       <Banner3/>

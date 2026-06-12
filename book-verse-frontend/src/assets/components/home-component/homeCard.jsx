@@ -20,8 +20,7 @@ const HomeCard = () => {
 
   return (
 
-    <div className='p-5 xl:mt-20 mt-15 w-full text-black '>
-      <div className='xl:hidden flex mb-3 bg-white/30 sticky top-14 rounded-lg '> <Search /> </div>
+    <div className='p-5 xl:mt-20 mt-16 w-full text-black '>
       <h1 className='text-2xl font-semibold text-slate-900 dark:text-white'>{getGreeting()}, {user?.username || 'User'}</h1>
       <p className='text-sm text-slate-600 dark:text-slate-300'>Let's continue your reading.</p>
       <RecommendedBooks />

@@ -7,7 +7,7 @@ const SideNavBar = () => {
   return (
     <>
       <div className='min-w-[20%] h-screen dark:bg-gray-800 bg-[#F9F6F1] xl:flex hidden justify-center border-r dark:text-gray-200 text-black border-gray-200 sticky top-0'>
-        <div className="space-y-4 mt-25">
+        <div className="space-y-4 mt-28">
           {Tabs.filter(tab => !tab.action).map((tab) => (
             <NavLink
               key={tab.id}

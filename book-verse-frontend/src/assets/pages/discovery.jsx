@@ -7,15 +7,13 @@ import MobileNavBar from '../components/navigations/mobileNavBar';
 
 const Discover = () => {
   return (
-      <>
+    <>
       <Header />
-      <div className='flex w-full'>
+      <div className='xl:flex block '>
         <SideNavBar />
-        <div className=' mt-20 p-5 w-full '>
-           <DiscoveryPageCard />
-        </div>
+        <DiscoveryPageCard />
       </div>
-      <Footer/>
+      <Footer />
       <MobileNavBar />
     </>
   );

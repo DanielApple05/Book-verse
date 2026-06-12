@@ -12,9 +12,9 @@ const Library = () => {
   return (
     <>
       <Header />
-      <div className='flex w-full'>
+      <div className='xl:flex block'>
         <SideNavBar />
-        <div className=' mt-20 p-5 w-full '>
+        <div className='xl:mt-20 mt-16 p-5 w-full '>
           <p className='text-2xl font-bold'>My Library</p>
           <p>All your books in one place</p>
            <LibraryCard />

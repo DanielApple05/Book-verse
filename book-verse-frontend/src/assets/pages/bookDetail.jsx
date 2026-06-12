@@ -49,7 +49,7 @@ const BookDetail = () => {
       <Header />
       <div className='xl:flex grid'>
         <SideNavBar />
-        <div className='flex-1 p-8 mt-20'>
+        <div className='flex-1 p-8 xl:mt-20 mt-16'>
           <button
             onClick={() => navigate(-1)}
             className='text-sm text-gray-500 hover:text-gray-800 mb-6 flex items-center gap-2'

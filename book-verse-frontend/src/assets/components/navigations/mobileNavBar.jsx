@@ -30,7 +30,7 @@ const MobileNavBar = () => {
             >
               <FontAwesomeIcon
                 icon={tab.icon}
-                className="text-xl" />
+                className={`text-xl  ${ searchOpen ? "overflow-hidden" : "" }`} />
             </button>
           ) : (
             <NavLink

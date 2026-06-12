@@ -30,8 +30,7 @@ const CategoryCard = () => {
   }, []);
 
   return (
-    <div className='p-5 xl:mt-20 mt-15 w-full'>
-      <div className='xl:hidden flex mb-3 bg-white/30 sticky top-14 rounded-lg '> <Search /> </div>
+    <div className='p-5 xl:mt-20 mt-16 w-full'>
       <div className=' '>
         <p className='xl:text-2xl text-lg font-bold'>Categories</p>
         <p className='xl:text-base text-sm'>Explore books by categories and find your next favorite read</p>
