@@ -14,6 +14,8 @@ import { useTheme } from './context/themeContext';
 import Authors from './assets/pages/authors';
 import Contact from './assets/pages/contact';
 import About from './assets/pages/about';
+import Blog from './assets/pages/blog';
+
 
 
 function App() {
@@ -35,6 +37,7 @@ function App() {
         <Route path='/authors' element={<Authors />} />
         <Route path='/contact' element={<Contact />} />
          <Route path='/about' element={<About />} />
+          <Route path='/blog' element={<Blog />} />
       </Routes>
     </div>
   )
