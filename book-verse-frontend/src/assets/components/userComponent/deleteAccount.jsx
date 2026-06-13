@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -8,9 +7,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getUserFromToken } from '../../../utils';
 import { getToken } from '../../../helpers';
+import { useLibrary } from '../../../context/libraryContext.jsx';
 
 const DeleteAccount = () => {
   const navigate = useNavigate();
+  const { clearLibrary } = useLibrary();
   let user = getUserFromToken();
   const token = getToken();
   const isLoggedIn = !!token;
@@ -40,6 +41,7 @@ const DeleteAccount = () => {
         headers: { Authorization: `Bearer ${token}` },
         data: { password: deletePassword }
       });
+      clearLibrary();
       localStorage.removeItem('token');
       navigate('/signIn');
     } catch (err) {
