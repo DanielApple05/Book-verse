@@ -73,11 +73,10 @@ export const LibraryProvider = ({ children }) => {
   };
 
   const clearLibrary = () => {
-  localStorage.removeItem('library');
-  setLibrary([]);
-};
+    localStorage.removeItem('library');
+    setLibrary([]);
+  };
 
-  // filtered lists
   const favorites = library.filter(b => b.status === 'favorite');
   const currentlyReading = library.filter(b => b.status === 'currently_reading');
   const completed = library.filter(b => b.status === 'completed');
