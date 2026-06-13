@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faUser, faPhone } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/header-component/header';
@@ -7,6 +7,30 @@ import MobileNavBar from '../components/navigations/mobileNavBar';
 
 const Contact = () => {
 
+  const [name, setName] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState({});
+
+  const handleContact = async (e) => {
+    e.preventDefault();
+
+    let newError = {};
+
+    if (name === '') {
+      newError.name = 'A name is required'
+    };
+
+    if (subject === '') {
+      newError.subject = ' A subject is expected'
+    }
+
+    if (message === '') {
+      newError.message = 'A message is required'
+    }
+    setError(newError);
+  }
 
   return (
     <>
@@ -27,28 +51,51 @@ const Contact = () => {
             </div>
             <p className='text-sm'> Fill out the form below and we'll get back to you as soon as possible</p>
           </div>
-          <form className='grid space-y-5 mt-2 pt-3'>
+          <form
+            onSubmit={handleContact}
+            className='grid space-y-5 mt-2 pt-3'>
             <div className='flex flex-col md:flex-row gap-5'>
               <div className='flex flex-col gap-2 w-full'>
                 <label className='font-semibold text-sm'> Your Name</label>
-                <input type="text" className='outline-none border border-gray-200 rounded w-full p-2' />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value.trim())}
+                  className='outline-none border border-gray-200 rounded w-full p-2' />
+                {error.name && <p className='text-red-500 text-xs'>{error.name}</p>}
               </div>
               <div className='flex flex-col gap-2 w-full'>
                 <label className='font-semibold text-sm'> Your Email</label>
-                <input type="text" className='outline-none border border-gray-200 rounded w-full p-2' />
+                <input
+                  type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value.trim())}
+                  required
+                  className='outline-none border border-gray-200 rounded w-full p-2' />
               </div>
             </div>
             <div className='flex flex-col gap-2'>
               <label className='font-semibold text-sm'>
                 Subject
               </label>
-              <input type="text" className='outline-none border border-gray-200 rounded' />
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value.trim())}
+                className='outline-none border border-gray-200 rounded' />
+              {error.subject && <p className='text-red-500 text-xs'>{error.subject}</p>}
             </div>
             <div className='flex flex-col gap-2'>
               <label className='font-semibold text-sm'> Message</label>
-              <textarea className='outline-none border border-gray-200 rounded h-32' />
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value.trim())}
+                className='outline-none border border-gray-200 rounded h-32' />
+              {error.message && <p className='text-red-500 text-xs'>{error.message}</p>}
             </div>
-            <button className='bg-amber-700 p-2 w-full md:w-60 cursor-pointer rounded-lg font-semibold'> Send Message </button>
+            <button
+              type='submit'
+              className='bg-amber-700 p-2 w-full md:w-60 cursor-pointer rounded-lg font-semibold'> Send Message </button>
           </form>
         </div>
         <div className='xl:m-10 m-0  xl:p-10 p-5 xl:w-[50%] w-full shadow-2xl rounded'>
