@@ -79,7 +79,7 @@ const ChangePassword = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className='relative'>
+        <div className='relative mx-auto'>
           <div className='my-2 flex flex-col gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
             <p className='font-semibold'> Change Password</p>
             <p className=' text-sm'>keep your account secure</p>
@@ -91,13 +91,13 @@ const ChangePassword = () => {
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
                 onClick={() => setPasswordInfo(false)}
               />
-              <form onSubmit={changePassword} className=' fixed xl:w-[50%] w-full mb-2 border-t border-gray-200 space-y-3 py-10  flex flex-col justify-self-center justify-center items-center bg-orange-500/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
+              <form onSubmit={changePassword} className=' fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-500/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
                <button 
                disabled={loading}
                onClick={() => setPasswordInfo(!passwordInfo)}>
                 <FontAwesomeIcon 
                 icon={faX} 
-                className={` cursor-pointer  ${ loading ? "animate-spin" : "" }`}  />
+                className={` cursor-pointer hover:bg-red-600 p-2 rounded-lg  ${ loading ? "animate-spin" : "" }`}  />
                 </button>
                 <div className=' xl:w-[80%] w-full'>
                   <p className='text-sm font-semibold mb-1'>Current Password</p>
@@ -140,7 +140,7 @@ const ChangePassword = () => {
                 <button
                   type='submit'
                   disabled={loading}
-                  className='bg-[#E8834A] text-white px-3 py-1 xl:w-[30%] w-[50%] rounded cursor-pointer disabled:opacity-50'
+                  className='bg-[#E8834A] text-white px-3 py-1 xl:w-[30%] w-[80%] rounded cursor-pointer disabled:opacity-50'
                 >
                   {loading ? 'Updating...' : 'Update Password'}
                 </button>
