@@ -71,18 +71,17 @@ const ChangePassword = () => {
   return (
     <>
       {isLoggedIn && 
-      <div>
-        <div className='flex items-center gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
-          <div className='my-2 flex flex-col '>
+      <div className='relative'>
+        <div className='my-2 flex flex-col gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
             <p className='font-semibold'> Change Password</p>
-            <p className=' my-3 text-sm'>keep your account secure</p>
-          </div>
-          <FontAwesomeIcon icon={passwordInfo ? faAngleUp : faAngleDown} />
+            <p className=' text-sm'>keep your account secure</p>
         </div>
         {
           passwordInfo &&
-          <form onSubmit={changePassword} className='mb-2 border-t border-gray-200 space-y-3 py-2  flex flex-col' >
-            <div className=' xl:w-[20%] w-full'>
+          
+          <form onSubmit={changePassword} className=' absolute w-[70%] mb-2 border-t border-gray-200 space-y-3 py-2  flex flex-col justify-self-center justify-center items-center bg-orange-500/50 backdrop-blur-2xl h-[40vh] rounded-xl ' >
+            
+            <div className=' xl:w-[80%] w-full'>
               <p className='text-sm font-semibold mb-1'>Current Password</p>
               <input
                 type={viewPassword ? 'text' : 'password'}
@@ -91,7 +90,7 @@ const ChangePassword = () => {
                 className='outline-none border border-gray-300 rounded text-sm p-1 w-full' />
               {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
             </div>
-            <div className='xl:w-[20%] w-full'>
+            <div className='xl:w-[80%] w-full'>
               <p className='text-sm font-semibold mb-1'>New Password</p>
               <div className='flex items-center relative justify-between '  >
                 <input type={viewPassword ? 'text' : 'password'}
@@ -110,7 +109,7 @@ const ChangePassword = () => {
               </div>
               {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
             </div>
-            <div className='xl:w-[20%] w-full'>
+            <div className='xl:w-[80%] w-full'>
               <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
               <input
                 type={viewPassword ? 'text' : 'password'}

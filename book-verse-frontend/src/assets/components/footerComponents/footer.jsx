@@ -16,7 +16,7 @@ const Footer = () => {
         <div className='space-y-3 max-w-xs'>
           <div className='flex items-center font-bold space-x-2'>
             <FontAwesomeIcon icon={faBookOpen} className='text-[#1A1A2E] dark:text-gray-100' />
-            <p className=''> BookVerse </p>
+            <p> BookVerse </p>
           </div>
             <FontAwesomeIcon icon={faLinkedin} className='cursor-pointer text:gray-500 hover:text-[#1B1F3B]' />
           
