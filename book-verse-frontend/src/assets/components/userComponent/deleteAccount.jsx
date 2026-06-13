@@ -83,7 +83,7 @@ const DeleteAccount = () => {
                     icon={faX}
                     className={` cursor-pointer hover:bg-red-600 p-2 rounded-lg  ${loading ? "animate-spin" : ""}`} />
                 </button>
-                <p className='text-red-500 text-xs my-2'>Are you sure you want to delete your account?</p>
+                <p className='text-red-500 text-xs my-2 text-center'>Are you sure you want to delete your account?</p>
                 <form className=' flex flex-col items-center gap-6 mt-2 ' onSubmit={deleteAccount}  >
                   <input
                     type='password'
