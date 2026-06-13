@@ -33,6 +33,7 @@ const DeleteAccount = () => {
       setDeleteError('Password is required');
       return;
     }
+    setDeleteError('')
 
     try {
       setLoading(true);
@@ -48,16 +49,15 @@ const DeleteAccount = () => {
       setDeleteError(err.response?.data?.message || 'Failed to delete account');
     } finally {
       setLoading(false);
-
     }
   };
 
-   useEffect(() => {
-      document.body.style.overflow = deleteModal ? 'hidden' : '';
-      return () => {
-        document.body.style.overflow = '';
-      };
-    }, [deleteModal]);
+  useEffect(() => {
+    document.body.style.overflow = deleteModal ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [deleteModal]);
 
   return (
     <>
