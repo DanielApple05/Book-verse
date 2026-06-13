@@ -21,7 +21,7 @@ const Settings = () => {
   return (
     <>
       <Header />
-      <div className='xl:flex block'>
+      <div className='xl:flex block xl:pb-0 pb-15'>
         <SideNavBar />
         <div className='xl:mt-20 mt-15 inset-0 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
           <h1 className='text-2xl font-bold '>Settings</h1>
