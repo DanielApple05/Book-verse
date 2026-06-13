@@ -46,10 +46,6 @@ const Login = () => {
       if (isRegistering) {
         await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
         setIsRegistering(false);
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
       } else {
         const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
         localStorage.setItem('token', response.data.token);
@@ -59,11 +55,15 @@ const Login = () => {
       setError({ api: err.response?.data?.message || 'Could not complete the request' });
     } finally {
       setIsPending(false);
+      setUsername('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
     }
   };
 
   return (
-    <div className='xl:flex grid gap-5  w-full'>
+    <div className='xl:flex grid gap-5 w-full overflow-y-hidden'>
       <div className=' relative xl:h-screen h-[60vh] xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
         style={{ backgroundImage: 'url(/images/landing-page.png)' }}
        >
@@ -100,8 +100,8 @@ const Login = () => {
 
           {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
 
-          <form className='space-y-3' text-base onSubmit={handleSubmit}>
-            {/* Username - register only */}
+          <form className='space-y-3 text-base' onSubmit={handleSubmit}>
+            
             {isRegistering && (
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'>Username</label>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faX } from '@fortawesome/free-solid-svg-icons';
 import { EyeOff, Eye } from 'lucide-react';
 import axios from 'axios';
 import { getUserFromToken } from '../../../utils';
@@ -57,78 +57,96 @@ const ChangePassword = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Password changed successfully');
-      setPasswordInfo(false);
-      setCurrentPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
+       setPasswordInfo(false);
     } catch (err) {
       setError({ api: err.response?.data?.message || 'Failed to change password' });
     } finally {
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
       setLoading(false);
+      
     }
   };
 
+  useEffect(() => {
+    document.body.style.overflow = passwordInfo ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [passwordInfo]);
+
   return (
     <>
-      {isLoggedIn && 
-      <div className='relative'>
-        <div className='my-2 flex flex-col gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
+      {isLoggedIn &&
+        <div className='relative'>
+          <div className='my-2 flex flex-col gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
             <p className='font-semibold'> Change Password</p>
             <p className=' text-sm'>keep your account secure</p>
-        </div>
-        {
-          passwordInfo &&
-          
-          <form onSubmit={changePassword} className=' absolute w-[70%] mb-2 border-t border-gray-200 space-y-3 py-2  flex flex-col justify-self-center justify-center items-center bg-orange-500/50 backdrop-blur-2xl h-[40vh] rounded-xl ' >
-            
-            <div className=' xl:w-[80%] w-full'>
-              <p className='text-sm font-semibold mb-1'>Current Password</p>
-              <input
-                type={viewPassword ? 'text' : 'password'}
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-                className='outline-none border border-gray-300 rounded text-sm p-1 w-full' />
-              {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
-            </div>
-            <div className='xl:w-[80%] w-full'>
-              <p className='text-sm font-semibold mb-1'>New Password</p>
-              <div className='flex items-center relative justify-between '  >
-                <input type={viewPassword ? 'text' : 'password'}
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  className='outline-none border border-gray-300 rounded text-sm p-1  flex flex-1 ' />
-                {viewPassword ? (
-                  <Eye
-                    className='w-4 cursor-pointer absolute right-2'
-                    onClick={() => setViewPassword(!viewPassword)} />
-                ) : (
-                  <EyeOff
-                    className='w-4 cursor-pointer absolute right-2'
-                    onClick={() => setViewPassword(!viewPassword)} />
-                )}
-              </div>
-              {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
-            </div>
-            <div className='xl:w-[80%] w-full'>
-              <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
-              <input
-                type={viewPassword ? 'text' : 'password'}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className='outline-none border border-gray-300 rounded text-sm p-1 w-full' />
-              {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
-            </div>
-            {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
-            <button
-              type='submit'
-              disabled={loading}
-              className='bg-[#E8834A] text-white px-3 py-1 xl:w-[20%] w-[50%] rounded cursor-pointer disabled:opacity-50'
-            >
-              {loading ? 'Updating...' : 'Update Password'}
-            </button>
-          </form>
-        }
-      </div>}
+          </div>
+          {
+            passwordInfo &&
+            <>
+              <div
+                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
+                onClick={() => setPasswordInfo(false)}
+              />
+              <form onSubmit={changePassword} className=' fixed w-[50%] mb-2 border-t border-gray-200 space-y-3 py-10  flex flex-col justify-self-center justify-center items-center bg-orange-500/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
+               <button 
+               disabled={loading}
+               onClick={() => setPasswordInfo(!passwordInfo)}>
+                <FontAwesomeIcon 
+                icon={faX} 
+                className={` cursor-pointer  ${ loading ? "animate-spin" : "" }`}  />
+                </button>
+                <div className=' xl:w-[80%] w-full'>
+                  <p className='text-sm font-semibold mb-1'>Current Password</p>
+                  <input
+                    type={viewPassword ? 'text' : 'password'}
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    className='outline-none border border-gray-300 rounded p-1 w-full' />
+                  {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
+                </div>
+                <div className='xl:w-[80%] w-full'>
+                  <p className='text-sm font-semibold mb-1'>New Password</p>
+                  <div className='flex items-center relative justify-between '  >
+                    <input type={viewPassword ? 'text' : 'password'}
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      className='outline-none border border-gray-300 rounded p-1  flex flex-1 ' />
+                    {viewPassword ? (
+                      <Eye
+                        className='w-4 cursor-pointer absolute right-2'
+                        onClick={() => setViewPassword(!viewPassword)} />
+                    ) : (
+                      <EyeOff
+                        className='w-4 cursor-pointer absolute right-2'
+                        onClick={() => setViewPassword(!viewPassword)} />
+                    )}
+                  </div>
+                  {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
+                </div>
+                <div className='xl:w-[80%] w-full'>
+                  <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
+                  <input
+                    type={viewPassword ? 'text' : 'password'}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className='outline-none border border-gray-300 rounded  p-1 w-full' />
+                  {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
+                </div>
+                {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
+                <button
+                  type='submit'
+                  disabled={loading}
+                  className='bg-[#E8834A] text-white px-3 py-1 xl:w-[30%] w-[50%] rounded cursor-pointer disabled:opacity-50'
+                >
+                  {loading ? 'Updating...' : 'Update Password'}
+                </button>
+              </form>
+            </>}
+        </div>}
     </>
   );
 }
