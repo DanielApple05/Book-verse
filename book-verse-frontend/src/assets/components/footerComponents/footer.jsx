@@ -26,6 +26,7 @@ const Footer = () => {
           {navLinks.map((navs) => (
             < Link
               to={navs.path}
+              reloadDocument
               key={navs.id}
               className=' cursor-pointer hover:text-[#1B1F3B]'>{navs.tab}</Link>
           ))}
@@ -36,6 +37,7 @@ const Footer = () => {
           {companyLinks.map((link) => (
             <Link
               to={link.path}
+             reloadDocument
               key={link.id}
               className=' cursor-pointer hover:text-[#1B1F3B]'>{link.links}
             </Link>

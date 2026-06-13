@@ -12,9 +12,10 @@ const SideNavBar = () => {
             <NavLink
               key={tab.id}
               to={tab.path}
+              reloadDocument
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-lg p-2 font-semibold xl:text-sm text-xs hover:bg-[#cd8f6b]
-      ${isActive ? 'bg-[#E8834A] text-white' : ''}`
+                 ${isActive ? 'bg-[#E8834A] text-white' : ''}`
               }
             >
               <FontAwesomeIcon icon={tab.icon} className="text-xl" />

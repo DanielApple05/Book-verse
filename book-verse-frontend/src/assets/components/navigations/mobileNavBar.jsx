@@ -46,6 +46,7 @@ const MobileNavBar = () => {
             <NavLink
               key={tab.id}
               to={tab.path}
+             reloadDocument
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-lg p-2 font-semibold xl:text-sm text-xs hover:bg-[#cd8f6b]
              ${tab.style || ""}
