@@ -15,7 +15,7 @@ const Themes = () => {
           <p className='font-semibold mb-2'> Theme</p>
           <p className='text-xs'> Choose your preferred theme</p>
         </div>
-        <div className='text-sm'>
+        <div className='text-sm flex justify-between'>
           {themes.map((theme) => (
             <button
               key={theme}
@@ -23,7 +23,7 @@ const Themes = () => {
                 if (theme === 'Dark' && !darkMode) toggleDarkMode();
                 if (theme === 'Light' && darkMode) toggleDarkMode();
               }}
-              className={`p-2 rounded-xl m-2 border-2 border-slate-800  hover:text-white font-semibold hover:bg-[#E8834A] cursor-pointer ${(theme === 'Dark' && darkMode) || (theme === 'Light' && !darkMode)
+              className={`p-2 rounded-xl m-2 border-2 border-slate-800  hover:text-white font-semibold  cursor-pointer ${(theme === 'Dark' && darkMode) || (theme === 'Light' && !darkMode)
                 ? 'bg-slate-800 text-white'
                 : ''
                 }`}
