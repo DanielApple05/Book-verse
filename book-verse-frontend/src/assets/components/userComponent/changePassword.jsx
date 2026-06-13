@@ -106,7 +106,7 @@ const ChangePassword = () => {
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                     className='outline-none border border-gray-300 rounded p-1 w-full' />
-                  {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
+                  {error.currentPassword && <p className='text-red-950 text-xs'>{error.currentPassword}</p>}
                 </div>
                 <div className='xl:w-[80%] w-full'>
                   <p className='text-sm font-semibold mb-1'>New Password</p>
@@ -125,7 +125,7 @@ const ChangePassword = () => {
                         onClick={() => setViewPassword(!viewPassword)} />
                     )}
                   </div>
-                  {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
+                  {error.newPassword && <p className='text-red-950 text-xs'>{error.newPassword}</p>}
                 </div>
                 <div className='xl:w-[80%] w-full'>
                   <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
@@ -134,9 +134,9 @@ const ChangePassword = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className='outline-none border border-gray-300 rounded  p-1 w-full' />
-                  {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
+                  {error.confirmPassword && <p className='text-red-950 text-xs'>{error.confirmPassword}</p>}
                 </div>
-                {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
+                {error.api && <p className='text-red-950 text-xs'>{error.api}</p>}
                 <button
                   type='submit'
                   disabled={loading}
