@@ -18,10 +18,10 @@ const SignOut = () => {
 
 
   return (
-    <div onClick={signOut} className=' flex items-center justify-between cursor-pointer mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl' >
+    <div onClick={signOut} className='border border-slate-200 dark:border-slate-700 flex items-center justify-between cursor-pointer mx-auto rounded-lg p-4 bg-slate-50 dark:bg-slate-900 shadow-2xl transition-colors duration-200' >
       <div>
-        <p className='text-red-500'>{isLoggedIn ? 'Sign Out' : 'Sign In'}</p>
-        <p className='text-xs'>{isLoggedIn ? 'Sign out of your account' : 'Sign in to your account'}</p>
+        <p className='text-red-600 dark:text-red-400'>{isLoggedIn ? 'Sign Out' : 'Sign In'}</p>
+        <p className='text-xs text-slate-500 dark:text-slate-400'>{isLoggedIn ? 'Sign out of your account' : 'Sign in to your account'}</p>
       </div>
       <FontAwesomeIcon icon={faArrowRight} />
     </div>

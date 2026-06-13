@@ -62,11 +62,11 @@ const DeleteAccount = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className=' py-2  border-t border-t-gray-200 mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl '>
+        <div className='border border-slate-200 dark:border-slate-700 mx-auto rounded-lg p-4 bg-slate-50 dark:bg-slate-900 shadow-2xl transition-colors duration-200'>
           <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
             <div >
-              <p className='text-red-500 mb-3'>Delete Account</p>
-              <p className='text-xs'>Delete your account </p>
+              <p className='text-red-600 dark:text-red-400 mb-3'>Delete Account</p>
+              <p className='text-xs text-slate-500 dark:text-slate-400'>Delete your account </p>
             </div>
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
@@ -75,7 +75,7 @@ const DeleteAccount = () => {
               <div
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
               />
-              <div className=' fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30'>
+              <div className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5 flex flex-col justify-self-center items-center bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30'>
                 <button
                   disabled={loading}
                   onClick={() => setDeleteModal(!deleteModal)}>

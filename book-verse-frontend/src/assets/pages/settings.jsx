@@ -21,9 +21,9 @@ const Settings = () => {
   return (
     <>
       <Header />
-      <div className='xl:flex block xl:pb-0 pb-24'>
+      <div className='xl:flex block xl:pb-0 pb-7'>
         <SideNavBar />
-        <div className='xl:mt-20 mt-16 inset-0 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
+        <div className='xl:mt-20 mt-16 inset-0 flex-1 p-5 dark:bg-slate-950 dark:text-white bg-slate-50 w-full '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
           <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5 '>

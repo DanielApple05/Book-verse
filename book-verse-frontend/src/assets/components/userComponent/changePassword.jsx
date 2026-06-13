@@ -79,10 +79,10 @@ const ChangePassword = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className='relative mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl'>
+        <div className='relative mx-auto rounded-lg p-4 bg-slate-50 dark:bg-slate-900 shadow-2xl transition-colors duration-200'>
           <div className='my-2 flex flex-col gap-2 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
-            <p className='font-semibold'> Change Password</p>
-            <p className=' text-sm'>keep your account secure</p>
+            <p className='font-semibold text-slate-900 dark:text-slate-100'> Change Password</p>
+            <p className='text-sm text-slate-500 dark:text-slate-400'>keep your account secure</p>
           </div>
           {
             passwordInfo &&
@@ -90,7 +90,7 @@ const ChangePassword = () => {
               <div
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
               />
-              <form onSubmit={changePassword} className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
+              <form onSubmit={changePassword} className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5 flex flex-col justify-self-center items-center bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
                 <button
                   disabled={loading}
                   onClick={() => setPasswordInfo(!passwordInfo)}>

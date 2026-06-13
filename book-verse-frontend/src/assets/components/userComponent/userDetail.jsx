@@ -27,12 +27,12 @@ const UserDetail = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className=' border-b border-b-gray-200 cursor-pointer mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl '>
+        <div className='border border-slate-200 dark:border-slate-700 cursor-pointer mx-auto rounded-lg p-4 bg-slate-50 dark:bg-slate-900 shadow-2xl transition-colors duration-200'>
           <div className='flex items-center justify-between gap-4 mb-1'
             onClick={() => setShowDetails(prev => !prev)}>
             <div className='mb-2 space-y-3' >
-              <p className='font-semibold'> Profile information</p>
-              <p className=' text-xs'>Update your personal Information</p>
+              <p className='font-semibold text-slate-900 dark:text-slate-100'> Profile information</p>
+              <p className='text-xs text-slate-500 dark:text-slate-400'>Update your personal Information</p>
             </div>
             <FontAwesomeIcon icon={showDetails ? faAngleUp : faAngleDown} />
           </div>
@@ -40,8 +40,8 @@ const UserDetail = () => {
             showDetails &&
             <div className='mb-2 border-t border-gray-200 space-y-3 text-sm py-3'>
               <div className='flex justify-between items-center'>
-                <p className=''>Name: {user ? user.username : 'John Doe'}</p>
-                <p className=' text-blue-500 pr-2'> edit</p>
+                <p className='text-slate-700 dark:text-slate-200'>Name: {user ? user.username : 'John Doe'}</p>
+                <p className='text-indigo-600 dark:text-cyan-400 pr-2'> edit</p>
               </div>
               <div className='flex justify-between items-center'>
                 <p className=''>Email: {user ? maskEmail(user.email) : ''}</p>
