@@ -8,9 +8,9 @@ const Themes = () => {
   const { darkMode, toggleDarkMode, autoDarkMode, toggleAutoDarkMode } = useTheme();
   const themes = ['Light', 'Dark'];
   return (
-    <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
+    <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5 '>
       <p className='font-bold  border-b border-b-gray-200 pb-2'>Preferences</p>
-      <div className='flex items-center justify-between gap-4 border-b border-b-gray-200'>
+      <div className='flex items-center justify-between gap-4 border-b border-b-gray-200 mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl'>
         <div>
           <p className='font-semibold'> Theme</p>
           <p className='text-xs'> Choose your preferred theme</p>
@@ -33,7 +33,7 @@ const Themes = () => {
           ))}
         </div>
       </div>
-      <div className='flex items-center justify-between gap-4 '>
+      <div className='flex items-center justify-between gap-4 mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl '>
         <div>
           <p className='font-semibold'>Auto Dark Mode </p>
           <p className='text-xs'> Switch to dark mode at night </p>

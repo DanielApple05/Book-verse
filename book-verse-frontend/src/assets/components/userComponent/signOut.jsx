@@ -18,7 +18,7 @@ const SignOut = () => {
 
 
   return (
-    <div onClick={signOut} className=' flex items-center justify-between cursor-pointer'>
+    <div onClick={signOut} className=' flex items-center justify-between cursor-pointer mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl' >
       <div>
         <p className='text-red-500'>{isLoggedIn ? 'Sign Out' : 'Sign In'}</p>
         <p className='text-xs'>{isLoggedIn ? 'Sign out of your account' : 'Sign in to your account'}</p>

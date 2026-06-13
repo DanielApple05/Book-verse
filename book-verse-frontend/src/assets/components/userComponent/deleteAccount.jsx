@@ -55,7 +55,7 @@ const DeleteAccount = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className=' py-2  border-t border-t-gray-200 '>
+        <div className=' py-2  border-t border-t-gray-200 mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl '>
           <div onClick={() => setDeleteModal(prev => !prev)} className='flex items-center justify-between cursor-pointer'>
             <div >
               <p className='text-red-500 mb-3'>Delete Account</p>
