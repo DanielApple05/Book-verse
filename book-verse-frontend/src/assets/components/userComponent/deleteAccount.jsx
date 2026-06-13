@@ -73,9 +73,9 @@ const DeleteAccount = () => {
           {deleteModal &&
             <>
               <div
-                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
+                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-60"
               />
-              <div className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5 flex flex-col justify-self-center items-center bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30'>
+              <div className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5 flex flex-col justify-self-center items-center bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-70'>
                 <button
                   disabled={loading}
                   onClick={() => setDeleteModal(!deleteModal)}>

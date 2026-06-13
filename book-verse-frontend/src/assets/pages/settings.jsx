@@ -35,7 +35,7 @@ const Settings = () => {
               <div className='space-y-3'>
                 <UserDetail />
                 <ChangePassword />
-              </div> : <p> <Link to='/signIn' className='text-red-500'> sign in  </Link> to see account info </p>
+              </div> : <p>  sign in  to see account info </p>
             }
           </div>
           < Themes />
