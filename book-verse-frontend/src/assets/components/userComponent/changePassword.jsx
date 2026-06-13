@@ -91,7 +91,7 @@ const ChangePassword = () => {
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
                 onClick={() => setPasswordInfo(false)}
               />
-              <form onSubmit={changePassword} className=' fixed w-[50%] mb-2 border-t border-gray-200 space-y-3 py-10  flex flex-col justify-self-center justify-center items-center bg-orange-500/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
+              <form onSubmit={changePassword} className=' fixed xl:w-[50%] w-full mb-2 border-t border-gray-200 space-y-3 py-10  flex flex-col justify-self-center justify-center items-center bg-orange-500/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
                <button 
                disabled={loading}
                onClick={() => setPasswordInfo(!passwordInfo)}>
