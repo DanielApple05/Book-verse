@@ -89,7 +89,6 @@ const ChangePassword = () => {
             <>
               <div
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
-                onClick={() => setPasswordInfo(false)}
               />
               <form onSubmit={changePassword} className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
                 <button

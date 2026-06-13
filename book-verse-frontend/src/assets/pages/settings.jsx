@@ -34,7 +34,7 @@ const Settings = () => {
             {isLoggedIn ?
               <div className='space-y-3'>
                 <UserDetail />
-                <ChangePassword  />
+                <ChangePassword />
               </div> : <p> <Link to='/signIn' className='text-red-500'> sign in  </Link> to see account info </p>
             }
           </div>
@@ -47,7 +47,7 @@ const Settings = () => {
         </div>
       </div>
       <MobileNavBar />
-    </ >
+    </>
   );
 }
 
