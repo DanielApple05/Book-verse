@@ -49,6 +49,7 @@ const DeleteAccount = () => {
       setDeleteError(err.response?.data?.message || 'Failed to delete account');
     } finally {
       setLoading(false);
+      setDeletePassword('')
     }
   };
 
