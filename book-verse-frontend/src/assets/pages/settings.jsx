@@ -26,13 +26,13 @@ const Settings = () => {
         <div className='xl:mt-20 mt-15 inset-0 flex-1 p-5 dark:bg-gray-950 dark:text-white bg-amber-50 w-full '>
           <h1 className='text-2xl font-bold '>Settings</h1>
           <p> Manage your preference and account settings </p>
-          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5'>
+          <div className='bg-white dark:bg-gray-800 rounded p-3 w-full space-y-3 shadow-xl mx-auto mt-5 '>
             <div className='flex items-center gap-4 border-b border-b-gray-200 pb-2'>
               <FontAwesomeIcon icon={faUserGear} />
               <p className='font-bold'>Account</p>
             </div>
             {isLoggedIn ?
-              <div>
+              <div className='space-y-3'>
                 <UserDetail />
                 <ChangePassword  />
               </div> : <p> <Link to='/signIn' className='text-red-500'> sign in  </Link> to see account info </p>

@@ -79,8 +79,8 @@ const ChangePassword = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className='relative mx-auto'>
-          <div className='my-2 flex flex-col gap-4 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
+        <div className='relative mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl'>
+          <div className='my-2 flex flex-col gap-2 justify-between cursor-pointer' onClick={() => setPasswordInfo(prev => !prev)}>
             <p className='font-semibold'> Change Password</p>
             <p className=' text-sm'>keep your account secure</p>
           </div>
@@ -91,7 +91,7 @@ const ChangePassword = () => {
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
                 onClick={() => setPasswordInfo(false)}
               />
-              <form onSubmit={changePassword} className=' fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-500/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
+              <form onSubmit={changePassword} className=' fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
                <button 
                disabled={loading}
                onClick={() => setPasswordInfo(!passwordInfo)}>
@@ -106,7 +106,7 @@ const ChangePassword = () => {
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                     className='outline-none border border-gray-300 rounded p-1 w-full' />
-                  {error.currentPassword && <p className='text-red-950 text-xs'>{error.currentPassword}</p>}
+                  {error.currentPassword && <p className='text-red-500 text-xs'>{error.currentPassword}</p>}
                 </div>
                 <div className='xl:w-[80%] w-full'>
                   <p className='text-sm font-semibold mb-1'>New Password</p>
@@ -125,7 +125,7 @@ const ChangePassword = () => {
                         onClick={() => setViewPassword(!viewPassword)} />
                     )}
                   </div>
-                  {error.newPassword && <p className='text-red-950 text-xs'>{error.newPassword}</p>}
+                  {error.newPassword && <p className='text-red-500 text-xs'>{error.newPassword}</p>}
                 </div>
                 <div className='xl:w-[80%] w-full'>
                   <p className='text-xs font-semibold mb-1'>Confirm New Password</p>
@@ -134,13 +134,13 @@ const ChangePassword = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className='outline-none border border-gray-300 rounded  p-1 w-full' />
-                  {error.confirmPassword && <p className='text-red-950 text-xs'>{error.confirmPassword}</p>}
+                  {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
                 </div>
-                {error.api && <p className='text-red-950 text-xs'>{error.api}</p>}
+                {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
                 <button
                   type='submit'
                   disabled={loading}
-                  className='bg-[#E8834A] text-white px-3 py-1 xl:w-[30%] w-[80%] rounded cursor-pointer disabled:opacity-50'
+                  className='bg-[#b55923] text-white px-3 py-1 xl:w-[30%] w-[80%] rounded cursor-pointer disabled:opacity-50'
                 >
                   {loading ? 'Updating...' : 'Update Password'}
                 </button>

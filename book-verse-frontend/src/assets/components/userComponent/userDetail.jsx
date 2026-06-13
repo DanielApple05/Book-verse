@@ -27,7 +27,7 @@ const UserDetail = () => {
   return (
     <>
       {isLoggedIn &&
-        <div className=' border-b border-b-gray-200 cursor-pointer'>
+        <div className=' border-b border-b-gray-200 cursor-pointer mx-auto rounded-lg p-2 bg-orange-300 shadow-2xl '>
           <div className='flex items-center justify-between gap-4 mb-1'
             onClick={() => setShowDetails(prev => !prev)}>
             <div className='mb-2 space-y-3' >
