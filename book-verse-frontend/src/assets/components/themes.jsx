@@ -40,7 +40,7 @@ const Themes = () => {
         </div>
         <div>
           <FontAwesomeIcon icon={autoDarkMode ? faToggleOn : faToggleOff}
-            className='text-3xl cursor-pointer text-slate-500 dark:text-slate-400 '
+            className='text-4xl cursor-pointer text-slate-500 dark:text-slate-400 '
             onClick={toggleAutoDarkMode} />
         </div>
       </div>
