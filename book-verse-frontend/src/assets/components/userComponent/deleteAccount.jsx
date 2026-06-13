@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faX } from '@fortawesome/free-solid-svg-icons';
 import { EyeOff, Eye } from 'lucide-react';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
@@ -48,9 +48,16 @@ const DeleteAccount = () => {
       setDeleteError(err.response?.data?.message || 'Failed to delete account');
     } finally {
       setLoading(false);
-     
+
     }
   };
+
+   useEffect(() => {
+      document.body.style.overflow = deleteModal ? 'hidden' : '';
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }, [deleteModal]);
 
   return (
     <>
@@ -64,23 +71,35 @@ const DeleteAccount = () => {
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
           {deleteModal &&
-            <div className='border-t border-t-gray-300 mt-5 py-2 '>
-              <p className='text-red-500 text-xs my-2'>Are you sure you want to delete your account?</p>
-              <form className=' flex xl:flex-row flex-col items-center gap-2 mt-2 ' onSubmit={deleteAccount}  >
-                <input
-                  type='password'
-                  value={deletePassword}
-                  onChange={(e) => setDeletePassword(e.target.value)}
-                  placeholder='Enter your password to confirm' className='outline-none border border-gray-300 xl:w-[50%] w-full rounded p-1 placeholder:text-xs' />
-                   {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
+            <>
+              <div
+                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
+              />
+              <div className=' fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30'>
                 <button
-                  type='submit'
                   disabled={loading}
-                  className='bg-red-500 text-sm text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
-              </form>
-             
-            </div>
-          }
+                  onClick={() => setDeleteModal(!deleteModal)}>
+                  <FontAwesomeIcon
+                    icon={faX}
+                    className={` cursor-pointer hover:bg-red-600 p-2 rounded-lg  ${loading ? "animate-spin" : ""}`} />
+                </button>
+                <p className='text-red-500 text-xs my-2'>Are you sure you want to delete your account?</p>
+                <form className=' flex flex-col items-center gap-6 mt-2 ' onSubmit={deleteAccount}  >
+                  <input
+                    type='password'
+                    value={deletePassword}
+                    onChange={(e) => setDeletePassword(e.target.value)}
+                    placeholder='Enter your password to confirm'
+                    className='outline-none border border-gray-300 w-full rounded p-1 placeholder:text-xs' />
+                  {deleteError && <p className='text-red-500 text-xs mt-1'>{deleteError}</p>}
+                  <button
+                    type='submit'
+                    disabled={loading}
+                    className='bg-red-500 text-sm text-white px-3 py-1 disabled:opacity-50 cursor-pointer rounded'>{loading ? 'Deleting...' : 'Yes, delete'}</button>
+                </form>
+
+              </div>
+            </>}
         </div>}
     </>
   );

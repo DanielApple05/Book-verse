@@ -57,7 +57,7 @@ const ChangePassword = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Password changed successfully');
-       setPasswordInfo(false);
+      setPasswordInfo(false);
     } catch (err) {
       setError({ api: err.response?.data?.message || 'Failed to change password' });
     } finally {
@@ -65,7 +65,7 @@ const ChangePassword = () => {
       setNewPassword('');
       setConfirmPassword('');
       setLoading(false);
-      
+
     }
   };
 
@@ -91,13 +91,13 @@ const ChangePassword = () => {
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-20"
                 onClick={() => setPasswordInfo(false)}
               />
-              <form onSubmit={changePassword} className=' fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
-               <button 
-               disabled={loading}
-               onClick={() => setPasswordInfo(!passwordInfo)}>
-                <FontAwesomeIcon 
-                icon={faX} 
-                className={` cursor-pointer hover:bg-red-600 p-2 rounded-lg  ${ loading ? "animate-spin" : "" }`}  />
+              <form onSubmit={changePassword} className='fixed xl:w-[50%] w-[80%] border-t border-gray-200 space-y-3 p-5  flex flex-col justify-self-center items-center bg-orange-300/80 backdrop-blur-2xl rounded-xl inset-x-4 top-40 shadow-xl z-30' >
+                <button
+                  disabled={loading}
+                  onClick={() => setPasswordInfo(!passwordInfo)}>
+                  <FontAwesomeIcon
+                    icon={faX}
+                    className={` cursor-pointer hover:bg-red-600 p-2 rounded-lg  ${loading ? "animate-spin" : ""}`} />
                 </button>
                 <div className=' xl:w-[80%] w-full'>
                   <p className='text-sm font-semibold mb-1'>Current Password</p>
