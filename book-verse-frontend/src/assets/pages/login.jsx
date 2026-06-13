@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faCircleUser } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
 import { EyeOff, Eye } from 'lucide-react';
 
 import axios from 'axios';
 
 const Login = () => {
-  const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_BACKEND_URL;
   const [isRegistering, setIsRegistering] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
@@ -38,7 +36,7 @@ const Login = () => {
     }
 
     setError(newError);
-    
+
     if (Object.keys(newError).length > 0) return;
 
     try {
@@ -49,7 +47,7 @@ const Login = () => {
       } else {
         const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
         localStorage.setItem('token', response.data.token);
-        navigate('/home');
+        window.location.href = '/home'
       }
     } catch (err) {
       setError({ api: err.response?.data?.message || 'Could not complete the request' });
