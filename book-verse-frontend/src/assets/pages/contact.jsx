@@ -4,6 +4,7 @@ import { faEnvelope, faUser, faPhone } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/header-component/header';
 import Footer from '../components/footerComponents/footer';
 import MobileNavBar from '../components/navigations/mobileNavBar';
+import axios from 'axios';
 
 const Contact = () => {
 
@@ -12,6 +13,8 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [ successMsg, setSuccessMsg] = useState(false)
 
   const handleContact = async (e) => {
     e.preventDefault();
@@ -30,6 +33,18 @@ const Contact = () => {
       newError.message = 'A message is required'
     }
     setError(newError);
+
+    if (Object.keys(newError).length > 0) return;
+    try {
+      setLoading(true)
+      const response = await axios.post(`${API_URL}/api/contact`, { name, email, subject, message })
+      setSuccessMsg({ message })
+
+    } catch (error) {
+      setError({ api: error.response?.data?.message || 'Could not complete the request' });
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -92,6 +107,7 @@ const Contact = () => {
                 onChange={(e) => setMessage(e.target.value.trim())}
                 className='outline-none border border-gray-200 rounded h-32' />
               {error.message && <p className='text-red-500 text-xs'>{error.message}</p>}
+              {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
             </div>
             <button
               type='submit'

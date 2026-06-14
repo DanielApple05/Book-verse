@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { EyeOff, Eye } from 'lucide-react';
-
 import axios from 'axios';
 
 const Login = () => {
@@ -95,9 +94,7 @@ const Login = () => {
               <div><h1 className='font-bold text-xl'>Welcome Back!</h1><p>Sign in to your account to keep reading!</p></div>
             )}
           </div>
-
           {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
-
           <form className='space-y-3 text-base' onSubmit={handleSubmit}>
             
             {isRegistering && (
@@ -116,7 +113,6 @@ const Login = () => {
                 {error.username && <p className='text-red-500 text-xs'>{error.username}</p>}
               </div>
             )}
-
             <div className='grid gap-2 w-full'>
               <label className='font-semibold'>Email Address</label>
               <div className='border-gray-200 border pl-2 flex items-center'>
@@ -131,7 +127,6 @@ const Login = () => {
               </div>
               {error.email && <p className='text-red-500 text-xs'>{error.email}</p>}
             </div>
-
             <div className='grid gap-2 w-full'>
               <label className='font-semibold'>Password</label>
               <div className='border-gray-200 border px-2 flex items-center'>
