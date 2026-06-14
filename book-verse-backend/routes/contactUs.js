@@ -7,10 +7,10 @@ router.post("/", async (req, res) => {
     const { name, email, message, subject } = req.body;
     const newMessage = new Contact({ name, email, subject, message });
     await newMessage.save();
-    res.status(201).json({ message: "Message Delivered Successfully" });
+    res.status(201).json({ feedback: "Message Delivered Successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message || "Message Failed" });
+    res.status(500).json({ feedback: error.feedback || "Message Failed" });
   }
 });
 
