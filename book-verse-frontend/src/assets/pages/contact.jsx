@@ -37,7 +37,7 @@ const Contact = () => {
     if (Object.keys(newError).length > 0) return;
     try {
       setLoading(true)
-      const response = await axios.post(`${API_URL}/api/contactUs`, { name, email, subject, message });
+      const response = await axios.post(`${API_URL}/api/contact`, { name, email, subject, message });
       setSuccessMsg(response.data.feedback || 'Message Delivered Successfully');
 
     } catch (error) {
