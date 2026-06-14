@@ -93,7 +93,7 @@ const Contact = () => {
                   type='email'
                   value={email}
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setEmail(e.target.value);
                     setSuccessMsg(false);
                   }}
                   required
@@ -108,7 +108,10 @@ const Contact = () => {
                 type="text"
                 placeholder="e.g. Book Request, Feedback, Bug Report"
                 value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+                onChange={(e) => {
+                  setSubject(e.target.value);
+                  setSuccessMsg(false);
+                }}
                 className='outline-none border border-gray-200 rounded p-2' />
               {error.subject && <p className='text-red-500 text-xs'>{error.subject}</p>}
             </div>
@@ -117,14 +120,14 @@ const Contact = () => {
               <textarea
                 value={message}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setMessage(e.target.value);
                   setSuccessMsg(false);
                 }}
                 className='outline-none border border-gray-200 rounded h-32 p-2' />
               {error.message && <p className='text-red-500 text-xs'>{error.message}</p>}
               {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
             </div>
-              {successMsg && <p className='text-green-600 text-xs'>{successMsg}</p>}
+            {successMsg && <p className='text-green-600 text-xs'>{successMsg}</p>}
             <button
               disabled={loading}
               type='submit'
