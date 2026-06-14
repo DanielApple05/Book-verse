@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
-app.use('/api/contact', contactRoutes);
+app.use('/api/contactUs', contactRoutes);
 
 
 mongoose.connect(process.env.MONGO_URI)
