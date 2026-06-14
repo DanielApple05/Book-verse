@@ -20,7 +20,9 @@ router.post("/", async (req, res) => {
     res.status(201).json({ feedback: "Message Delivered Successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ feedback: "Something went wrong. Please try again." });
+    res
+      .status(500)
+      .json({ feedback: "Something went wrong. Please try again." });
   }
 });
 

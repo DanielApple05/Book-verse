@@ -14,29 +14,37 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState(false)
+  const [successMsg, setSuccessMsg] = useState('')
 
   const handleContact = async (e) => {
     e.preventDefault();
 
     let newError = {};
 
-    if (name === '') {
-      newError.name = 'A name is required'
-    };
-
-    if (subject === '') {
-      newError.subject = ' A subject is expected'
+    if (name.trim() === '') {
+      newError.name = 'A name is required';
     }
 
-    if (message === '') {
-      newError.message = 'A message is required'
+    if (email.trim() === '') {
+      newError.email = 'An email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      newError.email = 'Enter a valid email address';
     }
+
+    if (subject.trim() === '') {
+      newError.subject = 'A subject is expected';
+    }
+
+    if (message.trim() === '') {
+      newError.message = 'A message is required';
+    }
+
     setError(newError);
+    setSuccessMsg('');
 
     if (Object.keys(newError).length > 0) return;
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await axios.post(`${API_URL}/api/contactUs`, { name, email, subject, message });
       setSuccessMsg(response.data.feedback || 'Message Delivered Successfully');
       setError({});
@@ -47,8 +55,9 @@ const Contact = () => {
 
     } catch (error) {
       setError({ api: error.response?.data?.feedback || 'Could not complete the request' });
+      setSuccessMsg('');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
