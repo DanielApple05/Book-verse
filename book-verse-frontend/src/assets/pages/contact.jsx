@@ -25,12 +25,6 @@ const Contact = () => {
       newError.name = 'A name is required';
     }
 
-    if (email.trim() === '') {
-      newError.email = 'An email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      newError.email = 'Enter a valid email address';
-    }
-
     if (subject.trim() === '') {
       newError.subject = 'A subject is expected';
     }
@@ -49,7 +43,6 @@ const Contact = () => {
       setSuccessMsg(response.data.feedback || 'Message Delivered Successfully');
       setError({});
       setName('');
-      setEmail('');
       setSubject('');
       setMessage('');
 
@@ -84,29 +77,45 @@ const Contact = () => {
             onSubmit={handleContact}
             className='grid space-y-5 mt-2 pt-3'>
             <div className='flex flex-col md:flex-row gap-5'>
-              <div className='flex flex-col gap-2 w-full'>
+              <div className='flex flex-col gap-2 w-full relative'>
                 <label className='font-semibold text-sm'> Your Name</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                    setSuccessMsg(false);
-                  }}
-                  className='outline-none border border-gray-200 rounded w-full p-2' />
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      setSuccessMsg(false);
+                    }}
+                    placeholder='enter your name'
+                    className="w-full p-2 pl-10 outline-none border border-gray-200 rounded"
+                  />
+
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+                </div>
                 {error.name && <p className='text-red-500 text-xs'>{error.name}</p>}
               </div>
               <div className='flex flex-col gap-2 w-full'>
                 <label className='font-semibold text-sm'> Your Email</label>
-                <input
-                  type='email'
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setSuccessMsg(false);
-                  }}
-                  required
-                  className='outline-none border border-gray-200 rounded w-full p-2' />
+                <div className="relative">
+                  <input
+                    type='email'
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setSuccessMsg(false);
+                    }}
+                    required
+                    placeholder='enter an email'
+                    className='outline-none pl-10  border border-gray-200 rounded w-full p-2' />
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+                </div>
               </div>
             </div>
             <div className='flex flex-col gap-2'>
@@ -132,6 +141,7 @@ const Contact = () => {
                   setMessage(e.target.value);
                   setSuccessMsg(false);
                 }}
+                placeholder='Give feedback'
                 className='outline-none border border-gray-200 rounded h-32 p-2' />
               {error.message && <p className='text-red-500 text-xs'>{error.message}</p>}
               {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
@@ -140,7 +150,7 @@ const Contact = () => {
             <button
               disabled={loading}
               type='submit'
-              className='bg-amber-700 p-2 w-full md:w-60 disabled:opacity-50 cursor-pointer rounded-lg font-semibold'> {loading ? "sending" : "Send Message"} </button>
+              className='bg-amber-700 p-2 w-full md:w-60 disabled:opacity-50 cursor-pointer rounded-lg font-semibold'> {loading ? "sending..." : "Send Message"} </button>
           </form>
         </div>
         <div className='xl:m-10 m-0  xl:p-10 p-5 xl:w-[50%] w-full shadow-2xl rounded'>
