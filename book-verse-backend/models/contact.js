@@ -19,7 +19,7 @@ const contactSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    password: {
+    subject: {
       type: String,
       required: true,
       trim: true,
