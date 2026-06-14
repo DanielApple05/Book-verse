@@ -1,61 +1,70 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/user');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const User = require("../models/user");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // Register a new user
-router.post('/register', async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const existingUser = await User.findOne({ email })
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      return res.status(400).json({ message : "user already exist" })
+      return res.status(400).json({ message: "user already exist" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
-    res.status(500).json({ message: 'Error registering user' });
+    res.status(500).json({ message: "Error registering user" });
   }
-  });
+});
 
 // Login a user
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    const token = jwt.sign({ id: user._id, username: user.username, email: user.email, password: user.password }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(
+      {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        password: user.password,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" },
+    );
     res.json({ token });
   } catch (error) {
-    res.status(500).json({ message: 'Error logging in user' });
+    res.status(500).json({ message: "Error logging in user" });
   }
 });
 
 //Change password
-router.put('/change-password', async (req, res) => {
+router.put("/change-password", async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
 
-    const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization?.split(" ")[1];
     console.log(req.headers.authorization);
 
     if (!token) {
       return res.status(401).json({
-        message: 'Authentication required',
+        message: "Authentication required",
       });
     }
 
@@ -65,18 +74,15 @@ router.put('/change-password', async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: 'User not found',
+        message: "User not found",
       });
     }
 
-    const isMatch = await bcrypt.compare(
-      currentPassword,
-      user.password
-    );
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
 
     if (!isMatch) {
       return res.status(400).json({
-        message: 'Current password is incorrect',
+        message: "Current password is incorrect",
       });
     }
 
@@ -85,32 +91,34 @@ router.put('/change-password', async (req, res) => {
     await user.save();
 
     res.status(200).json({
-      message: 'Password changed successfully',
+      message: "Password changed successfully",
     });
   } catch (error) {
     res.status(500).json({
-      message: 'Error changing password',
+      message: "Error changing password",
     });
   }
 });
 
-router.delete('/delete-account', async (req, res) => {
+//delete user
+router.delete("/delete-account", async (req, res) => {
   try {
-    const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization?.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { password } = req.body;
 
     const user = await User.findById(decoded.id);
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
     // verify password
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Incorrect password' });
+    if (!isMatch)
+      return res.status(400).json({ message: "Incorrect password" });
 
     await User.findByIdAndDelete(decoded.id);
-    res.json({ message: 'Account deleted successfully' });
+    res.json({ message: "Account deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: 'Error deleting account' });
+    res.status(500).json({ message: "Error deleting account" });
   }
 });
 
