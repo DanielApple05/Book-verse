@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { EyeOff, Eye } from 'lucide-react';
-import axios from 'axios';
+import { loginUser, registerUser } from '../../api';
 
 const Login = () => {
-  const API_URL = import.meta.env.VITE_BACKEND_URL;
   const [isRegistering, setIsRegistering] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
   const [username, setUsername] = useState('');
@@ -33,29 +32,26 @@ const Login = () => {
     } else if (isRegistering && password !== confirmPassword) {
       newError.confirmPassword = 'Passwords do not match';
     }
-
     setError(newError);
-
     if (Object.keys(newError).length > 0) return;
-
     try {
       setIsPending(true);
       if (isRegistering) {
-        await axios.post(`${API_URL}/api/auth/register`, { username, email, password });
+        await registerUser({ username, email, password });
         setIsRegistering(false);
       } else {
-        const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
+        const response = loginUser({ email, password });
         localStorage.setItem('token', response.data.token);
         window.location.href = '/home'
       }
-    } catch (err) {
-      setError({ api: err.response?.data?.message || 'Could not complete the request' });
-    } finally {
-      setIsPending(false);
       setUsername('');
       setEmail('');
       setPassword('');
       setConfirmPassword('');
+    } catch (err) {
+      setError({ api: err.response?.data?.message || 'Could not complete the request' });
+    } finally {
+      setIsPending(false);
     }
   };
 
@@ -63,7 +59,7 @@ const Login = () => {
     <div className='xl:flex grid gap-5 w-full overflow-y-hidden'>
       <div className=' relative xl:h-screen h-[40vh] xl:w-[50%] w-full bg-cover bg-center bg-no-repeat rounded-b-xl'
         style={{ backgroundImage: 'url(/images/landing-page.png)' }}
-       >
+      >
         <div className='absolute inset-0 bg-black/30 rounded-xl' />
         <div className='absolute inset-0 flex flex-col justify-center text-white p-10  space-y-5  '>
           <p className='xl:text-4xl text-xl font-bold'>
@@ -96,7 +92,6 @@ const Login = () => {
           </div>
           {error.api && <p className='text-red-500 text-xs'>{error.api}</p>}
           <form className='space-y-3 text-base' onSubmit={handleSubmit}>
-            
             {isRegistering && (
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'>Username</label>
@@ -144,7 +139,6 @@ const Login = () => {
               </div>
               {error.password && <p className='text-red-500 text-xs'>{error.password}</p>}
             </div>
-
             {isRegistering && (
               <div className='grid gap-2 w-full'>
                 <label className='font-semibold'>Confirm Password</label>
@@ -161,7 +155,6 @@ const Login = () => {
                 {error.confirmPassword && <p className='text-red-500 text-xs'>{error.confirmPassword}</p>}
               </div>
             )}
-
             <div className='flex place-content-center'>
               <button
                 type='submit'
