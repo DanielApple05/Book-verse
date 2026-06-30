@@ -14,7 +14,7 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState('')
+  const [successMsg, setSuccessMsg] = useState('');
 
   const handleContact = async (e) => {
     e.preventDefault();
@@ -96,7 +96,7 @@ const Contact = () => {
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                   />
                 </div>
-                {error.name && <p className='text-red-500 text-xs'>{error.name}</p>}
+                {error.name && <p className='text-red-500 text-xs'>{error.name} </p>}
               </div>
               <div className='flex flex-col gap-2 w-full'>
                 <label className='font-semibold text-sm'> Your Email</label>
