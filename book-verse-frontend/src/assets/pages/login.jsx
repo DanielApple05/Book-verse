@@ -40,9 +40,9 @@ const Login = () => {
         await registerUser({ username, email, password });
         setIsRegistering(false);
       } else {
-        const response = loginUser({ email, password });
+        const response = await loginUser({ email, password });
         localStorage.setItem('token', response.data.token);
-        window.location.href = '/home'
+        window.location.href = '/home';
       }
       setUsername('');
       setEmail('');
