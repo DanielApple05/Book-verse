@@ -15,7 +15,6 @@ export const fetchBooksByCategory = async (category, maxResults = 5) => {
 export const fetchAllCategories = async () => {
   const categories = ['fiction', 'nonfiction', 'science', 'history', 'biography', 'fantasy', 'romance', 'thriller'];
   const allBooks = {};
-
   for (const category of categories) {
     const response = await axios.get(BASE_URL, {
       params: { q: `subject:${category}`, key: API_KEY, maxResults: 20 }

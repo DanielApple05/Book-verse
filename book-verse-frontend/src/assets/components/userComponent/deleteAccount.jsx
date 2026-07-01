@@ -34,13 +34,10 @@ const DeleteAccount = () => {
       return;
     }
     setDeleteError('')
-
     try {
       setLoading(true);
-      const API_URL = import.meta.env.VITE_BACKEND_URL;
-      await axios.delete(`${API_URL}/api/auth/delete-account`, {
-        headers: { Authorization: `Bearer ${token}` },
-        data: { password: deletePassword }
+      await deleteAccount({ password: deletePassword }, {
+        headers: { Authorization: `Bearer ${token}` }
       });
       clearLibrary();
       localStorage.removeItem('token');

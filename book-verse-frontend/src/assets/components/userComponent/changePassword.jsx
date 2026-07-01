@@ -6,6 +6,7 @@ import { EyeOff, Eye } from 'lucide-react';
 import axios from 'axios';
 import { getUserFromToken } from '../../../utils';
 import { getToken } from '../../../helpers';
+import changePassword from '../../../api';
 
 const ChangePassword = () => {
 
@@ -49,8 +50,7 @@ const ChangePassword = () => {
 
     try {
       setLoading(true);
-      const API_URL = import.meta.env.VITE_BACKEND_URL;
-      await axios.put(`${API_URL}/api/auth/change-password`, {
+      await changePassword({
         currentPassword,
         newPassword
       }, {
