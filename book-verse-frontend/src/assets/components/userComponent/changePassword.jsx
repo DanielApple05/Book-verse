@@ -6,7 +6,7 @@ import { EyeOff, Eye } from 'lucide-react';
 import axios from 'axios';
 import { getUserFromToken } from '../../../utils';
 import { getToken } from '../../../helpers';
-import changePassword from '../../../api';
+import {changePassword} from '../../../api';
 
 const ChangePassword = () => {
 
@@ -58,12 +58,12 @@ const ChangePassword = () => {
       });
       alert('Password changed successfully');
       setPasswordInfo(false);
-    } catch (err) {
-      setError({ api: err.response?.data?.message || 'Failed to change password' });
-    } finally {
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
+    } catch (err) {
+      setError({ api: err.response?.data?.message || 'Failed to change password' });
+    } finally {
       setLoading(false);
 
     }
