@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUserFromToken } from '../../../utils';
 import { getToken } from '../../../helpers';
 import { useLibrary } from '../../../context/libraryContext.jsx';
+import deleteAccount from '../../../api';
 
 const DeleteAccount = () => {
   const navigate = useNavigate();
